@@ -1,0 +1,407 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Reloaded Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-11 07:16+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Justin Tadlock <justin@justintadlock.com>\n"
+"Language-Team:  <justin@justintadlock.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: archives.php:22
+msgid "An advanced widget that gives you total control over the output of your archives."
+msgstr ""
+
+#: archives.php:24
+#: archives.php:109
+msgid "Archives"
+msgstr ""
+
+#: archives.php:60
+msgid "Select Year"
+msgstr ""
+
+#: archives.php:62
+msgid "Select Month"
+msgstr ""
+
+#: archives.php:64
+msgid "Select Week"
+msgstr ""
+
+#: archives.php:66
+msgid "Select Day"
+msgstr ""
+
+#: archives.php:68
+msgid "Select Post"
+msgstr ""
+
+#: archives.php:114
+#: authors.php:93
+#: calendar.php:60
+#: categories.php:124
+#: pages.php:121
+#: search.php:95
+#: tags.php:105
+msgid "Title:"
+msgstr ""
+
+#: archives.php:118
+#: bookmarks.php:181
+msgid "Limit:"
+msgstr ""
+
+#: archives.php:122
+msgid "Type:"
+msgstr ""
+
+#: archives.php:133
+#: tags.php:120
+msgid "Format:"
+msgstr ""
+
+#: archives.php:144
+msgid "Before:"
+msgstr ""
+
+#: archives.php:148
+msgid "After:"
+msgstr ""
+
+#: archives.php:153
+#: authors.php:120
+msgid "Show post count?"
+msgstr ""
+
+#: authors.php:22
+msgid "An advanced widget that gives you total control over the output of your author lists."
+msgstr ""
+
+#: authors.php:24
+#: authors.php:88
+msgid "Authors"
+msgstr ""
+
+#: authors.php:97
+msgid "Feed:"
+msgstr ""
+
+#: authors.php:101
+#: categories.php:183
+msgid "Feed Image:"
+msgstr ""
+
+#: authors.php:105
+#: categories.php:128
+msgid "Style:"
+msgstr ""
+
+#: authors.php:116
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr ""
+
+#: authors.php:124
+msgid "Exclude admin?"
+msgstr ""
+
+#: authors.php:128
+msgid "Show full name?"
+msgstr ""
+
+#: authors.php:132
+#: categories.php:204
+msgid "Hide empty?"
+msgstr ""
+
+#: bookmarks.php:22
+msgid "An advanced widget that gives you total control over the output of your bookmarks (links)."
+msgstr ""
+
+#: bookmarks.php:24
+#: bookmarks.php:95
+msgid "Bookmarks"
+msgstr ""
+
+#: bookmarks.php:140
+msgid "Categories:"
+msgstr ""
+
+#: bookmarks.php:144
+msgid "Exclude categories:"
+msgstr ""
+
+#: bookmarks.php:148
+msgid "Category:"
+msgstr ""
+
+#: bookmarks.php:156
+msgid "Category Order:"
+msgstr ""
+
+#: bookmarks.php:163
+msgid "Category Orderby:"
+msgstr ""
+
+#: bookmarks.php:172
+msgid "Class:"
+msgstr ""
+
+#: bookmarks.php:185
+msgid "Include Bookmarks:"
+msgstr ""
+
+#: bookmarks.php:189
+msgid "Exclude Bookmarks:"
+msgstr ""
+
+#: bookmarks.php:193
+msgid "Bookmarks Order:"
+msgstr ""
+
+#: bookmarks.php:200
+msgid "Bookmarks Orderby:"
+msgstr ""
+
+#: bookmarks.php:218
+msgid "Between:"
+msgstr ""
+
+#: bookmarks.php:226
+#: pages.php:182
+msgid "Before Link:"
+msgstr ""
+
+#: bookmarks.php:230
+#: pages.php:186
+msgid "After Link:"
+msgstr ""
+
+#: bookmarks.php:235
+msgid "Categorize?"
+msgstr ""
+
+#: bookmarks.php:239
+msgid "Show description?"
+msgstr ""
+
+#: bookmarks.php:243
+msgid "Hide invisible?"
+msgstr ""
+
+#: bookmarks.php:247
+msgid "Show rating?"
+msgstr ""
+
+#: bookmarks.php:251
+msgid "Show updated?"
+msgstr ""
+
+#: bookmarks.php:255
+msgid "Show images?"
+msgstr ""
+
+#: bookmarks.php:259
+msgid "Show name?"
+msgstr ""
+
+#: bookmarks.php:263
+msgid "Show private?"
+msgstr ""
+
+#: calendar.php:22
+msgid "An advanced widget that gives you total control over the output of your calendar."
+msgstr ""
+
+#: calendar.php:24
+#: calendar.php:56
+msgid "Calendar"
+msgstr ""
+
+#: calendar.php:65
+msgid "One-letter abbreviation?"
+msgstr ""
+
+#: categories.php:22
+msgid "An advanced widget that gives you total control over the output of your category links."
+msgstr ""
+
+#: categories.php:24
+#: categories.php:119
+msgid "Categories"
+msgstr ""
+
+#: categories.php:51
+msgid "RSS"
+msgstr ""
+
+#: categories.php:135
+#: tags.php:127
+msgid "Order:"
+msgstr ""
+
+#: categories.php:142
+#: pages.php:125
+#: tags.php:135
+msgid "Order By:"
+msgstr ""
+
+#: categories.php:152
+#: pages.php:159
+#: tags.php:170
+msgid "Include:"
+msgstr ""
+
+#: categories.php:156
+#: pages.php:148
+#: tags.php:166
+msgid "Exclude:"
+msgstr ""
+
+#: categories.php:160
+#: pages.php:152
+msgid "Exclude Tree:"
+msgstr ""
+
+#: categories.php:164
+#: pages.php:144
+msgid "Depth:"
+msgstr ""
+
+#: categories.php:171
+#: tags.php:142
+msgid "Number:"
+msgstr ""
+
+#: categories.php:175
+#: pages.php:163
+msgid "Child Of:"
+msgstr ""
+
+#: categories.php:179
+msgid "Current Category:"
+msgstr ""
+
+#: categories.php:188
+#: pages.php:203
+msgid "Hierarchical?"
+msgstr ""
+
+#: categories.php:192
+msgid "Use description for title?"
+msgstr ""
+
+#: categories.php:196
+msgid "Show last update?"
+msgstr ""
+
+#: categories.php:200
+msgid "Show count?"
+msgstr ""
+
+#: categories.php:208
+msgid "Show RSS feed?"
+msgstr ""
+
+#: pages.php:22
+msgid "An advanced widget that gives you total control over the output of your page links."
+msgstr ""
+
+#: pages.php:24
+#: pages.php:116
+msgid "Pages"
+msgstr ""
+
+#: pages.php:82
+msgid "Home"
+msgstr ""
+
+#: pages.php:137
+msgid "Sort Order:"
+msgstr ""
+
+#: pages.php:167
+msgid "Authors:"
+msgstr ""
+
+#: pages.php:171
+msgid "Meta Key:"
+msgstr ""
+
+#: pages.php:175
+msgid "Meta Value:"
+msgstr ""
+
+#: pages.php:190
+msgid "Show date?:"
+msgstr ""
+
+#: pages.php:198
+msgid "Date Format:"
+msgstr ""
+
+#: pages.php:207
+msgid "Show home?"
+msgstr ""
+
+#: search.php:22
+msgid "An advanced widget that gives you total control over the output of your search form."
+msgstr ""
+
+#: search.php:24
+#: search.php:90
+msgid "Search"
+msgstr ""
+
+#: search.php:99
+msgid "Search Label:"
+msgstr ""
+
+#: search.php:103
+msgid "Search Text:"
+msgstr ""
+
+#: search.php:110
+msgid "Search Submit:"
+msgstr ""
+
+#: search.php:115
+msgid "Use theme's <code>searchform.php</code>?"
+msgstr ""
+
+#: tags.php:22
+msgid "An advanced widget that gives you total control over the output of your tags."
+msgstr ""
+
+#: tags.php:24
+#: tags.php:100
+msgid "Tags"
+msgstr ""
+
+#: tags.php:109
+msgid "Taxonomy:"
+msgstr ""
+
+#: tags.php:149
+msgid "Largest:"
+msgstr ""
+
+#: tags.php:153
+msgid "Smallest:"
+msgstr ""
+
+#: tags.php:157
+msgid "Unit:"
+msgstr ""
+
+#: tags.php:174
+msgid "Link:"
+msgstr ""
+
