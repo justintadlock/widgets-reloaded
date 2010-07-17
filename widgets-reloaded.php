@@ -25,9 +25,6 @@
  * @package WidgetsReloaded
  */
 
-/* Set constant path to the members plugin directory. */
-define( WIDGETS_RELOADED_DIR, plugin_dir_path( __FILE__ ) );
-
 /* Launch the plugin. */
 add_action( 'plugins_loaded', 'widgets_reloaded_plugin_init' );
 
@@ -38,6 +35,12 @@ add_action( 'plugins_loaded', 'widgets_reloaded_plugin_init' );
  */
 function widgets_reloaded_plugin_init() {
 
+	/* Set constant path to the members plugin directory. */
+	define( WIDGETS_RELOADED_DIR, plugin_dir_path( __FILE__ ) );
+
+	/* Set constant path to the members plugin directory. */
+	define( WIDGETS_RELOADED_URL, plugin_dir_url( __FILE__ ) );
+
 	/* Load the translation of the plugin. */
 	load_plugin_textdomain( 'widgets-reloaded', false, 'widgets-reloaded/languages' );
 
@@ -46,6 +49,18 @@ function widgets_reloaded_plugin_init() {
 
 	/* Loads and registers the new widgets. */
 	add_action( 'widgets_init', 'widgets_reloaded_load_widgets' );
+
+	/* Load the admin stylesheet for the widgets screen. */
+	add_action( 'load-widgets.php', 'widgets_reloaded_enqueue_style' );
+}
+
+/**
+ * Load the stylesheet needed for the widgets page.
+ *
+ * @since 0.4
+ */
+function widgets_reloaded_enqueue_style() {
+	wp_enqueue_style( hybrid_get_prefix() . '-admin', WIDGETS_RELOADED_URL . 'admin.css', false, 0.4, 'screen' );
 }
 
 /**
@@ -64,6 +79,15 @@ function hybrid_get_prefix() {
  */
 function hybrid_get_textdomain() {
 	return 'widgets-reloaded';
+}
+
+/**
+ * Compatibility function since the widgets are based off the Hybrid framework.
+ *
+ * @since 0.4
+ */
+function hybrid_get_transient_expiration() {
+	return apply_filters( hybrid_get_prefix() . '_transient_expiration', 43200 );
 }
 
 /**
