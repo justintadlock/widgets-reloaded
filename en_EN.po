@@ -1,0 +1,437 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Reloaded Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-01 00:23+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Justin Tadlock <justin@justintadlock.com>\n"
+"Language-Team:  <justin@justintadlock.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: widget-archives.php:30
+msgid "An advanced widget that gives you total control over the output of your archives."
+msgstr ""
+
+#: widget-archives.php:32
+#: widget-archives.php:122
+msgid "Archives"
+msgstr ""
+
+#: widget-archives.php:73
+msgid "Select Year"
+msgstr ""
+
+#: widget-archives.php:75
+msgid "Select Month"
+msgstr ""
+
+#: widget-archives.php:77
+msgid "Select Week"
+msgstr ""
+
+#: widget-archives.php:79
+msgid "Select Day"
+msgstr ""
+
+#: widget-archives.php:81
+msgid "Select Post"
+msgstr ""
+
+#: widget-archives.php:127
+#: widget-authors.php:112
+#: widget-bookmarks.php:163
+#: widget-calendar.php:80
+#: widget-categories.php:147
+#: widget-pages.php:133
+#: widget-search.php:112
+#: widget-tags.php:145
+msgid "Title:"
+msgstr ""
+
+#: widget-archives.php:131
+#: widget-bookmarks.php:208
+msgid "Limit:"
+msgstr ""
+
+#: widget-archives.php:135
+msgid "Type:"
+msgstr ""
+
+#: widget-archives.php:146
+#: widget-tags.php:167
+msgid "Format:"
+msgstr ""
+
+#: widget-archives.php:157
+msgid "Before:"
+msgstr ""
+
+#: widget-archives.php:161
+msgid "After:"
+msgstr ""
+
+#: widget-archives.php:166
+#: widget-authors.php:139
+msgid "Show post count?"
+msgstr ""
+
+#: widget-authors.php:30
+msgid "An advanced widget that gives you total control over the output of your author lists."
+msgstr ""
+
+#: widget-authors.php:32
+#: widget-authors.php:107
+msgid "Authors"
+msgstr ""
+
+#: widget-authors.php:116
+msgid "Feed:"
+msgstr ""
+
+#: widget-authors.php:120
+#: widget-categories.php:213
+msgid "Feed Image:"
+msgstr ""
+
+#: widget-authors.php:124
+#: widget-categories.php:151
+msgid "Style:"
+msgstr ""
+
+#: widget-authors.php:135
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr ""
+
+#: widget-authors.php:143
+msgid "Exclude admin?"
+msgstr ""
+
+#: widget-authors.php:147
+msgid "Show full name?"
+msgstr ""
+
+#: widget-authors.php:151
+#: widget-categories.php:234
+#: widget-tags.php:249
+msgid "Hide empty?"
+msgstr ""
+
+#: widget-bookmarks.php:30
+msgid "An advanced widget that gives you total control over the output of your bookmarks (links)."
+msgstr ""
+
+#: widget-bookmarks.php:32
+#: widget-bookmarks.php:156
+msgid "Bookmarks"
+msgstr ""
+
+#: widget-bookmarks.php:167
+msgid "Categories:"
+msgstr ""
+
+#: widget-bookmarks.php:171
+msgid "Exclude categories:"
+msgstr ""
+
+#: widget-bookmarks.php:175
+msgid "Category:"
+msgstr ""
+
+#: widget-bookmarks.php:183
+msgid "Category Order:"
+msgstr ""
+
+#: widget-bookmarks.php:190
+msgid "Category Orderby:"
+msgstr ""
+
+#: widget-bookmarks.php:199
+msgid "Class:"
+msgstr ""
+
+#: widget-bookmarks.php:212
+msgid "Include Bookmarks:"
+msgstr ""
+
+#: widget-bookmarks.php:216
+msgid "Exclude Bookmarks:"
+msgstr ""
+
+#: widget-bookmarks.php:220
+msgid "Bookmarks Order:"
+msgstr ""
+
+#: widget-bookmarks.php:227
+msgid "Bookmarks Orderby:"
+msgstr ""
+
+#: widget-bookmarks.php:245
+msgid "Between:"
+msgstr ""
+
+#: widget-bookmarks.php:249
+#: widget-categories.php:202
+#: widget-tags.php:228
+msgid "Search:"
+msgstr ""
+
+#: widget-bookmarks.php:257
+#: widget-pages.php:202
+msgid "Before Link:"
+msgstr ""
+
+#: widget-bookmarks.php:261
+#: widget-pages.php:206
+msgid "After Link:"
+msgstr ""
+
+#: widget-bookmarks.php:266
+msgid "Categorize?"
+msgstr ""
+
+#: widget-bookmarks.php:270
+msgid "Show description?"
+msgstr ""
+
+#: widget-bookmarks.php:274
+msgid "Hide invisible?"
+msgstr ""
+
+#: widget-bookmarks.php:278
+msgid "Show rating?"
+msgstr ""
+
+#: widget-bookmarks.php:282
+msgid "Show updated?"
+msgstr ""
+
+#: widget-bookmarks.php:286
+msgid "Show images?"
+msgstr ""
+
+#: widget-bookmarks.php:290
+msgid "Show name?"
+msgstr ""
+
+#: widget-bookmarks.php:294
+msgid "Show private?"
+msgstr ""
+
+#: widget-calendar.php:30
+msgid "An advanced widget that gives you total control over the output of your calendar."
+msgstr ""
+
+#: widget-calendar.php:32
+#: widget-calendar.php:76
+msgid "Calendar"
+msgstr ""
+
+#: widget-calendar.php:85
+msgid "One-letter abbreviation?"
+msgstr ""
+
+#: widget-categories.php:30
+msgid "An advanced widget that gives you total control over the output of your category links."
+msgstr ""
+
+#: widget-categories.php:32
+#: widget-categories.php:142
+msgid "Categories"
+msgstr ""
+
+#: widget-categories.php:64
+msgid "RSS"
+msgstr ""
+
+#: widget-categories.php:158
+#: widget-tags.php:174
+msgid "Order:"
+msgstr ""
+
+#: widget-categories.php:165
+#: widget-pages.php:137
+#: widget-tags.php:182
+msgid "Order By:"
+msgstr ""
+
+#: widget-categories.php:175
+#: widget-pages.php:156
+msgid "Depth:"
+msgstr ""
+
+#: widget-categories.php:179
+#: widget-pages.php:160
+#: widget-tags.php:192
+msgid "Number:"
+msgstr ""
+
+#: widget-categories.php:186
+#: widget-pages.php:171
+#: widget-tags.php:217
+msgid "Include:"
+msgstr ""
+
+#: widget-categories.php:190
+#: widget-pages.php:175
+#: widget-tags.php:213
+msgid "Exclude:"
+msgstr ""
+
+#: widget-categories.php:194
+#: widget-pages.php:179
+msgid "Exclude Tree:"
+msgstr ""
+
+#: widget-categories.php:198
+#: widget-pages.php:164
+#: widget-tags.php:236
+msgid "Child Of:"
+msgstr ""
+
+#: widget-categories.php:206
+msgid "Current Category:"
+msgstr ""
+
+#: widget-categories.php:218
+#: widget-pages.php:223
+msgid "Hierarchical?"
+msgstr ""
+
+#: widget-categories.php:222
+msgid "Use description?"
+msgstr ""
+
+#: widget-categories.php:226
+msgid "Show last update?"
+msgstr ""
+
+#: widget-categories.php:230
+msgid "Show count?"
+msgstr ""
+
+#: widget-categories.php:238
+msgid "Show RSS feed?"
+msgstr ""
+
+#: widget-pages.php:30
+msgid "An advanced widget that gives you total control over the output of your page links."
+msgstr ""
+
+#: widget-pages.php:32
+#: widget-pages.php:128
+msgid "Pages"
+msgstr ""
+
+#: widget-pages.php:92
+msgid "Home"
+msgstr ""
+
+#: widget-pages.php:149
+msgid "Sort Order:"
+msgstr ""
+
+#: widget-pages.php:183
+msgid "Offset:"
+msgstr ""
+
+#: widget-pages.php:187
+msgid "Meta Key:"
+msgstr ""
+
+#: widget-pages.php:191
+msgid "Meta Value:"
+msgstr ""
+
+#: widget-pages.php:198
+msgid "Authors:"
+msgstr ""
+
+#: widget-pages.php:210
+msgid "Show date?:"
+msgstr ""
+
+#: widget-pages.php:218
+msgid "Date Format:"
+msgstr ""
+
+#: widget-pages.php:227
+msgid "Show home?"
+msgstr ""
+
+#: widget-search.php:30
+msgid "An advanced widget that gives you total control over the output of your search form."
+msgstr ""
+
+#: widget-search.php:32
+#: widget-search.php:107
+msgid "Search"
+msgstr ""
+
+#: widget-search.php:116
+msgid "Search Label:"
+msgstr ""
+
+#: widget-search.php:120
+msgid "Search Text:"
+msgstr ""
+
+#: widget-search.php:127
+msgid "Search Submit:"
+msgstr ""
+
+#: widget-search.php:132
+msgid "Use theme's <code>searchform.php</code>?"
+msgstr ""
+
+#: widget-tags.php:30
+msgid "An advanced widget that gives you total control over the output of your tags."
+msgstr ""
+
+#: widget-tags.php:32
+#: widget-tags.php:140
+msgid "Tags"
+msgstr ""
+
+#: widget-tags.php:149
+msgid "Taxonomy:"
+msgstr ""
+
+#: widget-tags.php:160
+msgid "Link:"
+msgstr ""
+
+#: widget-tags.php:196
+msgid "Largest:"
+msgstr ""
+
+#: widget-tags.php:200
+msgid "Smallest:"
+msgstr ""
+
+#: widget-tags.php:204
+msgid "Unit:"
+msgstr ""
+
+#: widget-tags.php:224
+msgid "Separator:"
+msgstr ""
+
+#: widget-tags.php:232
+msgid "Name Like:"
+msgstr ""
+
+#: widget-tags.php:240
+msgid "Parent:"
+msgstr ""
+
+#: widget-tags.php:245
+msgid "Pad counts?"
+msgstr ""
+
