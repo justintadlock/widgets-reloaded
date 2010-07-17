@@ -28,8 +28,14 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		$this->textdomain = hybrid_get_textdomain();
 
 		$widget_ops = array( 'classname' => 'authors', 'description' => __( 'An advanced widget that gives you total control over the output of your author lists.',$this->textdomain ) );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => "{$this->prefix}-authors" );
+		$control_ops = array( 'width' => 525, 'height' => 350, 'id_base' => "{$this->prefix}-authors" );
 		$this->WP_Widget( "{$this->prefix}-authors", __( 'Authors', $this->textdomain ), $widget_ops, $control_ops );
+
+		add_action( 'delete_user', array( &$this, 'delete_transient' ) );
+		add_action( 'user_register', array( &$this, 'delete_transient' ) );
+		add_action( 'profile_update', array( &$this, 'delete_transient' ) );
+		add_action( 'save_post', array( &$this, 'delete_transient' ) );
+		add_action( 'deleted_post', array( &$this, 'delete_transient' ) );
 	}
 
 	/**
@@ -38,43 +44,43 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	 */
 	function widget( $args, $instance ) {
 
+		/* If a transient has been saved with the widget information, use it. */
+		$transient = get_transient( "{$this->prefix}_widget_{$args['widget_id']}" );
+		if ( $transient ) {
+			echo $transient;
+			return;
+		}
+
 		extract( $args, EXTR_SKIP );
 
-		$title = apply_filters('widget_title', $instance['title'] );
-		$style = $instance['style'];
-		$feed = $instance['feed']; 
-		$feed_image = $instance['feed_image'];
+		$args = array();
 
-		$optioncount = isset( $instance['optioncount'] ) ? $instance['optioncount'] : false;
-		$exclude_admin = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : false;
-		$show_fullname = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : false;
-		$hide_empty = isset( $instance['hide_empty'] ) ? $instance['hide_empty'] : false;
-		$html = isset( $instance['html'] ) ? $instance['html'] : false;
+		$args['style'] = $instance['style'];
+		$args['feed'] = $instance['feed']; 
+		$args['feed_image'] = $instance['feed_image'];
+		$args['optioncount'] = isset( $instance['optioncount'] ) ? $instance['optioncount'] : false;
+		$args['exclude_admin'] = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : false;
+		$args['show_fullname'] = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : false;
+		$args['hide_empty'] = isset( $instance['hide_empty'] ) ? $instance['hide_empty'] : false;
+		$args['html'] = isset( $instance['html'] ) ? $instance['html'] : false;
+		$args['echo'] = false;
 
-		$args = array(
-			'optioncount' => $optioncount,
-			'exclude_admin' => $exclude_admin,
-			'show_fullname' => $show_fullname,
-			'hide_empty' => $hide_empty,
-			'feed' => $feed,
-			'feed_image' => $feed_image,
-			'style' => $style,
-			'html' => $html,
-			'echo' => 0,
-		);
+		$authors_widget = $before_widget;
+
+		if ( $instance['title'] )
+			$authors_widget .= $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
 
 		$authors = str_replace( array( "\r", "\n", "\t" ), '', wp_list_authors( $args ) );
 
-		if ( 'list' == $style && $html )
+		if ( 'list' == $args['style'] && $args['html'] )
 			$authors = '<ul class="xoxo authors">' . $authors . '</ul><!-- .xoxo .authors -->';
 
-		echo $before_widget;
+		$authors_widget .= $authors;
 
-		if ( $title )
-			echo $before_title . $title . $after_title;
+		$authors_widget .= $after_widget;
 
-		echo $authors;
-		echo $after_widget;
+		set_transient( "{$this->prefix}_widget_{$widget_id}", $authors_widget, hybrid_get_transient_expiration() ); 
+		echo $authors_widget;
 	}
 
 	/**
@@ -83,10 +89,12 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
+
+		$instance = $new_instance;
+
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['feed'] = strip_tags( $new_instance['feed'] );
 		$instance['feed_image'] = strip_tags( $new_instance['feed_image'] );
-		$instance['style'] = $new_instance['style'];
 
 		$instance['html'] = ( isset( $new_instance['html'] ) ? 1 : 0 );
 		$instance['optioncount'] = ( isset( $new_instance['optioncount'] ) ? 1 : 0 );
@@ -94,7 +102,13 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		$instance['show_fullname'] = ( isset( $new_instance['show_fullname'] ) ? 1 : 0 );
 		$instance['hide_empty'] = ( isset( $new_instance['hide_empty'] ) ? 1 : 0 );
 
+		$this->delete_transient();
+
 		return $instance;
+	}
+
+	function delete_transient() {
+		delete_transient( "{$this->prefix}_widget_{$this->id}" );
 	}
 
 	/**
@@ -104,32 +118,41 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	function form( $instance ) {
 
 		//Defaults
-		$defaults = array( 'title' => __( 'Authors', $this->textdomain ), 'optioncount' => false, 'exclude_admin' => false, 'show_fullname' => true, 'hide_empty' => true, 'style' => 'list', 'html' => true );
+		$defaults = array(
+			'title' => __( 'Authors', $this->textdomain ),
+			'optioncount' => false,
+			'exclude_admin' => false,
+			'show_fullname' => true,
+			'hide_empty' => true,
+			'style' => 'list',
+			'html' => true
+		);
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-		<div style="float:left;width:48%;">
+		<div class="hybrid-widget-controls columns-2">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', $this->textdomain ); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'feed' ); ?>"><?php _e( 'Feed:', $this->textdomain ); ?> <code>feed</code></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'feed' ); ?>" name="<?php echo $this->get_field_name( 'feed' ); ?>" value="<?php echo $instance['feed']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'feed' ); ?>"><code>feed</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'feed' ); ?>" name="<?php echo $this->get_field_name( 'feed' ); ?>" value="<?php echo $instance['feed']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'feed_image' ); ?>"><?php _e( 'Feed Image:', $this->textdomain ); ?> <code>feed_image</code></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'feed_image' ); ?>" name="<?php echo $this->get_field_name( 'feed_image' ); ?>" value="<?php echo $instance['feed_image']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'feed_image' ); ?>"><code>feed_image</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'feed_image' ); ?>" name="<?php echo $this->get_field_name( 'feed_image' ); ?>" value="<?php echo $instance['feed_image']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'Style:', $this->textdomain ); ?> <code>style</code></label> 
-			<select id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( 'list' == $instance['style'] ) echo 'selected="selected"'; ?>>list</option>
-				<option <?php if ( 'none' == $instance['style'] ) echo 'selected="selected"'; ?>>none</option>
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label> 
+			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
+				<?php foreach ( array( 'list' => __( 'List', $this->textdomain), 'none' => __( 'None', $this->textdomain ) ) as $option_value => $option_label ) { ?>
+					<option value="<?php echo $option_value; ?>" <?php selected( $instance['style'], $option_value ); ?>><?php echo $option_label; ?></option>
+				<?php } ?>
 			</select>
 		</p>
 		</div>
 
-		<div style="float:right;width:48%;">
+		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'html' ); ?>">
 			<input class="checkbox" type="checkbox" <?php checked( $instance['html'], true ); ?> id="<?php echo $this->get_field_id( 'html' ); ?>" name="<?php echo $this->get_field_name( 'html' ); ?>" /> <?php _e( '<acronym title="Hypertext Markup Language">HTML</acronym>?', $this->textdomain ); ?> <code>html</code></label>

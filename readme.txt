@@ -2,9 +2,9 @@
 Contributors: greenshady
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3687060
 Tags: Widgets
-Requires at least: 2.9
-Tested up to: 2.9.1
-Stable tag: 0.3
+Requires at least: 3.0
+Tested up to: 3.0
+Stable tag: 0.4
 
 Replaces many of the default widgets with versions that allow much more control.  Widgets come with highly customizable control panels. 
 
@@ -21,6 +21,7 @@ Eight widgets are packaged for your convenience:
 * Bookmarks (Links)
 * Calendar
 * Categories
+* Navigation Menu
 * Pages
 * Search
 * Tags
@@ -50,6 +51,7 @@ It removes most of the default WordPress widgets and replaces them with upgraded
 * Bookmarks (Links)
 * Calendar
 * Categories
+* Navigation Menu
 * Pages
 * Search
 * Tags
@@ -67,6 +69,14 @@ You should do a little reading.  The `readme.html` file included with the plugin
 You can view screenshots of the plugin on the <a href="http://justintadlock.com/archives/2008/12/09/widgets-reloaded-wordpress-plugin" title="Widgets Reloaded">Widgets Reloaded plugin page</a>.
 
 == Changelog ==
+
+**Version 0.4**
+
+* Revamped each of the widgets individually to be much easier to use (lots of pointing and clicking instead of typing in IDs).
+* Loads of new options and things to play around with.
+* Added the Navigation Menu widget to use the WordPress 3.0 nav menus.
+* Moved the language files into the `languages` folder.
+* Note that you may need to re-save your widget settings upon upgrade.
 
 **Version 0.3**
 

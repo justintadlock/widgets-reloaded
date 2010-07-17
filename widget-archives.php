@@ -28,7 +28,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		$this->textdomain = hybrid_get_textdomain();
 
 		$widget_ops = array( 'classname' => 'archives', 'description' => __( 'An advanced widget that gives you total control over the output of your archives.', $this->textdomain ) );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => "{$this->prefix}-archives" );
+		$control_ops = array( 'width' => 525, 'height' => 350, 'id_base' => "{$this->prefix}-archives" );
 		$this->WP_Widget( "{$this->prefix}-archives", __( 'Archives', $this->textdomain ), $widget_ops, $control_ops );
 	}
 
@@ -39,26 +39,15 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$type = $instance['type']; 
-		$format = $instance['format'];
-		$before = $instance['before'];
-		$after = $instance['after'];
-		$limit = (int)$instance['limit'];
+		$args = array();
 
-		$show_post_count = isset( $instance['show_post_count'] ) ? $instance['show_post_count'] : false;
-
-		if ( !$limit )
-			$limit = '';
-
-		$args = array(
-			'type' => $type,
-			'limit' => $limit,
-			'format' => $format,
-			'before' => $before,
-			'after' => $after,
-			'show_post_count' => $show_post_count,
-			'echo' => 0,
-		);
+		$args['type'] = $instance['type']; 
+		$args['format'] = $instance['format'];
+		$args['before'] = $instance['before'];
+		$args['after'] = $instance['after'];
+		$args['show_post_count'] = isset( $instance['show_post_count'] ) ? $instance['show_post_count'] : false;
+		$args['limit'] = !empty( $instance['limit'] ) ? intval( $instance['limit'] ) : '';
+		$args['echo'] = false;
 
 		echo $before_widget;
 
@@ -67,25 +56,25 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		$archives = str_replace( array( "\r", "\n", "\t" ), '', wp_get_archives( $args ) );
 
-		if ( 'option' == $format ) {
+		if ( 'option' == $args['format'] ) {
 
-			if ( 'yearly' == $type )
-				$option_title = __( 'Select Year',$this->textdomain );
-			elseif ( 'monthly' == $type )
-				$option_title = __( 'Select Month',$this->textdomain );
-			elseif ( 'weekly' == $type )
-				$option_title = __( 'Select Week',$this->textdomain );
-			elseif ( 'daily' == $type )
-				$option_title = __( 'Select Day',$this->textdomain );
-			elseif ( 'postbypost' == $type || 'alpha' == $type )
-				$option_title = __( 'Select Post',$this->textdomain );
+			if ( 'yearly' == $args['type'] )
+				$option_title = __( 'Select Year', $this->textdomain );
+			elseif ( 'monthly' == $args['type'] )
+				$option_title = __( 'Select Month', $this->textdomain );
+			elseif ( 'weekly' == $args['type'] )
+				$option_title = __( 'Select Week', $this->textdomain );
+			elseif ( 'daily' == $args['type'] )
+				$option_title = __( 'Select Day', $this->textdomain );
+			elseif ( 'postbypost' == $args['type'] || 'alpha' == $args['type'] )
+				$option_title = __( 'Select Post', $this->textdomain );
 
 			echo '<select name="archive-dropdown" onchange=\'document.location.href=this.options[this.selectedIndex].value;\'>';
 			echo '<option value="">' . esc_attr( $option_title ) . '</option>';
 			echo $archives;
 			echo '</select>';
 		}
-		elseif ( 'html' == $format ) {
+		elseif ( 'html' == $args['format'] ) {
 			echo '<ul class="xoxo archives">' . $archives . '</ul><!-- .xoxo .archives -->';
 		}
 		else {
@@ -101,12 +90,13 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
+
+		$instance = $new_instance;
+
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['before'] = strip_tags( $new_instance['before'] );
 		$instance['after'] = strip_tags( $new_instance['after'] );
 		$instance['limit'] = strip_tags( $new_instance['limit'] );
-		$instance['type'] = $new_instance['type'];
-		$instance['format'] = $new_instance['format'];
 		$instance['show_post_count'] = ( isset( $new_instance['show_post_count'] ) ? 1 : 0 );
 
 		return $instance;
@@ -119,47 +109,56 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	function form( $instance ) {
 
 		//Defaults
-		$defaults = array( 'title' => __( 'Archives', $this->textdomain ), 'limit' => '', 'type' => 'monthly', 'format' => 'html', 'before' => '', 'after' => '' );
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+		$defaults = array(
+			'title' => __( 'Archives', $this->textdomain ),
+			'limit' => '',
+			'type' => 'monthly',
+			'format' => 'html',
+			'before' => '',
+			'after' => ''
+		);
+		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		<div style="float:left;width:48%;">
+		$type = array( 'alpha' => __( 'Alphabetical', $this->textdomain ), 'daily' => __( 'Daily', $this->textdomain ), 'monthly' => __( 'Monthly', $this->textdomain ),'postbypost' => __( 'Post By Post', $this->textdomain ), 'weekly' => __( 'Weekly', $this->textdomain ), 'yearly' => __( 'Yearly', $this->textdomain ) );
+		$format = array( 'custom' => __( 'Custom', $this->textdomain ), 'html' => __( 'HTML', $this->textdomain ), 'option' => __( 'Option', $this->textdomain ) );
+
+		?>
+
+		<div class="hybrid-widget-controls columns-2">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', $this->textdomain ); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', $this->textdomain ); ?> <code>limit</code></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $instance['limit']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><code>limit</code></label>
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $instance['limit']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><?php _e( 'Type:',$this->textdomain ); ?> <code>type</code></label> 
-			<select id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( 'yearly' == $instance['type'] ) echo 'selected="selected"'; ?>>yearly</option>
-				<option <?php if ( 'monthly' == $instance['type'] ) echo 'selected="selected"'; ?>>monthly</option>
-				<option <?php if ( 'weekly' == $instance['type'] ) echo 'selected="selected"'; ?>>weekly</option>
-				<option <?php if ( 'daily' == $instance['type'] ) echo 'selected="selected"'; ?>>daily</option>
-				<option <?php if ( 'postbypost' == $instance['type'] ) echo 'selected="selected"'; ?>>postbypost</option>
-				<option <?php if ( 'alpha' == $instance['type'] ) echo 'selected="selected"'; ?>>alpha</option>
+			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><code>type</code></label> 
+			<select class="widefat" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>">
+				<?php foreach ( $type as $option_value => $option_label ) { ?>
+					<option value="<?php echo $option_value; ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo $option_label; ?></option>
+				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><?php _e( 'Format:',$this->textdomain ); ?> <code>format</code></label> 
-			<select id="<?php echo $this->get_field_id( 'format' ); ?>" name="<?php echo $this->get_field_name( 'format' ); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( 'html' == $instance['format'] ) echo 'selected="selected"'; ?>>html</option>
-				<option <?php if ( 'option' == $instance['format'] ) echo 'selected="selected"'; ?>>option</option>
-				<option <?php if ( 'custom' == $instance['format'] ) echo 'selected="selected"'; ?>>custom</option>
+			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><code>format</code></label> 
+			<select class="widefat" id="<?php echo $this->get_field_id( 'format' ); ?>" name="<?php echo $this->get_field_name( 'format' ); ?>">
+				<?php foreach ( $format as $option_value => $option_label ) { ?>
+					<option value="<?php echo $option_value; ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo $option_label; ?></option>
+				<?php } ?>
 			</select>
 		</p>
 		</div>
 
-		<div style="float:right;width:48%;">
+		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'before' ); ?>"><?php _e( 'Before:', $this->textdomain ); ?> <code>before</code></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'before' ); ?>" name="<?php echo $this->get_field_name( 'before' ); ?>" value="<?php echo $instance['before']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'before' ); ?>"><code>before</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'before' ); ?>" name="<?php echo $this->get_field_name( 'before' ); ?>" value="<?php echo $instance['before']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'after' ); ?>"><?php _e( 'After:', $this->textdomain ); ?> <code>after</code></label>
-			<input type="text" id="<?php echo $this->get_field_id( 'after' ); ?>" name="<?php echo $this->get_field_name( 'after' ); ?>" value="<?php echo $instance['after']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'after' ); ?>"><code>after</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'after' ); ?>" name="<?php echo $this->get_field_name( 'after' ); ?>" value="<?php echo $instance['after']; ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>">

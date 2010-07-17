@@ -39,13 +39,12 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$title = apply_filters('widget_title', $instance['title'] );
 		$initial = isset( $instance['initial'] ) ? $instance['initial'] : false;
 
 		echo $before_widget;
 
-		if ( $title )
-			echo $before_title . $title . $after_title;
+		if ( $instance['title'] )
+			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
 
 		echo '<div class="calendar-wrap">';
 			get_calendar( $initial );
@@ -60,6 +59,9 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
+
+		$instance = $new_instance;
+
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['initial'] = ( isset( $new_instance['initial'] ) ? 1 : 0 );
 
@@ -73,17 +75,22 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	function form( $instance ) {
 
 		//Defaults
-		$defaults = array( 'title' => __( 'Calendar', $this->textdomain ), 'initial' => false );
+		$defaults = array(
+			'title' => __( 'Calendar', $this->textdomain ),
+			'initial' => false
+		);
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		<div class="hybrid-widget-controls columns-1">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', $this->textdomain ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'initial' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" /> <?php _e( 'One-letter abbreviation?', $this->textdomain ); ?> <code>initial</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" /> 
+			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', $this->textdomain ); ?> <code>initial</code></label>
 		</p>
+		</div>
 	<?php
 	}
 }
