@@ -3,7 +3,7 @@
  * Plugin Name: Widgets Reloaded
  * Plugin URI: http://justintadlock.com/archives/2008/12/08/widgets-reloaded-wordpress-plugin
  * Description: Replaces many of the default widgets with versions that allow much more control.  Widgets come with highly-customizable control panels.  Each widget can also be used any number of times.
- * Version: 0.4
+ * Version: 0.4.1
  * Author: Justin Tadlock
  * Author URI: http://justintadlock.com
  *
@@ -13,7 +13,7 @@
  * Rather than recoding each widget, the widgets are ported over from the Hybrid theme framework.
  *
  * @copyright 2008 - 2010
- * @version 0.4
+ * @version 0.4.1
  * @author Justin Tadlock
  * @link http://justintadlock.com/archives/2008/12/08/widgets-reloaded-wordpress-plugin
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html

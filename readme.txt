@@ -3,8 +3,8 @@ Contributors: greenshady
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3687060
 Tags: Widgets
 Requires at least: 3.0
-Tested up to: 3.0
-Stable tag: 0.4
+Tested up to: 3.0.1
+Stable tag: 0.4.1
 
 Replaces many of the default widgets with versions that allow much more control.  Widgets come with highly customizable control panels. 
 
@@ -70,6 +70,10 @@ You can view screenshots of the plugin on the <a href="http://justintadlock.com/
 
 == Changelog ==
 
+**Version 0.4.1**
+
+* `WP_DEBUG` notices fixes so that the plugin is a bit cleaner and uses best practices.
+
 **Version 0.4**
 
 * Revamped each of the widgets individually to be much easier to use (lots of pointing and clicking instead of typing in IDs).
@@ -81,7 +85,7 @@ You can view screenshots of the plugin on the <a href="http://justintadlock.com/
 **Version 0.3**
 
 * The widgets are now completely ported over from the Hybrid theme framework. This just makes more sense than dealing with two separate codebases.
-* Indinvidual widget files now begin with `widget-`.
+* Individual widget files now begin with `widget-`.
 * The Categories widget now has a `search` option and the `orderby` option has two new parameters: `slug` and `term_group`.
 * Added a `search` and `title_li` option for the Bookmarks widget.
 * Added `separator`, `search`, `name__like`, `pad_counts`, `parent`, `child_of`, and `hide_empty` options for the Tags widget.
