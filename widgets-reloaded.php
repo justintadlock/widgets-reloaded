@@ -1,29 +1,30 @@
 <?php
 /**
  * Plugin Name: Widgets Reloaded
- * Plugin URI: http://justintadlock.com/archives/2008/12/08/widgets-reloaded-wordpress-plugin
- * Description: Replaces many of the default widgets with versions that allow much more control.  Widgets come with highly-customizable control panels.  Each widget can also be used any number of times.
+ * Plugin URI: http://themehybrid.com/plugins/widgets-reloaded
+ * Description: Replaces many of the default WordPress widgets with versions that allow much more control.  Widgets come with highly-customizable control panels that provide a ton of flexibility.
  * Version: 0.5.0-alpha
  * Author: Justin Tadlock
  * Author URI: http://justintadlock.com
  * Text Domain: widgets-reloaded
  *
- * Widgets Reloaded was designed to give users complete control over the output of the default 
- * WordPress widgets.  Each widget comes with a highly-customizable settings panel that takes out 
- * all of the work that usually comes with coding.  Each widget can also be used any number of times.
- * Rather than recoding each widget, the widgets are ported over from the Hybrid theme framework.
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
+ * General Public License as published by the Free Software Foundation; either version 2 of the License, 
+ * or (at your option) any later version.
  *
- * @copyright 2008 - 2010
- * @version 0.4.1
- * @author Justin Tadlock
- * @link http://justintadlock.com/archives/2008/12/08/widgets-reloaded-wordpress-plugin
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * You should have received a copy of the GNU General Public License along with this program; if not, write 
+ * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @package WidgetsReloaded
+ * @package   WidgetsReloaded
+ * @version   0.5.0
+ * @since     0.1.0
+ * @author    Justin Tadlock <justin@justintadlock.com>
+ * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
+ * @link      http://themehybrid.com/plugins/widgets-reloaded
+ * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 /**
