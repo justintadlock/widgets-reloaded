@@ -29,7 +29,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname'   => 'calendar',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your calendar.', 'hybrid-core' )
+			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your calendar.', 'widgets-reloaded' )
 		);
 
 		/* Set up the widget control options. */
@@ -41,7 +41,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'hybrid-calendar',               // $this->id_base
-			__( 'Calendar', 'hybrid-core' ), // $this->name
+			__( 'Calendar', 'widgets-reloaded' ), // $this->name
 			$widget_options,                 // $this->widget_options
 			$control_options                 // $this->control_options
 		);
@@ -96,7 +96,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title'   => esc_attr__( 'Calendar', 'hybrid-core' ),
+			'title'   => esc_attr__( 'Calendar', 'widgets-reloaded' ),
 			'initial' => false
 		);
 
@@ -105,12 +105,12 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 
 		<div class="hybrid-widget-controls columns-1">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'hybrid-core' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" /> 
-			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'hybrid-core' ); ?> <code>initial</code></label>
+			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?> <code>initial</code></label>
 		</p>
 		</div>
 	<?php

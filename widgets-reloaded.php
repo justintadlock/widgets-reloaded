@@ -6,6 +6,7 @@
  * Version: 0.5.0-alpha
  * Author: Justin Tadlock
  * Author URI: http://justintadlock.com
+ * Text Domain: widgets-reloaded
  *
  * Widgets Reloaded was designed to give users complete control over the output of the default 
  * WordPress widgets.  Each widget comes with a highly-customizable settings panel that takes out 
@@ -74,7 +75,6 @@ final class Widgets_Reloaded_Plugin {
 		/* Set the properties needed by the plugin. */
 		add_action( 'plugins_loaded', array( $this, 'setup' ), 1 );
 
-		/* Internationalize the text strings used. */
 		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 
 		/* Load the functions files. */
@@ -121,7 +121,7 @@ final class Widgets_Reloaded_Plugin {
 	}
 
 	/**
-	 * Note that we're using the 'hybrid-core' textdomain here.  This is because the widgets 
+	 * Note that we're using the 'widgets-reloaded' textdomain here.  This is because the widgets 
 	 * are ported from the Hybrid Core framework.
 	 *
 	 * @since  0.5.0
@@ -129,7 +129,7 @@ final class Widgets_Reloaded_Plugin {
 	 * @return void
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'hybrid-core', false, 'widgets-reloaded/languages' );
+		load_plugin_textdomain( 'widgets-reloaded', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**

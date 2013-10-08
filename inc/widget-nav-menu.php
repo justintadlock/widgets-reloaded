@@ -29,7 +29,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname'   => 'nav-menu',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your menus.', 'hybrid-core' )
+			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your menus.', 'widgets-reloaded' )
 		);
 
 		/* Set up the widget control options. */
@@ -41,7 +41,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'hybrid-nav-menu',                      // $this->id_base
-			__( 'Navigation Menu', 'hybrid-core' ), // $this->name
+			__( 'Navigation Menu', 'widgets-reloaded' ), // $this->name
 			$widget_options,                        // $this->widget_options
 			$control_options                        // $this->control_options
 		);
@@ -105,7 +105,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title'           => esc_attr__( 'Navigation', 'hybrid-core' ),
+			'title'           => esc_attr__( 'Navigation', 'widgets-reloaded' ),
 			'menu'            => '',
 			'container'       => 'div',
 			'container_id'    => '',
@@ -128,7 +128,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
 		<div class="hybrid-widget-controls columns-2">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'hybrid-core' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>

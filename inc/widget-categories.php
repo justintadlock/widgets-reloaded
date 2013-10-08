@@ -29,7 +29,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname'   => 'categories',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your category links.', 'hybrid-core' )
+			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your category links.', 'widgets-reloaded' )
 		);
 
 		/* Set up the widget control options. */
@@ -41,7 +41,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'hybrid-categories',               // $this->id_base
-			__( 'Categories', 'hybrid-core' ), // $this->name
+			__( 'Categories', 'widgets-reloaded' ), // $this->name
 			$widget_options,                   // $this->widget_options
 			$control_options                   // $this->control_options
 		);
@@ -133,7 +133,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title'              => esc_attr__( 'Categories', 'hybrid-core' ),
+			'title'              => esc_attr__( 'Categories', 'widgets-reloaded' ),
 			'taxonomy'           => 'category',
 			'style'              => 'list',
 			'include'            => '',
@@ -163,36 +163,36 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		$terms = get_terms( $instance['taxonomy'] );
 
 		$style = array( 
-			'list' => esc_attr__( 'List', 'hybrid-core' ), 
-			'none' => esc_attr__( 'None', 'hybrid-core' ) 
+			'list' => esc_attr__( 'List', 'widgets-reloaded' ), 
+			'none' => esc_attr__( 'None', 'widgets-reloaded' ) 
 		);
 
 		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'hybrid-core' ), 
-			'DESC' => esc_attr__( 'Descending', 'hybrid-core' ) 
+			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 
-			'count'      => esc_attr__( 'Count', 'hybrid-core' ), 
-			'ID'         => esc_attr__( 'ID', 'hybrid-core' ), 
-			'name'       => esc_attr__( 'Name', 'hybrid-core' ), 
-			'slug'       => esc_attr__( 'Slug', 'hybrid-core' ), 
-			'term_group' => esc_attr__( 'Term Group', 'hybrid-core' ) 
+			'count'      => esc_attr__( 'Count', 'widgets-reloaded' ), 
+			'ID'         => esc_attr__( 'ID', 'widgets-reloaded' ), 
+			'name'       => esc_attr__( 'Name', 'widgets-reloaded' ), 
+			'slug'       => esc_attr__( 'Slug', 'widgets-reloaded' ), 
+			'term_group' => esc_attr__( 'Term Group', 'widgets-reloaded' ) 
 		);
 
 		$feed_type = array( 
 			''     => '', 
-			'atom' => esc_attr__( 'Atom', 'hybrid-core' ), 
-			'rdf'  => esc_attr__( 'RDF', 'hybrid-core' ), 
-			'rss'  => esc_attr__( 'RSS', 'hybrid-core' ), 
-			'rss2' => esc_attr__( 'RSS 2.0', 'hybrid-core' ) 
+			'atom' => esc_attr__( 'Atom', 'widgets-reloaded' ), 
+			'rdf'  => esc_attr__( 'RDF', 'widgets-reloaded' ), 
+			'rss'  => esc_attr__( 'RSS', 'widgets-reloaded' ), 
+			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' ) 
 		);
 
 		?>
 
 		<div class="hybrid-widget-controls columns-3">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'hybrid-core' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
@@ -283,19 +283,19 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'hierarchical' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>" /> <?php _e( 'Hierarchical?', 'hybrid-core' ); ?> <code>hierarchical</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>" /> <?php _e( 'Hierarchical?', 'widgets-reloaded' ); ?> <code>hierarchical</code></label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'use_desc_for_title' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['use_desc_for_title'], true ); ?> id="<?php echo $this->get_field_id( 'use_desc_for_title' ); ?>" name="<?php echo $this->get_field_name( 'use_desc_for_title' ); ?>" /> <?php _e( 'Use description?', 'hybrid-core' ); ?> <code>use_desc_for_title</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['use_desc_for_title'], true ); ?> id="<?php echo $this->get_field_id( 'use_desc_for_title' ); ?>" name="<?php echo $this->get_field_name( 'use_desc_for_title' ); ?>" /> <?php _e( 'Use description?', 'widgets-reloaded' ); ?> <code>use_desc_for_title</code></label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'show_count' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_count'], true ); ?> id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" /> <?php _e( 'Show count?', 'hybrid-core' ); ?> <code>show_count</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['show_count'], true ); ?> id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" /> <?php _e( 'Show count?', 'widgets-reloaded' ); ?> <code>show_count</code></label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>" /> <?php _e( 'Hide empty?', 'hybrid-core' ); ?> <code>hide_empty</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>" /> <?php _e( 'Hide empty?', 'widgets-reloaded' ); ?> <code>hide_empty</code></label>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>

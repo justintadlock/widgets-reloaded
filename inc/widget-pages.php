@@ -29,7 +29,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname'   => 'pages',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your page links.', 'hybrid-core' )
+			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your page links.', 'widgets-reloaded' )
 		);
 
 		/* Set up the widget control options. */
@@ -41,7 +41,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'hybrid-pages',              // $this->id_base
-			__( 'Pages', 'hybrid-core'), // $this->name
+			__( 'Pages', 'widgets-reloaded'), // $this->name
 			$widget_options,             // $this->widget_options
 			$control_options             // $this->control_options
 		);
@@ -122,7 +122,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title'        => esc_attr__( 'Pages', 'hybrid-core'),
+			'title'        => esc_attr__( 'Pages', 'widgets-reloaded'),
 			'post_type'    => 'page',
 			'depth'        => 0,
 			'number'       => '',
@@ -149,24 +149,24 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		$post_types = get_post_types( array( 'public' => true, 'hierarchical' => true ), 'objects' );
 
 		$sort_order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'hybrid-core' ), 
-			'DESC' => esc_attr__( 'Descending', 'hybrid-core' ) 
+			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$sort_column = array( 
-			'post_author'   => esc_attr__( 'Author', 'hybrid-core' ), 
-			'post_date'     => esc_attr__( 'Date', 'hybrid-core' ), 
-			'ID'            => esc_attr__( 'ID', 'hybrid-core' ), 
-			'menu_order'    => esc_attr__( 'Menu Order', 'hybrid-core' ), 
-			'post_modified' => esc_attr__( 'Modified', 'hybrid-core' ), 
-			'post_name'     => esc_attr__( 'Slug', 'hybrid-core' ), 
-			'post_title'    => esc_attr__( 'Title', 'hybrid-core' ) 
+			'post_author'   => esc_attr__( 'Author', 'widgets-reloaded' ), 
+			'post_date'     => esc_attr__( 'Date', 'widgets-reloaded' ), 
+			'ID'            => esc_attr__( 'ID', 'widgets-reloaded' ), 
+			'menu_order'    => esc_attr__( 'Menu Order', 'widgets-reloaded' ), 
+			'post_modified' => esc_attr__( 'Modified', 'widgets-reloaded' ), 
+			'post_name'     => esc_attr__( 'Slug', 'widgets-reloaded' ), 
+			'post_title'    => esc_attr__( 'Title', 'widgets-reloaded' ) 
 		);
 
 		$show_date = array( 
 			''         => '', 
-			'created'  => esc_attr__( 'Created', 'hybrid-core' ), 
-			'modified' => esc_attr__( 'Modified', 'hybrid-core' ) 
+			'created'  => esc_attr__( 'Created', 'widgets-reloaded' ), 
+			'modified' => esc_attr__( 'Modified', 'widgets-reloaded' ) 
 		);
 
 		$meta_key = array_merge( array( '' ), (array) get_meta_keys() );
@@ -175,7 +175,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 
 		<div class="hybrid-widget-controls columns-3">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'hybrid-core' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
@@ -274,7 +274,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'hierarchical' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>" /> <?php _e( 'Hierarchical?', 'hybrid-core'); ?> <code>hierarchical</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>" /> <?php _e( 'Hierarchical?', 'widgets-reloaded'); ?> <code>hierarchical</code></label>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>

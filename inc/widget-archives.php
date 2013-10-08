@@ -29,7 +29,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		/* Set up the widget options. */
 		$widget_options = array(
 			'classname'   => 'archives',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your archives.', 'hybrid-core' )
+			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your archives.', 'widgets-reloaded' )
 		);
 
 		/* Set up the widget control options. */
@@ -41,7 +41,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'hybrid-archives',               // $this->id_base
-			__( 'Archives', 'hybrid-core' ), // $this->name
+			__( 'Archives', 'widgets-reloaded' ), // $this->name
 			$widget_options,                 // $this->widget_options
 			$control_options                 // $this->control_options
 		);
@@ -76,19 +76,19 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 			/* Create a title for the drop-down based on the archive type. */
 			if ( 'yearly' == $args['type'] )
-				$option_title = esc_html__( 'Select Year', 'hybrid-core' );
+				$option_title = esc_html__( 'Select Year', 'widgets-reloaded' );
 
 			elseif ( 'monthly' == $args['type'] )
-				$option_title = esc_html__( 'Select Month', 'hybrid-core' );
+				$option_title = esc_html__( 'Select Month', 'widgets-reloaded' );
 
 			elseif ( 'weekly' == $args['type'] )
-				$option_title = esc_html__( 'Select Week', 'hybrid-core' );
+				$option_title = esc_html__( 'Select Week', 'widgets-reloaded' );
 
 			elseif ( 'daily' == $args['type'] )
-				$option_title = esc_html__( 'Select Day', 'hybrid-core' );
+				$option_title = esc_html__( 'Select Day', 'widgets-reloaded' );
 
 			elseif ( 'postbypost' == $args['type'] || 'alpha' == $args['type'] )
-				$option_title = esc_html__( 'Select Post', 'hybrid-core' );
+				$option_title = esc_html__( 'Select Post', 'widgets-reloaded' );
 
 			/* Output the <select> element and each <option>. */
 			echo '<p><select name="archive-dropdown" onchange=\'document.location.href=this.options[this.selectedIndex].value;\'>';
@@ -139,7 +139,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title'           => esc_attr__( 'Archives', 'hybrid-core' ),
+			'title'           => esc_attr__( 'Archives', 'widgets-reloaded' ),
 			'limit'           => 10,
 			'type'            => 'monthly',
 			'order'           => 'DESC',
@@ -154,31 +154,31 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		/* Create an array of archive types. */
 		$type = array( 
-			'alpha'      => esc_attr__( 'Alphabetical', 'hybrid-core' ), 
-			'daily'      => esc_attr__( 'Daily', 'hybrid-core' ), 
-			'monthly'    => esc_attr__( 'Monthly', 'hybrid-core' ),
-			'postbypost' => esc_attr__( 'Post By Post', 'hybrid-core' ), 
-			'weekly'     => esc_attr__( 'Weekly', 'hybrid-core' ), 
-			'yearly'     => esc_attr__( 'Yearly', 'hybrid-core' ) 
+			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ), 
+			'daily'      => esc_attr__( 'Daily', 'widgets-reloaded' ), 
+			'monthly'    => esc_attr__( 'Monthly', 'widgets-reloaded' ),
+			'postbypost' => esc_attr__( 'Post By Post', 'widgets-reloaded' ), 
+			'weekly'     => esc_attr__( 'Weekly', 'widgets-reloaded' ), 
+			'yearly'     => esc_attr__( 'Yearly', 'widgets-reloaded' ) 
 		);
 
 		/* Create an array of order options. */
 		$order = array(
-			'ASC'  => esc_attr__( 'Ascending', 'hybrid-core' ),
-			'DESC' => esc_attr__( 'Descending', 'hybrid-core' )
+			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ),
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
 		/* Create an array of archive formats. */
 		$format = array( 
-			'custom' => esc_attr__( 'Custom', 'hybrid-core' ), 
-			'html'   => esc_attr__( 'HTML', 'hybrid-core' ), 
-			'option' => esc_attr__( 'Option', 'hybrid-core' ) 
+			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ), 
+			'html'   => esc_attr__( 'HTML', 'widgets-reloaded' ), 
+			'option' => esc_attr__( 'Option', 'widgets-reloaded' ) 
 		);
 		?>
 
 		<div class="hybrid-widget-controls columns-2">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'hybrid-core' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
@@ -222,7 +222,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> id="<?php echo $this->get_field_id( 'show_post_count' ); ?>" name="<?php echo $this->get_field_name( 'show_post_count' ); ?>" /> <?php _e( 'Show post count?', 'hybrid-core' ); ?> <code>show_post_count</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> id="<?php echo $this->get_field_id( 'show_post_count' ); ?>" name="<?php echo $this->get_field_name( 'show_post_count' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>show_post_count</code></label>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>
