@@ -26,7 +26,6 @@
  * @package WidgetsReloaded
  */
 
-
 /**
  * Sets up the plugin
  *
@@ -70,18 +69,22 @@ final class Widgets_Reloaded_Plugin {
 	 */
 	public function __construct() {
 
-		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 12 );
-
 		/* Set the properties needed by the plugin. */
 		add_action( 'plugins_loaded', array( $this, 'setup' ), 1 );
 
+		/* Load translation files. */
 		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 
-		/* Load the functions files. */
+		/* Set up theme support. */
+		add_action( 'after_setup_theme', array( $this, 'theme_support' ), 12 );
+
+		/* Load the plugin includes. */
 		add_action( 'after_setup_theme', array( $this, 'includes' ), 95 );
 
+		/* Register widgets. */
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
+		/* Load admin scripts and styles. */
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
@@ -97,7 +100,16 @@ final class Widgets_Reloaded_Plugin {
 		$this->directory_uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
 	}
 
-	public function add_theme_support() {
+	/**
+	 * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the 
+	 * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users, 
+	 * so the plugin should have priority.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function theme_support() {
 		remove_theme_support( 'hybrid-core-widgets' );
 	}
 
@@ -180,6 +192,13 @@ final class Widgets_Reloaded_Plugin {
 		register_widget( 'Hybrid_Widget_Tags' );
 	}
 
+	/**
+	 * Loads admin CSS files.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 		if ( 'widgets.php' == $hook_suffix )
