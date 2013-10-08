@@ -25,122 +25,183 @@
  * @package WidgetsReloaded
  */
 
-/* Launch the plugin. */
-add_action( 'plugins_loaded', 'widgets_reloaded_plugin_init' );
 
 /**
- * Initializes the plugin and it's features.
+ * Sets up the plugin
  *
- * @since 0.3
+ * @since 0.5.0
  */
-function widgets_reloaded_plugin_init() {
+final class Widgets_Reloaded_Plugin {
 
-	/* Set constant path to the members plugin directory. */
-	define( WIDGETS_RELOADED_DIR, plugin_dir_path( __FILE__ ) );
+	/**
+	 * Holds the instance of this class.
+	 *
+	 * @since  0.5.0
+	 * @access private
+	 * @var    object
+	 */
+	private static $instance;
 
-	/* Set constant path to the members plugin directory. */
-	define( WIDGETS_RELOADED_URL, plugin_dir_url( __FILE__ ) );
+	/**
+	 * Stores the directory path for this plugin.
+	 *
+	 * @since  0.5.0
+	 * @access private
+	 * @var    string
+	 */
+	private $directory_path;
 
-	/* Load the translation of the plugin. */
-	load_plugin_textdomain( 'widgets-reloaded', false, 'widgets-reloaded/languages' );
+	/**
+	 * Stores the directory URI for this plugin.
+	 *
+	 * @since  0.5.0
+	 * @access private
+	 * @var    string
+	 */
+	private $directory_uri;
 
-	/* Unregisters the default widgets. */
-	add_action( 'widgets_init', 'widgets_reloaded_unregister_widgets' );
+	/**
+	 * Plugin setup.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function __construct() {
 
-	/* Loads and registers the new widgets. */
-	add_action( 'widgets_init', 'widgets_reloaded_load_widgets' );
+		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 12 );
 
-	/* Load the admin stylesheet for the widgets screen. */
-	add_action( 'load-widgets.php', 'widgets_reloaded_enqueue_style' );
+		/* Set the properties needed by the plugin. */
+		add_action( 'plugins_loaded', array( $this, 'setup' ), 1 );
+
+		/* Internationalize the text strings used. */
+		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
+
+		/* Load the functions files. */
+		add_action( 'after_setup_theme', array( $this, 'includes' ), 95 );
+
+		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+	}
+
+	/**
+	 * Defines the directory path and URI for the plugin.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function setup() {
+		$this->directory_path = trailingslashit( plugin_dir_path( __FILE__ ) );
+		$this->directory_uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
+	}
+
+	public function add_theme_support() {
+		remove_theme_support( 'hybrid-core-widgets' );
+	}
+
+	/**
+	 * Loads the initial files needed by the plugin.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function includes() {
+		require_once( $this->directory_path . 'inc/widget-archives.php' );
+		require_once( $this->directory_path . 'inc/widget-authors.php' );
+		require_once( $this->directory_path . 'inc/widget-bookmarks.php' );
+		require_once( $this->directory_path . 'inc/widget-calendar.php' );
+		require_once( $this->directory_path . 'inc/widget-categories.php' );
+		require_once( $this->directory_path . 'inc/widget-nav-menu.php' );
+		require_once( $this->directory_path . 'inc/widget-pages.php' );
+		require_once( $this->directory_path . 'inc/widget-search.php' );
+		require_once( $this->directory_path . 'inc/widget-tags.php' );
+	}
+
+	/**
+	 * Note that we're using the 'hybrid-core' textdomain here.  This is because the widgets 
+	 * are ported from the Hybrid Core framework.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function i18n() {
+		load_plugin_textdomain( 'hybrid-core', false, 'widgets-reloaded/languages' );
+	}
+
+	/**
+	 * Registers widget files.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return void
+	 */
+	public function register_widgets() {
+
+		/* Unregister the default WordPress widgets. */
+		unregister_widget( 'WP_Widget_Archives' );
+		unregister_widget( 'WP_Widget_Calendar' );
+		unregister_widget( 'WP_Widget_Categories' );
+		unregister_widget( 'WP_Widget_Links' );
+		unregister_widget( 'WP_Nav_Menu_Widget' );
+		unregister_widget( 'WP_Widget_Pages' );
+		unregister_widget( 'WP_Widget_Search' );
+		unregister_widget( 'WP_Widget_Tag_Cloud' );
+
+		/* Register the archives widget. */
+		register_widget( 'Hybrid_Widget_Archives' );
+
+		/* Register the authors widget. */
+		register_widget( 'Hybrid_Widget_Authors' );
+
+		/* Register the bookmarks widget. */
+		if ( get_option( 'link_manager_enabled' ) )
+			register_widget( 'Hybrid_Widget_Bookmarks' );
+
+		/* Register the calendar widget. */
+		register_widget( 'Hybrid_Widget_Calendar' );
+
+		/* Register the categories widget. */
+		register_widget( 'Hybrid_Widget_Categories' );
+
+		/* Register the nav menu widget. */
+		register_widget( 'Hybrid_Widget_Nav_Menu' );
+
+		/* Register the pages widget. */
+		register_widget( 'Hybrid_Widget_Pages' );
+
+		/* Register the search widget. */
+		register_widget( 'Hybrid_Widget_Search' );
+
+		/* Register the tags widget. */
+		register_widget( 'Hybrid_Widget_Tags' );
+	}
+
+	public function admin_enqueue_scripts( $hook_suffix ) {
+
+		if ( 'widgets.php' == $hook_suffix )
+			wp_enqueue_style( 'widgets-reloaded', "{$this->directory_uri}css/admin.min.css" );
+	}
+
+	/**
+	 * Returns the instance.
+	 *
+	 * @since  0.5.0
+	 * @access public
+	 * @return object
+	 */
+	public static function get_instance() {
+
+		if ( !self::$instance )
+			self::$instance = new self;
+
+		return self::$instance;
+	}
 }
 
-/**
- * Load the stylesheet needed for the widgets page.
- *
- * @since 0.4
- */
-function widgets_reloaded_enqueue_style() {
-	wp_enqueue_style( hybrid_get_prefix() . '-admin', WIDGETS_RELOADED_URL . 'admin.css', false, 0.4, 'screen' );
-}
-
-/**
- * Compatibility function since the widgets are based off the Hybrid framework.
- *
- * @since 0.3
- */
-function hybrid_get_prefix() {
-	return 'widgets-reloaded';
-}
-
-/**
- * Compatibility function since the widgets are based off the Hybrid framework.
- *
- * @since 0.3
- */
-function hybrid_get_textdomain() {
-	return 'widgets-reloaded';
-}
-
-/**
- * Compatibility function since the widgets are based off the Hybrid framework.
- *
- * @since 0.4
- */
-function hybrid_get_transient_expiration() {
-	return apply_filters( hybrid_get_prefix() . '_transient_expiration', 43200 );
-}
-
-/**
- * Unregister default WordPress widgets we don't need. The plugin adds its own versions 
- * of these widgets.
- *
- * @since 0.1
- * @uses unregister_widget() Removes individual widgets.
- * @link http://codex.wordpress.org/WordPress_Widgets_Api
- */
-function widgets_reloaded_unregister_widgets() {
-	unregister_widget( 'WP_Widget_Pages' );
-	unregister_widget( 'WP_Widget_Calendar' );
-	unregister_widget( 'WP_Widget_Archives' );
-	unregister_widget( 'WP_Widget_Links' );
-	unregister_widget( 'WP_Widget_Categories' );
-	unregister_widget( 'WP_Nav_Menu_Widget' );
-	unregister_widget( 'WP_Widget_Recent_Posts' );
-	unregister_widget( 'WP_Widget_Search' );
-	unregister_widget( 'WP_Widget_Tag_Cloud' );
-}
-
-/**
- * Register the extra widgets. Each widget is meant to replace or extend the current default 
- * WordPress widgets.
- *
- * @since 0.1
- * @uses register_widget() Registers individual widgets.
- * @link http://codex.wordpress.org/WordPress_Widgets_Api
- */
-function widgets_reloaded_load_widgets() {
-
-	/* Load each widget file. */
-	require_once( WIDGETS_RELOADED_DIR . 'widget-archives.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-authors.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-bookmarks.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-calendar.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-categories.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-nav-menu.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-pages.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-search.php' );
-	require_once( WIDGETS_RELOADED_DIR . 'widget-tags.php' );
-
-	/* Register each widget. */
-	register_widget( 'Hybrid_Widget_Archives' );
-	register_widget( 'Hybrid_Widget_Authors' );
-	register_widget( 'Hybrid_Widget_Bookmarks' );
-	register_widget( 'Hybrid_Widget_Calendar' );
-	register_widget( 'Hybrid_Widget_Categories' );
-	register_widget( 'Hybrid_Widget_Nav_Menu' );
-	register_widget( 'Hybrid_Widget_Pages' );
-	register_widget( 'Hybrid_Widget_Search' );
-	register_widget( 'Hybrid_Widget_Tags' );
-}
+Widgets_Reloaded_Plugin::get_instance();
 
 ?>
