@@ -175,3 +175,9 @@ Also, remember that this plugin is meant to overwrite the default WordPress widg
 ### Version 0.1.0
 
 * Plugin launch.
+
+== Upgrade Notice ==
+
+### If upgrading from earlier than 0.5.0
+
+* Widget data may be lost on this upgrade.  You might have reset your widgets.  Please note any important widget settings.
