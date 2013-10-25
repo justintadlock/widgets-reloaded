@@ -20,6 +20,11 @@ The plugin overwrites many of the default WordPress widgets.  The following is t
 
 ## Changelog
 
+### Version 0.5.1
+
+* Added an upgrade notice for users below 0.5.0.
+* Added a fix for users of the MP6 plugin who are having issues with widget controls.
+
 ### Version 0.5.0
 
 * Overhauled how the entire plugin works.

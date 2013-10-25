@@ -5,7 +5,7 @@ Donate link: http://themehybrid.com/donate
 Tags: sidebar, widget, widgets, archives, author, bookmarks, calendar, categories, links, menu, pages, tags
 Requires at least: 3.6
 Tested up to: 3.7
-Stable tag: 0.5.0
+Stable tag: 0.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,6 +126,11 @@ Also, remember that this plugin is meant to overwrite the default WordPress widg
 
 == Changelog ==
 
+### Version 0.5.1
+
+* Added an upgrade notice for users below 0.5.0.
+* Added a fix for users of the MP6 plugin who are having issues with widget controls.
+
 ### Version 0.5.0
 
 * Overhauled how the entire plugin works.
@@ -178,6 +183,6 @@ Also, remember that this plugin is meant to overwrite the default WordPress widg
 
 == Upgrade Notice ==
 
-### If upgrading from earlier than 0.5.0
+### If upgrading from earlier than version 0.5.0
 
 * Widget data may be lost on this upgrade.  You might have reset your widgets.  Please note any important widget settings.
