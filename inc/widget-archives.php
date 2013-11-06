@@ -55,6 +55,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	function widget( $sidebar, $instance ) {
 		extract( $sidebar );
 
+		$instance['limit']  = !empty( $instance['limit']  ) ? $instance['limit']  : 10;
+		$instance['type']   = !empty( $instance['type']   ) ? $instance['type']   : 'monthly';
+		$instance['format'] = !empty( $instance['format'] ) ? $instance['format'] : 'html';
+
 		/* Set the $args for wp_get_archives() to the $instance array. */
 		$args = $instance;
 
