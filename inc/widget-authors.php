@@ -101,6 +101,8 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		$instance['order']   = strip_tags( $new_instance['order'] );
 		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
 		$instance['number']  = strip_tags( $new_instance['number'] );
+		$instance['include'] = strip_tags( $new_instance['include'] );
+		$instance['exclude'] = strip_tags( $new_instance['exclude'] );
 
 		$instance['html']          = ( isset( $new_instance['html'] ) ? 1 : 0 );
 		$instance['optioncount']   = ( isset( $new_instance['optioncount'] ) ? 1 : 0 );
@@ -124,6 +126,8 @@ class Hybrid_Widget_Authors extends WP_Widget {
 			'order'         => 'ASC',
 			'orderby'       => 'display_name',
 			'number'        => '',
+			'include'       => '',
+			'exclude'       => '',
 			'optioncount'   => false,
 			'exclude_admin' => false,
 			'show_fullname' => true,
@@ -188,9 +192,17 @@ class Hybrid_Widget_Authors extends WP_Widget {
 				<?php } ?>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" />
+		</p>
 		</div>
 
 		<div class="hybrid-widget-controls columns-2 column-last">
+		<p>
+			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label>
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" />
+		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'feed' ); ?>"><code>feed</code></label>
 			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'feed' ); ?>" name="<?php echo $this->get_field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
