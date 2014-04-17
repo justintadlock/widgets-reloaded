@@ -134,7 +134,8 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		/* Merge the user-selected arguments with the defaults. */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
+		$container       = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
+		$theme_locations = get_registered_nav_menus();
 		?>
 
 		<div class="hybrid-widget-controls columns-2">
@@ -202,10 +203,17 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'fallback_cb' ); ?>"><code>fallback_cb</code></label>
 			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'fallback_cb' ); ?>" name="<?php echo $this->get_field_name( 'fallback_cb' ); ?>" value="<?php echo esc_attr( $instance['fallback_cb'] ); ?>" />
 		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'theme_location' ); ?>"><code>theme_location</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'theme_location' ); ?>" name="<?php echo $this->get_field_name( 'theme_location' ); ?>" value="<?php echo esc_attr( $instance['theme_location'] ); ?>" />
-		</p>
+		<?php if ( !empty( $theme_locations ) ) { ?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'theme_location' ); ?>"><code>theme_location</code></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'theme_location' ); ?>" name="<?php echo $this->get_field_name( 'theme_location' ); ?>">
+					<option value=""></option>
+					<?php foreach ( $theme_locations as $location => $label ) { ?>
+						<option value="<?php echo esc_attr( $location ); ?>" <?php selected( $instance['theme_location'], $location ); ?>><?php echo esc_html( $label ); ?></option>
+					<?php } ?>
+				</select>
+			</p>
+		<?php } ?>
 		</div>
 		<div style="clear:both;">&nbsp;</div>
 	<?php
