@@ -20,6 +20,15 @@
 class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
 	/**
+	 * Default arguments for the widget settings.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @var    array
+	 */
+	public $defaults = array();
+
+	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
 	 * @since 1.2.0
@@ -45,6 +54,24 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 			$widget_options,                        // $this->widget_options
 			$control_options                        // $this->control_options
 		);
+
+		/* Set up the defaults. */
+		$this->defaults = array(
+			'title'           => esc_attr__( 'Navigation', 'widgets-reloaded' ),
+			'menu'            => '',
+			'container'       => 'div',
+			'container_id'    => '',
+			'container_class' => '',
+			'menu_id'         => '',
+			'menu_class'      => 'nav-menu',
+			'depth'           => 0,
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'fallback_cb'     => 'wp_page_menu',
+			'theme_location'  => ''
+		);
 	}
 
 	/**
@@ -56,7 +83,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		extract( $sidebar );
 
 		/* Set the $args for wp_nav_menu() to the $instance array. */
-		$args = $instance;
+		$args = wp_parse_args( $instance, $this->defaults );
 
 		/* Overwrite the $echo argument and set it to false. */
 		$args['echo'] = false;
@@ -65,8 +92,8 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		echo $before_widget;
 
 		/* If a title was input by the user, display it. */
-		if ( !empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
+		if ( !empty( $args['title'] ) )
+			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
 
 		/* Output the nav menu. */
 		echo str_replace( array( "\r", "\n", "\t" ), '', wp_nav_menu( $args ) );
@@ -104,26 +131,8 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Set up the default form values. */
-		$defaults = array(
-			'title'           => esc_attr__( 'Navigation', 'widgets-reloaded' ),
-			'menu'            => '',
-			'container'       => 'div',
-			'container_id'    => '',
-			'container_class' => '',
-			'menu_id'         => '',
-			'menu_class'      => 'nav-menu',
-			'depth'           => 0,
-			'before'          => '',
-			'after'           => '',
-			'link_before'     => '',
-			'link_after'      => '',
-			'fallback_cb'     => 'wp_page_menu',
-			'theme_location'  => ''
-		);
-
 		/* Merge the user-selected arguments with the defaults. */
-		$instance = wp_parse_args( (array) $instance, $defaults );
+		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
 		?>
