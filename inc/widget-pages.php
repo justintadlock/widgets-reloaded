@@ -51,10 +51,10 @@ class Hybrid_Widget_Pages extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-pages',              // $this->id_base
-			__( 'Pages', 'widgets-reloaded'), // $this->name
-			$widget_options,             // $this->widget_options
-			$control_options             // $this->control_options
+			'hybrid-pages',
+			__( 'Pages', 'widgets-reloaded'),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -128,19 +128,19 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		/* Set the instance to the new instance. */
 		$instance = $new_instance;
 
-		$instance['title']       = strip_tags( $new_instance['title'] );
-		$instance['depth']       = strip_tags( $new_instance['depth'] );
-		$instance['child_of']    = strip_tags( $new_instance['child_of'] );
-		$instance['meta_key']    = strip_tags( $new_instance['meta_key'] );
-		$instance['meta_value']  = strip_tags( $new_instance['meta_value'] );
+		$instance['title']       = strip_tags( $new_instance['title']       );
+		$instance['depth']       = strip_tags( $new_instance['depth']       );
+		$instance['child_of']    = strip_tags( $new_instance['child_of']    );
+		$instance['meta_key']    = strip_tags( $new_instance['meta_key']    );
+		$instance['meta_value']  = strip_tags( $new_instance['meta_value']  );
 		$instance['date_format'] = strip_tags( $new_instance['date_format'] );
-		$instance['number']      = strip_tags( $new_instance['number'] );
-		$instance['offset']      = strip_tags( $new_instance['offset'] );
+		$instance['number']      = strip_tags( $new_instance['number']      );
+		$instance['offset']      = strip_tags( $new_instance['offset']      );
 
-		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
-		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
+		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include']      );
+		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude']      );
 		$instance['exclude_tree'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude_tree'] );
-		$instance['authors']      = preg_replace( '/[^0-9,]/', '', $new_instance['authors'] );
+		$instance['authors']      = preg_replace( '/[^0-9,]/', '', $new_instance['authors']      );
 
 		$instance['post_type']   = $new_instance['post_type'];
 		$instance['sort_column'] = $new_instance['sort_column'];
@@ -149,7 +149,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		$instance['link_before'] = $new_instance['link_before'];
 		$instance['link_after']  = $new_instance['link_after'];
 
-		$instance['hierarchical'] = ( isset( $new_instance['hierarchical'] ) ? 1 : 0 );
+		$instance['hierarchical'] = isset( $new_instance['hierarchical'] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -157,7 +157,10 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -167,23 +170,23 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		$post_types = get_post_types( array( 'public' => true, 'hierarchical' => true ), 'objects' );
 
 		$sort_order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$sort_column = array( 
-			'post_author'   => esc_attr__( 'Author', 'widgets-reloaded' ), 
-			'post_date'     => esc_attr__( 'Date', 'widgets-reloaded' ), 
-			'ID'            => esc_attr__( 'ID', 'widgets-reloaded' ), 
+			'post_author'   => esc_attr__( 'Author',     'widgets-reloaded' ), 
+			'post_date'     => esc_attr__( 'Date',       'widgets-reloaded' ), 
+			'ID'            => esc_attr__( 'ID',         'widgets-reloaded' ), 
 			'menu_order'    => esc_attr__( 'Menu Order', 'widgets-reloaded' ), 
-			'post_modified' => esc_attr__( 'Modified', 'widgets-reloaded' ), 
-			'post_name'     => esc_attr__( 'Slug', 'widgets-reloaded' ), 
-			'post_title'    => esc_attr__( 'Title', 'widgets-reloaded' ) 
+			'post_modified' => esc_attr__( 'Modified',   'widgets-reloaded' ), 
+			'post_name'     => esc_attr__( 'Slug',       'widgets-reloaded' ), 
+			'post_title'    => esc_attr__( 'Title',      'widgets-reloaded' ) 
 		);
 
 		$show_date = array( 
 			''         => '', 
-			'created'  => esc_attr__( 'Created', 'widgets-reloaded' ), 
+			'created'  => esc_attr__( 'Created',  'widgets-reloaded' ), 
 			'modified' => esc_attr__( 'Modified', 'widgets-reloaded' ) 
 		);
 
@@ -299,5 +302,3 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	<?php
 	}
 }
-
-?>

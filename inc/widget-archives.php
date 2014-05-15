@@ -51,10 +51,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-archives',               // $this->id_base
-			__( 'Archives', 'widgets-reloaded' ), // $this->name
-			$widget_options,                 // $this->widget_options
-			$control_options                 // $this->control_options
+			'hybrid-archives',
+			__( 'Archives', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up defaults. */
@@ -150,10 +150,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		$instance = $new_instance;
 
-		$instance['title']  = strip_tags( $new_instance['title'] );
+		$instance['title']  = strip_tags( $new_instance['title']  );
 		$instance['before'] = strip_tags( $new_instance['before'] );
-		$instance['after']  = strip_tags( $new_instance['after'] );
-		$instance['limit']  = strip_tags( $new_instance['limit'] );
+		$instance['after']  = strip_tags( $new_instance['after']  );
+		$instance['limit']  = strip_tags( $new_instance['limit']  );
 
 		$instance['show_post_count'] = ( isset( $new_instance['show_post_count'] ) ? 1 : 0 );
 
@@ -176,23 +176,23 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		/* Create an array of archive types. */
 		$type = array( 
 			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ), 
-			'daily'      => esc_attr__( 'Daily', 'widgets-reloaded' ), 
-			'monthly'    => esc_attr__( 'Monthly', 'widgets-reloaded' ),
+			'daily'      => esc_attr__( 'Daily',        'widgets-reloaded' ), 
+			'monthly'    => esc_attr__( 'Monthly',      'widgets-reloaded' ),
 			'postbypost' => esc_attr__( 'Post By Post', 'widgets-reloaded' ), 
-			'weekly'     => esc_attr__( 'Weekly', 'widgets-reloaded' ), 
-			'yearly'     => esc_attr__( 'Yearly', 'widgets-reloaded' ) 
+			'weekly'     => esc_attr__( 'Weekly',       'widgets-reloaded' ), 
+			'yearly'     => esc_attr__( 'Yearly',       'widgets-reloaded' ) 
 		);
 
 		/* Create an array of order options. */
 		$order = array(
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ),
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ),
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
 		/* Create an array of archive formats. */
 		$format = array( 
 			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ), 
-			'html'   => esc_attr__( 'HTML', 'widgets-reloaded' ), 
+			'html'   => esc_attr__( 'HTML',   'widgets-reloaded' ), 
 			'option' => esc_attr__( 'Option', 'widgets-reloaded' ) 
 		);
 		?>

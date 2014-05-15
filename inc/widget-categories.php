@@ -51,10 +51,10 @@ class Hybrid_Widget_Categories extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-categories',               // $this->id_base
-			__( 'Categories', 'widgets-reloaded' ), // $this->name
-			$widget_options,                   // $this->widget_options
-			$control_options                   // $this->control_options
+			'hybrid-categories',
+			__( 'Categories', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -150,22 +150,22 @@ class Hybrid_Widget_Categories extends WP_Widget {
 
 		$instance['feed_image'] = esc_url( $new_instance['feed_image'] );
 
-		$instance['title']            = strip_tags( $new_instance['title'] );
-		$instance['depth']            = strip_tags( $new_instance['depth'] );
-		$instance['number']           = strip_tags( $new_instance['number'] );
-		$instance['child_of']         = strip_tags( $new_instance['child_of'] );
+		$instance['title']            = strip_tags( $new_instance['title']            );
+		$instance['depth']            = strip_tags( $new_instance['depth']            );
+		$instance['number']           = strip_tags( $new_instance['number']           );
+		$instance['child_of']         = strip_tags( $new_instance['child_of']         );
 		$instance['current_category'] = strip_tags( $new_instance['current_category'] );
-		$instance['feed']             = strip_tags( $new_instance['feed'] );
-		$instance['search']           = strip_tags( $new_instance['search'] );
+		$instance['feed']             = strip_tags( $new_instance['feed']             );
+		$instance['search']           = strip_tags( $new_instance['search']           );
 
-		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
-		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
+		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include']      );
+		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude']      );
 		$instance['exclude_tree'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude_tree'] );
 
-		$instance['hierarchical']       = ( isset( $new_instance['hierarchical'] ) ? 1 : 0 );
-		$instance['use_desc_for_title'] = ( isset( $new_instance['use_desc_for_title'] ) ? 1 : 0 );
-		$instance['show_count']         = ( isset( $new_instance['show_count'] ) ? 1 : 0 );
-		$instance['hide_empty']         = ( isset( $new_instance['hide_empty'] ) ? 1 : 0 );
+		$instance['hierarchical']       = isset( $new_instance['hierarchical'] )       ? 1 : 0;
+		$instance['use_desc_for_title'] = isset( $new_instance['use_desc_for_title'] ) ? 1 : 0;
+		$instance['show_count']         = isset( $new_instance['show_count'] )         ? 1 : 0;
+		$instance['hide_empty']         = isset( $new_instance['hide_empty'] )         ? 1 : 0;
 
 		return $instance;
 	}
@@ -173,7 +173,10 @@ class Hybrid_Widget_Categories extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -182,7 +185,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 
 		/* <select> element options. */
 		$taxonomies = get_taxonomies( array( 'show_tagcloud' => true ), 'objects' );
-		$terms = get_terms( $instance['taxonomy'] );
+		$terms      = get_terms( $instance['taxonomy'] );
 
 		$style = array( 
 			'list' => esc_attr__( 'List', 'widgets-reloaded' ), 
@@ -190,23 +193,23 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		);
 
 		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 
-			'count'      => esc_attr__( 'Count', 'widgets-reloaded' ), 
-			'ID'         => esc_attr__( 'ID', 'widgets-reloaded' ), 
-			'name'       => esc_attr__( 'Name', 'widgets-reloaded' ), 
-			'slug'       => esc_attr__( 'Slug', 'widgets-reloaded' ), 
+			'count'      => esc_attr__( 'Count',      'widgets-reloaded' ), 
+			'ID'         => esc_attr__( 'ID',         'widgets-reloaded' ), 
+			'name'       => esc_attr__( 'Name',       'widgets-reloaded' ), 
+			'slug'       => esc_attr__( 'Slug',       'widgets-reloaded' ), 
 			'term_group' => esc_attr__( 'Term Group', 'widgets-reloaded' ) 
 		);
 
 		$feed_type = array( 
 			''     => '', 
-			'atom' => esc_attr__( 'Atom', 'widgets-reloaded' ), 
-			'rdf'  => esc_attr__( 'RDF', 'widgets-reloaded' ), 
-			'rss'  => esc_attr__( 'RSS', 'widgets-reloaded' ), 
+			'atom' => esc_attr__( 'Atom',    'widgets-reloaded' ), 
+			'rdf'  => esc_attr__( 'RDF',     'widgets-reloaded' ), 
+			'rss'  => esc_attr__( 'RSS',     'widgets-reloaded' ), 
 			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' ) 
 		);
 
@@ -324,5 +327,3 @@ class Hybrid_Widget_Categories extends WP_Widget {
 	<?php
 	}
 }
-
-?>

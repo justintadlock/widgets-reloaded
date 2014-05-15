@@ -51,10 +51,10 @@ class Hybrid_Widget_Authors extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-authors',               // $this->id_base
-			__( 'Authors', 'widgets-reloaded' ), // $this->name
-			$widget_options,                // $this->widget_options
-			$control_options                // $this->control_options
+			'hybrid-authors',
+			__( 'Authors', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up defaults. */
@@ -132,19 +132,19 @@ class Hybrid_Widget_Authors extends WP_Widget {
 
 		$instance = $new_instance;
 
-		$instance['title']   = strip_tags( $new_instance['title'] );
-		$instance['feed']    = strip_tags( $new_instance['feed'] );
-		$instance['order']   = strip_tags( $new_instance['order'] );
+		$instance['title']   = strip_tags( $new_instance['title']   );
+		$instance['feed']    = strip_tags( $new_instance['feed']    );
+		$instance['order']   = strip_tags( $new_instance['order']   );
 		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
-		$instance['number']  = strip_tags( $new_instance['number'] );
+		$instance['number']  = strip_tags( $new_instance['number']  );
 		$instance['include'] = strip_tags( $new_instance['include'] );
 		$instance['exclude'] = strip_tags( $new_instance['exclude'] );
 
-		$instance['html']          = ( isset( $new_instance['html'] ) ? 1 : 0 );
-		$instance['optioncount']   = ( isset( $new_instance['optioncount'] ) ? 1 : 0 );
-		$instance['exclude_admin'] = ( isset( $new_instance['exclude_admin'] ) ? 1 : 0 );
-		$instance['show_fullname'] = ( isset( $new_instance['show_fullname'] ) ? 1 : 0 );
-		$instance['hide_empty']    = ( isset( $new_instance['hide_empty'] ) ? 1 : 0 );
+		$instance['html']          = isset( $new_instance['html'] )          ? 1 : 0;
+		$instance['optioncount']   = isset( $new_instance['optioncount'] )   ? 1 : 0;
+		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? 1 : 0;
+		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? 1 : 0;
+		$instance['hide_empty']    = isset( $new_instance['hide_empty'] )    ? 1 : 0;
 
 		return $instance;
 	}
@@ -152,7 +152,10 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -160,19 +163,19 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 
 			'display_name' => esc_attr__( 'Display Name', 'widgets-reloaded' ), 
-			'email'        => esc_attr__( 'Email', 'widgets-reloaded' ), 
-			'ID'           => esc_attr__( 'ID', 'widgets-reloaded' ), 
-			'nicename'     => esc_attr__( 'Nice Name', 'widgets-reloaded' ), 
-			'post_count'   => esc_attr__( 'Post Count', 'widgets-reloaded' ), 
-			'registered'   => esc_attr__( 'Registered', 'widgets-reloaded' ), 
-			'url'          => esc_attr__( 'URL', 'widgets-reloaded' ), 
-			'user_login'   => esc_attr__( 'Login', 'widgets-reloaded' ) 
+			'email'        => esc_attr__( 'Email',        'widgets-reloaded' ), 
+			'ID'           => esc_attr__( 'ID',           'widgets-reloaded' ), 
+			'nicename'     => esc_attr__( 'Nice Name',    'widgets-reloaded' ), 
+			'post_count'   => esc_attr__( 'Post Count',   'widgets-reloaded' ), 
+			'registered'   => esc_attr__( 'Registered',   'widgets-reloaded' ), 
+			'url'          => esc_attr__( 'URL',          'widgets-reloaded' ), 
+			'user_login'   => esc_attr__( 'Login',        'widgets-reloaded' ) 
 		);
 
 		?>
@@ -254,5 +257,3 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	<?php
 	}
 }
-
-?>

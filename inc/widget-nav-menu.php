@@ -51,10 +51,10 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-nav-menu',                      // $this->id_base
-			__( 'Navigation Menu', 'widgets-reloaded' ), // $this->name
-			$widget_options,                        // $this->widget_options
-			$control_options                        // $this->control_options
+			'hybrid-nav-menu',
+			__( 'Navigation Menu', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -121,14 +121,14 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
 		$instance = $new_instance;
 
-		$instance['title']           = strip_tags( $new_instance['title'] );
-		$instance['depth']           = strip_tags( $new_instance['depth'] );
-		$instance['container_id']    = strip_tags( $new_instance['container_id'] );
+		$instance['title']           = strip_tags( $new_instance['title']           );
+		$instance['depth']           = strip_tags( $new_instance['depth']           );
+		$instance['container_id']    = strip_tags( $new_instance['container_id']    );
 		$instance['container_class'] = strip_tags( $new_instance['container_class'] );
-		$instance['menu_id']         = strip_tags( $new_instance['menu_id'] );
-		$instance['menu_class']      = strip_tags( $new_instance['menu_class'] );
-		$instance['fallback_cb']     = strip_tags( $new_instance['fallback_cb'] );
-		$instance['theme_location']  = strip_tags( $new_instance['theme_location'] );
+		$instance['menu_id']         = strip_tags( $new_instance['menu_id']         );
+		$instance['menu_class']      = strip_tags( $new_instance['menu_class']      );
+		$instance['fallback_cb']     = strip_tags( $new_instance['fallback_cb']     );
+		$instance['theme_location']  = strip_tags( $new_instance['theme_location']  );
 
 		return $instance;
 	}
@@ -136,7 +136,10 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.8.0
+	 * @since  0.8.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -228,5 +231,3 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	<?php
 	}
 }
-
-?>

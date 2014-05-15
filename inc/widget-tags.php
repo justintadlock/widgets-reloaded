@@ -51,10 +51,10 @@ class Hybrid_Widget_Tags extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-tags',               // $this->id_base
-			__( 'Tags', 'widgets-reloaded' ), // $this->name
-			$widget_options,             // $this->widget_options
-			$control_options             // $this->control_options
+			'hybrid-tags',
+			__( 'Tags', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -149,16 +149,16 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		/* Set the instance to the new instance. */
 		$instance = $new_instance;
 
-		$instance['title']                      = strip_tags( $new_instance['title'] );
-		$instance['smallest']                   = strip_tags( $new_instance['smallest'] );
-		$instance['largest']                    = strip_tags( $new_instance['largest'] );
-		$instance['number']                     = strip_tags( $new_instance['number'] );
-		$instance['separator']                  = strip_tags( $new_instance['separator'] );
-		$instance['name__like']                 = strip_tags( $new_instance['name__like'] );
-		$instance['search']                     = strip_tags( $new_instance['search'] );
-		$instance['child_of']                   = strip_tags( $new_instance['child_of'] );
-		$instance['parent']                     = strip_tags( $new_instance['parent'] );
-		$instance['topic_count_text_callback']  = strip_tags( $new_instance['topic_count_text_callback'] );
+		$instance['title']                      = strip_tags( $new_instance['title']                      );
+		$instance['smallest']                   = strip_tags( $new_instance['smallest']                   );
+		$instance['largest']                    = strip_tags( $new_instance['largest']                    );
+		$instance['number']                     = strip_tags( $new_instance['number']                     );
+		$instance['separator']                  = strip_tags( $new_instance['separator']                  );
+		$instance['name__like']                 = strip_tags( $new_instance['name__like']                 );
+		$instance['search']                     = strip_tags( $new_instance['search']                     );
+		$instance['child_of']                   = strip_tags( $new_instance['child_of']                   );
+		$instance['parent']                     = strip_tags( $new_instance['parent']                     );
+		$instance['topic_count_text_callback']  = strip_tags( $new_instance['topic_count_text_callback']  );
 		$instance['topic_count_scale_callback'] = strip_tags( $new_instance['topic_count_scale_callback'] );
 
 		$instance['include'] = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
@@ -171,8 +171,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$instance['taxonomy'] = $new_instance['taxonomy'];
 		$instance['link']     = $new_instance['link'];
 
-		$instance['pad_counts'] = ( isset( $new_instance['pad_counts'] ) ? 1 : 0 );
-		$instance['hide_empty'] = ( isset( $new_instance['hide_empty'] ) ? 1 : 0 );
+		$instance['pad_counts'] = isset( $new_instance['pad_counts'] ) ? 1 : 0;
+		$instance['hide_empty'] = isset( $new_instance['hide_empty'] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -180,7 +180,10 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -201,14 +204,14 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		);
 
 		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ), 
-			'RAND' => esc_attr__( 'Random', 'widgets-reloaded' ) 
+			'RAND' => esc_attr__( 'Random',     'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 
 			'count' => esc_attr__( 'Count', 'widgets-reloaded' ), 
-			'name'  => esc_attr__( 'Name', 'widgets-reloaded' ) 
+			'name'  => esc_attr__( 'Name',  'widgets-reloaded' ) 
 		);
 
 		$unit = array( 
@@ -340,5 +343,3 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	<?php
 	}
 }
-
-?>

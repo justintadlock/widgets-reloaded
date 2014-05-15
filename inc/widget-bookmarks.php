@@ -51,10 +51,10 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-bookmarks',               // $this->id_base
-			__( 'Bookmarks', 'widgets-reloaded' ), // $this->name	
-			$widget_options,                  // $this->widget_options
-			$control_options                  // $this->control_options
+			'hybrid-bookmarks',
+			__( 'Bookmarks', 'widgets-reloaded' ),	
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -159,9 +159,9 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$instance = $new_instance;
 
 		$instance['title_li'] = strip_tags( $new_instance['title_li'] );
-		$instance['limit']    = strip_tags( $new_instance['limit'] );
-		$instance['class']    = strip_tags( $new_instance['class'] );
-		$instance['search']   = strip_tags( $new_instance['search'] );
+		$instance['limit']    = strip_tags( $new_instance['limit']    );
+		$instance['class']    = strip_tags( $new_instance['class']    );
+		$instance['search']   = strip_tags( $new_instance['search']   );
 
 		$instance['category_order']   = $new_instance['category_order'];
 		$instance['category_orderby'] = $new_instance['category_orderby'];
@@ -171,14 +171,14 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$instance['link_before']      = $new_instance['link_before'];
 		$instance['link_after']       = $new_instance['link_after'];
 
-		$instance['categorize']       = ( isset( $new_instance['categorize'] ) ? 1 : 0 );
-		$instance['hide_invisible']   = ( isset( $new_instance['hide_invisible'] ) ? 1 : 0 );
-		$instance['show_private']     = ( isset( $new_instance['show_private'] ) ? 1 : 0 );
-		$instance['show_rating']      = ( isset( $new_instance['show_rating'] ) ? 1 : 0 );
-		$instance['show_updated']     = ( isset( $new_instance['show_updated'] ) ? 1 : 0 );
-		$instance['show_images']      = ( isset( $new_instance['show_images'] ) ? 1 : 0 );
-		$instance['show_name']        = ( isset( $new_instance['show_name'] ) ? 1 : 0 );
-		$instance['show_description'] = ( isset( $new_instance['show_description'] ) ? 1 : 0 );
+		$instance['categorize']       = isset( $new_instance['categorize'] )       ? 1 : 0;
+		$instance['hide_invisible']   = isset( $new_instance['hide_invisible'] )   ? 1 : 0;
+		$instance['show_private']     = isset( $new_instance['show_private'] )     ? 1 : 0;
+		$instance['show_rating']      = isset( $new_instance['show_rating'] )      ? 1 : 0;
+		$instance['show_updated']     = isset( $new_instance['show_updated'] )     ? 1 : 0;
+		$instance['show_images']      = isset( $new_instance['show_images'] )      ? 1 : 0;
+		$instance['show_name']        = isset( $new_instance['show_name'] )        ? 1 : 0;
+		$instance['show_description'] = isset( $new_instance['show_description'] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -196,40 +196,40 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		/* Merge the user-selected arguments with the defaults. */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		$terms = get_terms( 'link_category' );
+		$terms     = get_terms( 'link_category' );
 		$bookmarks = get_bookmarks( array( 'hide_invisible' => false ) );
 
 		$category_order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$category_orderby = array( 
 			'count' => esc_attr__( 'Count', 'widgets-reloaded' ), 
-			'ID'    => esc_attr__( 'ID', 'widgets-reloaded' ), 
-			'name'  => esc_attr__( 'Name', 'widgets-reloaded' ), 
-			'slug'  => esc_attr__( 'Slug', 'widgets-reloaded' ) 
+			'ID'    => esc_attr__( 'ID',    'widgets-reloaded' ), 
+			'name'  => esc_attr__( 'Name',  'widgets-reloaded' ), 
+			'slug'  => esc_attr__( 'Slug',  'widgets-reloaded' ) 
 		);
 
 		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending', 'widgets-reloaded' ), 
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 
-			'id'          => esc_attr__( 'ID', 'widgets-reloaded' ), 
+			'id'          => esc_attr__( 'ID',          'widgets-reloaded' ), 
 			'description' => esc_attr__( 'Description', 'widgets-reloaded' ), 
-			'length'      => esc_attr__( 'Length', 'widgets-reloaded' ), 
-			'name'        => esc_attr__( 'Name', 'widgets-reloaded' ), 
-			'notes'       => esc_attr__( 'Notes', 'widgets-reloaded' ), 
-			'owner'       => esc_attr__( 'Owner', 'widgets-reloaded' ), 
-			'rand'        => esc_attr__( 'Random', 'widgets-reloaded' ), 
-			'rating'      => esc_attr__( 'Rating', 'widgets-reloaded' ), 
-			'rel'         => esc_attr__( 'Rel', 'widgets-reloaded' ), 
-			'rss'         => esc_attr__( 'RSS', 'widgets-reloaded' ), 
-			'target'      => esc_attr__( 'Target', 'widgets-reloaded' ), 
-			'updated'     => esc_attr__( 'Updated', 'widgets-reloaded' ), 
-			'url'         => esc_attr__( 'URL', 'widgets-reloaded' ) 
+			'length'      => esc_attr__( 'Length',      'widgets-reloaded' ), 
+			'name'        => esc_attr__( 'Name',        'widgets-reloaded' ), 
+			'notes'       => esc_attr__( 'Notes',       'widgets-reloaded' ), 
+			'owner'       => esc_attr__( 'Owner',       'widgets-reloaded' ), 
+			'rand'        => esc_attr__( 'Random',      'widgets-reloaded' ), 
+			'rating'      => esc_attr__( 'Rating',      'widgets-reloaded' ), 
+			'rel'         => esc_attr__( 'Rel',         'widgets-reloaded' ), 
+			'rss'         => esc_attr__( 'RSS',         'widgets-reloaded' ), 
+			'target'      => esc_attr__( 'Target',      'widgets-reloaded' ), 
+			'updated'     => esc_attr__( 'Updated',     'widgets-reloaded' ), 
+			'url'         => esc_attr__( 'URL',         'widgets-reloaded' ) 
 		);
 		?>
 

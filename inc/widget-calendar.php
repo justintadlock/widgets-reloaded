@@ -51,10 +51,10 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-calendar',               // $this->id_base
-			__( 'Calendar', 'widgets-reloaded' ), // $this->name
-			$widget_options,                 // $this->widget_options
-			$control_options                 // $this->control_options
+			'hybrid-calendar',
+			__( 'Calendar', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -108,8 +108,9 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['initial'] = ( isset( $new_instance['initial'] ) ? 1 : 0 );
+		$instance['title']   = strip_tags( $new_instance['title'] );
+
+		$instance['initial'] = isset( $new_instance['initial'] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -117,7 +118,10 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -137,5 +141,3 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	<?php
 	}
 }
-
-?>

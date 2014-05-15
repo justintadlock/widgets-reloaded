@@ -52,10 +52,10 @@ class Hybrid_Widget_Search extends WP_Widget {
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'hybrid-search',               // $this->id_base
-			__( 'Search', 'widgets-reloaded' ), // $this->name
-			$widget_options,               // $this->widget_options
-			$control_options               // $this->control_options
+			'hybrid-search',
+			__( 'Search', 'widgets-reloaded' ),
+			$widget_options,
+			$control_options
 		);
 
 		/* Set up the defaults. */
@@ -139,12 +139,12 @@ class Hybrid_Widget_Search extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
 
-		$instance['title']         = strip_tags( $new_instance['title'] );
-		$instance['search_label']  = strip_tags( $new_instance['search_label'] );
-		$instance['search_text']   = strip_tags( $new_instance['search_text'] );
+		$instance['title']         = strip_tags( $new_instance['title']         );
+		$instance['search_label']  = strip_tags( $new_instance['search_label']  );
+		$instance['search_text']   = strip_tags( $new_instance['search_text']   );
 		$instance['search_submit'] = strip_tags( $new_instance['search_submit'] );
 
-		$instance['theme_search'] = ( isset( $new_instance['theme_search'] ) ? 1 : 0 );
+		$instance['theme_search'] = isset( $new_instance['theme_search'] ) ? 1 : 0;
 
 		return $instance;
 	}
@@ -152,7 +152,10 @@ class Hybrid_Widget_Search extends WP_Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $instance
+	 * @param  void
 	 */
 	function form( $instance ) {
 
@@ -188,5 +191,3 @@ class Hybrid_Widget_Search extends WP_Widget {
 	<?php
 	}
 }
-
-?>
