@@ -89,7 +89,6 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set up the $before_widget ID for multiple widgets created by the bookmarks widget. */
 		if ( !empty( $instance['categorize'] ) )
@@ -120,10 +119,10 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 
 		/* Some arguments must be set to the sidebar arguments to be output correctly. */
 		$args['title_li']        = apply_filters( 'widget_title', ( empty( $args['title_li'] ) ? __( 'Bookmarks', 'widgets-reloaded' ) : $args['title_li'] ), $instance, $this->id_base );
-		$args['title_before']    = $before_title;
-		$args['title_after']     = $after_title;
-		$args['category_before'] = $before_widget;
-		$args['category_after']  = $after_widget;
+		$args['title_before']    = $sidebar['before_title'];
+		$args['title_after']     = $sidebar['after_title'];
+		$args['category_before'] = $sidebar['before_widget'];
+		$args['category_after']  = $sidebar['after_widget'];
 		$args['category_name']   = '';
 		$args['echo']            = false;
 

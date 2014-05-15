@@ -80,7 +80,6 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 * @since 0.8.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set the $args for wp_nav_menu() to the $instance array. */
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -88,18 +87,18 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		/* Overwrite the $echo argument and set it to false. */
 		$args['echo'] = false;
 
-		/* Output the theme's widget wrapper. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
 		if ( !empty( $args['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* Output the nav menu. */
 		echo str_replace( array( "\r", "\n", "\t" ), '', wp_nav_menu( $args ) );
 
-		/* Close the theme's widget wrapper. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**

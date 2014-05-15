@@ -72,16 +72,15 @@ class Hybrid_Widget_Search extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		$instance = wp_parse_args( $instance, $this->defaults );
 
-		/* Output the theme's $before_widget wrapper. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
-		if ( !empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
+		if ( !empty( $args['title'] ) )
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* If the user chose to use the theme's search form, load it. */
 		if ( !empty( $instance['theme_search'] ) ) {
@@ -118,8 +117,8 @@ class Hybrid_Widget_Search extends WP_Widget {
 			echo $search;
 		}
 
-		/* Close the theme's widget wrapper. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**

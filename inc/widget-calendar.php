@@ -68,7 +68,6 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set the $args. */
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -76,20 +75,20 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 		/* Get the $initial argument. */
 		$initial = !empty( $args['initial'] ) ? true : false;
 
-		/* Output the theme's widget wrapper. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
 		if ( !empty( $args['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* Display the calendar. */
 		echo '<div class="calendar-wrap">';
 			echo str_replace( array( "\r", "\n", "\t" ), '', get_calendar( $initial, false ) );
 		echo '</div><!-- .calendar-wrap -->';
 
-		/* Close the theme's widget wrapper. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**

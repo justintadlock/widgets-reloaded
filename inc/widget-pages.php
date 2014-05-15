@@ -85,27 +85,26 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set the $args for wp_list_pages() to the $instance array. */
 		$args = wp_parse_args( $instance, $this->defaults );
 
 		/* Set the $title_li and $echo to false. */
 		$args['title_li'] = false;
-		$args['echo'] = false;
+		$args['echo']     = false;
 
-		/* Open the output of the widget. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
 		if ( !empty( $args['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* Output the page list. */
 		echo '<ul class="xoxo pages">' . str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $args ) ) . '</ul>';
 
-		/* Close the output of the widget. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**

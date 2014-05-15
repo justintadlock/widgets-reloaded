@@ -80,7 +80,6 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set the $args for wp_list_authors() to the $instance array. */
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -88,12 +87,12 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		/* Overwrite the $echo argument and set it to false. */
 		$args['echo'] = false;
 
-		/* Output the theme's $before_widget wrapper. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
 		if ( !empty( $args['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* Get the authors list. */
 		$authors = str_replace( array( "\r", "\n", "\t" ), '', wp_list_authors( $args ) );
@@ -109,8 +108,8 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		/* Display the authors list. */
 		echo $authors;
 
-		/* Close the theme's widget wrapper. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**

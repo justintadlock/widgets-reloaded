@@ -87,13 +87,12 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 * @since 0.6.0
 	 */
 	function widget( $sidebar, $instance ) {
-		extract( $sidebar );
 
 		/* Set the $args for wp_tag_cloud() to the $instance array. */
 		$args = wp_parse_args( $instance, $this->defaults );
 
 		/* Make sure empty callbacks aren't passed for custom functions. */
-		$args['topic_count_text_callback'] = !empty( $args['topic_count_text_callback'] ) ? $args['topic_count_text_callback'] : 'default_topic_count_text';
+		$args['topic_count_text_callback']  = !empty( $args['topic_count_text_callback']  ) ? $args['topic_count_text_callback']  : 'default_topic_count_text';
 		$args['topic_count_scale_callback'] = !empty( $args['topic_count_scale_callback'] ) ? $args['topic_count_scale_callback'] : 'default_topic_count_scale';
 
 		/* If the separator is empty, set it to the default new line. */
@@ -102,12 +101,12 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		/* Overwrite the echo argument. */
 		$args['echo'] = false;
 
-		/* Output the theme's $before_widget wrapper. */
-		echo $before_widget;
+		/* Output the sidebar's $before_widget wrapper. */
+		echo $sidebar['before_widget'];
 
 		/* If a title was input by the user, display it. */
 		if ( !empty( $args['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $after_title;
+			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
 		/* Get the tag cloud. */
 		$tags = str_replace( array( "\r", "\n", "\t" ), ' ', wp_tag_cloud( $args ) );
@@ -125,8 +124,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		/* Output the tag cloud. */
 		echo $tags;
 
-		/* Close the theme's widget wrapper. */
-		echo $after_widget;
+		/* Close the sidebar's widget wrapper. */
+		echo $sidebar['after_widget'];
 	}
 
 	/**
