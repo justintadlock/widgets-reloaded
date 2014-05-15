@@ -79,9 +79,9 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			'show_private'     => false,
 			'show_name'        => false,
 			'class'            => 'linkcat',
-			'link_before'      => '<span>',
-			'link_after'       => '</span>',
-			'between'          => '<br />',
+			'link_before'      => '',
+			'link_after'       => '',
+			'between'          => '&thinsp;&ndash;&thinsp;',
 		);
 	}
 
@@ -98,11 +98,11 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 
 		/* Set up the $before_widget ID for multiple widgets created by the bookmarks widget. */
 		if ( !empty( $instance['categorize'] ) )
-			$before_widget = preg_replace( '/id="[^"]*"/','id="%id"', $before_widget );
+			$sidebar['before_widget'] = preg_replace( '/id="[^"]*"/','id="%id"', $sidebar['before_widget'] );
 
 		/* Add a class to $before_widget if one is set. */
 		if ( !empty( $instance['class'] ) )
-			$before_widget = str_replace( 'class="', 'class="' . esc_attr( $instance['class'] ) . ' ', $before_widget );
+			$sidebar['before_widget'] = str_replace( 'class="', 'class="' . esc_attr( $instance['class'] ) . ' ', $sidebar['before_widget'] );
 
 		/* Set the $args for wp_list_bookmarks() to the $instance array. */
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -144,7 +144,8 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -153,24 +154,39 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
 
-		/* Set the instance to the new instance. */
-		$instance = $new_instance;
-
+		/* Strip tags. */
 		$instance['title_li'] = strip_tags( $new_instance['title_li'] );
-		$instance['limit']    = strip_tags( $new_instance['limit']    );
-		$instance['class']    = strip_tags( $new_instance['class']    );
 		$instance['search']   = strip_tags( $new_instance['search']   );
 
-		$instance['category_order']   = $new_instance['category_order'];
-		$instance['category_orderby'] = $new_instance['category_orderby'];
-		$instance['orderby']          = $new_instance['orderby'];
-		$instance['order']            = $new_instance['order'];
-		$instance['between']          = $new_instance['between'];
-		$instance['link_before']      = $new_instance['link_before'];
-		$instance['link_after']       = $new_instance['link_after'];
+		/* Arrays of post IDs (integers). */
+		$instance['category']         = array_map( 'absint', $new_instance['category']         );
+		$instance['exclude_category'] = array_map( 'absint', $new_instance['exclude_category'] );
+		$instance['include']          = array_map( 'absint', $new_instance['include']          );
+		$instance['exclude']          = array_map( 'absint', $new_instance['exclude']          );
 
+		/* HTML class. */
+		$instance['class'] = sanitize_html_class( $new_instance['class'] );
+
+		/* Integers. */
+		$instance['limit'] = intval( $new_instance['limit'] );
+
+		/* Whitelist options. */
+		$category_order = $order = array( 'ASC', 'DESC' );
+		$category_orderby        = array( 'count', 'ID', 'name', 'slug' );
+		$orderby                 = array( 'id', 'description', 'length', 'name', 'notes', 'owner', 'rand', 'rating', 'rel', 'rss', 'target', 'updated', 'url' );
+
+		$instance['category_order']   = in_array( $new_instance['category_order'],   $category_order )   ? $new_instance['category_order']   : 'ASC';
+		$instance['category_orderby'] = in_array( $new_instance['category_orderby'], $category_orderby ) ? $new_instance['category_orderby'] : 'name';
+		$instance['order']            = in_array( $new_instance['order'],            $order )            ? $new_instance['order']            : 'ASC';
+		$instance['orderby']          = in_array( $new_instance['orderby'],          $orderby )          ? $new_instance['orderby']          : 'name';
+
+		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
+		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
+		$instance['between']     = current_user_can( 'unfiltered_html' ) ? $new_instance['between']     : wp_filter_post_kses( $new_instance['between']     );
+
+		/* Checkboxes. */
 		$instance['categorize']       = isset( $new_instance['categorize'] )       ? 1 : 0;
 		$instance['hide_invisible']   = isset( $new_instance['hide_invisible'] )   ? 1 : 0;
 		$instance['show_private']     = isset( $new_instance['show_private'] )     ? 1 : 0;
@@ -180,6 +196,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$instance['show_name']        = isset( $new_instance['show_name'] )        ? 1 : 0;
 		$instance['show_description'] = isset( $new_instance['show_description'] ) ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 
@@ -199,7 +216,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$terms     = get_terms( 'link_category' );
 		$bookmarks = get_bookmarks( array( 'hide_invisible' => false ) );
 
-		$category_order = array( 
+		$category_order = $order = array( 
 			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
@@ -209,11 +226,6 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			'ID'    => esc_attr__( 'ID',    'widgets-reloaded' ), 
 			'name'  => esc_attr__( 'Name',  'widgets-reloaded' ), 
 			'slug'  => esc_attr__( 'Slug',  'widgets-reloaded' ) 
-		);
-
-		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
-			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
 		);
 
 		$orderby = array( 

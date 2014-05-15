@@ -119,7 +119,8 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -128,24 +129,38 @@ class Hybrid_Widget_Authors extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
 
-		$instance = $new_instance;
+		/* Strip tags. */
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['feed']  = strip_tags( $new_instance['feed']  );
 
-		$instance['title']   = strip_tags( $new_instance['title']   );
-		$instance['feed']    = strip_tags( $new_instance['feed']    );
-		$instance['order']   = strip_tags( $new_instance['order']   );
-		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
-		$instance['number']  = strip_tags( $new_instance['number']  );
-		$instance['include'] = strip_tags( $new_instance['include'] );
-		$instance['exclude'] = strip_tags( $new_instance['exclude'] );
+		/* Whitelist options. */
+		$order   = array( 'ASC', 'DESC' );
+		$orderby = array( 'display_name', 'email', 'ID', 'nicename', 'post_count', 'registered', 'url', 'user_login' );
+		$style   = array( 'list', 'none' );
 
+		$instance['order']   = in_array( $new_instance['order'], $order )     ? $new_instance['order']   : 'ASC';
+		$instance['orderby'] = in_array( $new_instance['orderby'], $orderby ) ? $new_instance['orderby'] : 'display_name';
+		$instance['style']   = in_array( $new_instance['style'], $style )     ? $new_instance['style']   : 'list';
+
+		/* Integers. */
+		$instance['number'] = intval( $new_instance['number'] );
+
+		/* Only allow integers and commas. */
+		$instance['include'] = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
+		$instance['exclude'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
+
+		/* URLs. */
+		$instance['feed_image'] = esc_url_raw( $new_instance['feed_image'] );
+
+		/* Checkboxes. */
 		$instance['html']          = isset( $new_instance['html'] )          ? 1 : 0;
 		$instance['optioncount']   = isset( $new_instance['optioncount'] )   ? 1 : 0;
 		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? 1 : 0;
 		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? 1 : 0;
 		$instance['hide_empty']    = isset( $new_instance['hide_empty'] )    ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 
@@ -178,6 +193,11 @@ class Hybrid_Widget_Authors extends WP_Widget {
 			'user_login'   => esc_attr__( 'Login',        'widgets-reloaded' ) 
 		);
 
+		$style = array( 
+			'list' => esc_attr__( 'List', 'widgets-reloaded'), 
+			'none' => esc_attr__( 'None', 'widgets-reloaded' ) 
+		);
+
 		?>
 
 		<div class="hybrid-widget-controls columns-2">
@@ -208,7 +228,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label> 
 			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
-				<?php foreach ( array( 'list' => esc_attr__( 'List', 'widgets-reloaded'), 'none' => esc_attr__( 'None', 'widgets-reloaded' ) ) as $option_value => $option_label ) { ?>
+				<?php foreach ( $style as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['style'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>

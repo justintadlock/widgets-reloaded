@@ -126,7 +126,8 @@ class Hybrid_Widget_Categories extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -135,38 +136,51 @@ class Hybrid_Widget_Categories extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-
-		/* Set the instance to the new instance. */
-		$instance = $new_instance;
 
 		/* If new taxonomy is chosen, reset includes and excludes. */
-		if ( $instance['taxonomy'] !== $old_instance['taxonomy'] && '' !== $old_instance['taxonomy'] ) {
-			$instance['include'] = array();
-			$instance['exclude'] = array();
-		}
+		if ( $new_instance['taxonomy'] !== $old_instance['taxonomy'] )
+			$new_instance['include'] = $new_instance['exclude'] = '';
 
-		$instance['taxonomy'] = $new_instance['taxonomy'];
+		/* Sanitize key. */
+		$instance['taxonomy'] = sanitize_key( $new_instance['taxonomy'] );
 
-		$instance['feed_image'] = esc_url( $new_instance['feed_image'] );
-
+		/* Strip tags. */
 		$instance['title']            = strip_tags( $new_instance['title']            );
-		$instance['depth']            = strip_tags( $new_instance['depth']            );
-		$instance['number']           = strip_tags( $new_instance['number']           );
-		$instance['child_of']         = strip_tags( $new_instance['child_of']         );
-		$instance['current_category'] = strip_tags( $new_instance['current_category'] );
-		$instance['feed']             = strip_tags( $new_instance['feed']             );
 		$instance['search']           = strip_tags( $new_instance['search']           );
+		$instance['feed']             = strip_tags( $new_instance['feed']             );
 
+		/* Whitelist options. */
+		$order   = array( 'ASC', 'DESC' );
+		$orderby = array( 'count', 'ID', 'name', 'slug', 'term_group' );
+		$style   = array( 'list', 'none' );
+		$feed_type = array( '', 'atom', 'rdf', 'rss', 'rss2' );
+
+		$instance['order']     = in_array( $new_instance['order'],     $order )     ? $new_instance['order']     : 'ASC';
+		$instance['orderby']   = in_array( $new_instance['orderby'],   $orderby )   ? $new_instance['orderby']   : 'name';
+		$instance['style']     = in_array( $new_instance['style'],     $style )     ? $new_instance['style']     : 'list';
+		$instance['feed_type'] = in_array( $new_instance['feed_type'], $feed_type ) ? $new_instance['feed_type'] : '';
+
+		/* Integers. */
+		$instance['number']           = intval( $new_instance['number']           );
+		$instance['depth']            = absint( $new_instance['depth']            );
+		$instance['child_of']         = absint( $new_instance['child_of']         );
+		$instance['current_category'] = absint( $new_instance['current_category'] );
+
+		/* Only allow integers and commas. */
 		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include']      );
 		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude']      );
 		$instance['exclude_tree'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude_tree'] );
 
+		/* URLs. */
+		$instance['feed_image'] = esc_url_raw( $new_instance['feed_image'] );
+
+		/* Checkboxes. */
 		$instance['hierarchical']       = isset( $new_instance['hierarchical'] )       ? 1 : 0;
 		$instance['use_desc_for_title'] = isset( $new_instance['use_desc_for_title'] ) ? 1 : 0;
 		$instance['show_count']         = isset( $new_instance['show_count'] )         ? 1 : 0;
 		$instance['hide_empty']         = isset( $new_instance['hide_empty'] )         ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 

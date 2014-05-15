@@ -98,7 +98,8 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -108,10 +109,13 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		$instance['title']   = strip_tags( $new_instance['title'] );
+		/* Strip tags. */
+		$instance['title'] = strip_tags( $new_instance['title'] );
 
+		/* Checkboxes. */
 		$instance['initial'] = isset( $new_instance['initial'] ) ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 

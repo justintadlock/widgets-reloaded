@@ -138,7 +138,8 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -148,15 +149,29 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		$instance = $new_instance;
-
+		/* Strip tags. */
 		$instance['title']  = strip_tags( $new_instance['title']  );
-		$instance['before'] = strip_tags( $new_instance['before'] );
-		$instance['after']  = strip_tags( $new_instance['after']  );
-		$instance['limit']  = strip_tags( $new_instance['limit']  );
 
-		$instance['show_post_count'] = ( isset( $new_instance['show_post_count'] ) ? 1 : 0 );
+		/* Whitelist options. */
+		$type   = array( 'alpha', 'daily', 'monthly', 'postbypost', 'weekly', 'yearly' );
+		$order  = array( 'ASC', 'DESC' );
+		$format = array( 'custom', 'html', 'option' );
 
+		$instance['type']   = in_array( $new_instance['type'], $type )     ? $new_instance['type']   : 'monthly';
+		$instance['order']  = in_array( $new_instance['order'], $order )   ? $new_instance['order']  : 'DESC';
+		$instance['format'] = in_array( $new_instance['format'], $format ) ? $new_instance['format'] : 'html';
+
+		/* Integers. */
+		$instance['limit']  = intval( $new_instance['limit'] );
+
+		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		$instance['before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['before'] : wp_filter_post_kses( $new_instance['before'] );
+		$instance['after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['after']  : wp_filter_post_kses( $new_instance['after']  );
+
+		/* Checkboxes. */
+		$instance['show_post_count'] = isset( $new_instance['show_post_count'] ) ? 1 : 0;
+
+		/* Return sanitized options. */
 		return $instance;
 	}
 

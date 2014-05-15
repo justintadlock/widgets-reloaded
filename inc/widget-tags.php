@@ -135,7 +135,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -144,36 +145,49 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
 
-		/* Set the instance to the new instance. */
-		$instance = $new_instance;
+		/* Strip tags. */
+		$instance['title']      = strip_tags( $new_instance['title']      );
+		$instance['separator']  = strip_tags( $new_instance['separator']  );
+		$instance['name__like'] = strip_tags( $new_instance['name__like'] );
+		$instance['search']     = strip_tags( $new_instance['search']     );
 
-		$instance['title']                      = strip_tags( $new_instance['title']                      );
-		$instance['smallest']                   = strip_tags( $new_instance['smallest']                   );
-		$instance['largest']                    = strip_tags( $new_instance['largest']                    );
-		$instance['number']                     = strip_tags( $new_instance['number']                     );
-		$instance['separator']                  = strip_tags( $new_instance['separator']                  );
-		$instance['name__like']                 = strip_tags( $new_instance['name__like']                 );
-		$instance['search']                     = strip_tags( $new_instance['search']                     );
-		$instance['child_of']                   = strip_tags( $new_instance['child_of']                   );
-		$instance['parent']                     = strip_tags( $new_instance['parent']                     );
-		$instance['topic_count_text_callback']  = strip_tags( $new_instance['topic_count_text_callback']  );
-		$instance['topic_count_scale_callback'] = strip_tags( $new_instance['topic_count_scale_callback'] );
+		/* Sanitize key. */
+		$instance['taxonomy'] = array_map( 'sanitize_key', $new_instance['taxonomy'] );
 
+		/* Whitelist options. */
+		$order   = array( 'ASC', 'DESC', 'RAND' );
+		$orderby = array( 'count', 'name' );
+		$format  = array( 'flat', 'list' );
+		$unit    = array( 'pt', 'px', 'em', '%' );
+		$link    = array( 'view', 'edit' );
+
+		$instance['order']   = in_array( $new_instance['order'],   $order )   ? $new_instance['order']   : 'ASC';
+		$instance['orderby'] = in_array( $new_instance['orderby'], $orderby ) ? $new_instance['orderby'] : 'name';
+		$instance['format']  = in_array( $new_instance['format'],  $format )  ? $new_instance['format']  : 'view';
+		$instance['unit']    = in_array( $new_instance['unit'],    $unit )    ? $new_instance['unit']    : 'pt';
+		$instance['link']    = in_array( $new_instance['link'],    $link )    ? $new_instance['link']    : 'view';
+
+		/* Integers. */
+		$instance['number']   = intval( $new_instance['number']   );
+		$instance['smallest'] = absint( $new_instance['smallest'] );
+		$instance['largest']  = absint( $new_instance['largest']  );
+		$instance['child_of'] = absint( $new_instance['child_of'] );
+		$instance['parent']   = absint( $new_instance['parent']   );
+
+		/* Only allow integers and commas. */
 		$instance['include'] = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
 		$instance['exclude'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
 
-		$instance['unit']     = $new_instance['unit'];
-		$instance['format']   = $new_instance['format'];
-		$instance['orderby']  = $new_instance['orderby'];
-		$instance['order']    = $new_instance['order'];
-		$instance['taxonomy'] = $new_instance['taxonomy'];
-		$instance['link']     = $new_instance['link'];
+		/* Check if function exists. */
+		$instance['topic_count_text_callback']  = function_exists( $new_instance['topic_count_text_callback'] )  ? $new_instance['topic_count_text_callback']  : 'default_topic_count_text';
+		$instance['topic_count_scale_callback'] = function_exists( $new_instance['topic_count_scale_callback'] ) ? $new_instance['topic_count_scale_callback'] : 'default_topic_count_scale';
 
+		/* Checkboxes. */
 		$instance['pad_counts'] = isset( $new_instance['pad_counts'] ) ? 1 : 0;
 		$instance['hide_empty'] = isset( $new_instance['hide_empty'] ) ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 

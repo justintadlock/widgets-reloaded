@@ -108,7 +108,8 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.8.0
 	 * @access public
@@ -117,19 +118,36 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
 
-		$instance = $new_instance;
-
+		/* Strip tags. */
 		$instance['title']           = strip_tags( $new_instance['title']           );
-		$instance['depth']           = strip_tags( $new_instance['depth']           );
-		$instance['container_id']    = strip_tags( $new_instance['container_id']    );
-		$instance['container_class'] = strip_tags( $new_instance['container_class'] );
-		$instance['menu_id']         = strip_tags( $new_instance['menu_id']         );
-		$instance['menu_class']      = strip_tags( $new_instance['menu_class']      );
-		$instance['fallback_cb']     = strip_tags( $new_instance['fallback_cb']     );
+		$instance['menu']            = strip_tags( $new_instance['menu']            );
 		$instance['theme_location']  = strip_tags( $new_instance['theme_location']  );
 
+		/* Whitelist options. */
+		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
+
+		$instance['container'] = in_array( $new_instance['container'], $container ) ? $new_instance['container'] : 'div';
+
+		/* Integers. */
+		$instance['depth'] = absint( $new_instance['depth'] );
+
+		/* HTML class. */
+		$instance['container_id']    = sanitize_html_class( $new_instance['container_id']    );
+		$instance['container_class'] = sanitize_html_class( $new_instance['container_class'] );
+		$instance['menu_id']         = sanitize_html_class( $new_instance['menu_id']         );
+		$instance['menu_class']      = sanitize_html_class( $new_instance['menu_class']      );
+
+		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		$instance['before']      = current_user_can( 'unfiltered_html' ) ? $new_instance['before']      : wp_filter_post_kses( $new_instance['before']      );
+		$instance['after']       = current_user_can( 'unfiltered_html' ) ? $new_instance['after']       : wp_filter_post_kses( $new_instance['after']       );
+		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
+		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
+
+		/* Function name. */
+		$instance['fallback_cb'] = function_exists( $new_instance['fallback_cb'] ) ? $new_instance['fallback_cb'] : 'wp_page_menu';
+
+		/* Return sanitized options. */
 		return $instance;
 	}
 

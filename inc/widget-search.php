@@ -92,7 +92,8 @@ class Hybrid_Widget_Search extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -102,8 +103,10 @@ class Hybrid_Widget_Search extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
+		/* Strip tags. */
 		$instance['title'] = strip_tags( $new_instance['title'] );
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 

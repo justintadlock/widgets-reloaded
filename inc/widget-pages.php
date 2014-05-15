@@ -114,7 +114,8 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	}
 
 	/**
-	 * Updates the widget control options for the particular instance of the widget.
+	 * The update callback for the widget control options.  This method is used to sanitize and/or
+	 * validate the options before saving them into the database.
 	 *
 	 * @since  0.6.0
 	 * @access public
@@ -123,34 +124,45 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
 
-		/* Set the instance to the new instance. */
-		$instance = $new_instance;
-
+		/* Strip tags. */
 		$instance['title']       = strip_tags( $new_instance['title']       );
-		$instance['depth']       = strip_tags( $new_instance['depth']       );
-		$instance['child_of']    = strip_tags( $new_instance['child_of']    );
 		$instance['meta_key']    = strip_tags( $new_instance['meta_key']    );
 		$instance['meta_value']  = strip_tags( $new_instance['meta_value']  );
 		$instance['date_format'] = strip_tags( $new_instance['date_format'] );
-		$instance['number']      = strip_tags( $new_instance['number']      );
-		$instance['offset']      = strip_tags( $new_instance['offset']      );
 
+		/* Sanitize key. */
+		$instance['post_type'] = sanitize_key( $new_instance['post_type'] );
+
+		/* Whitelist options. */
+		$sort_order  = array( 'ASC', 'DESC' );
+		$sort_column = array( 'post_author', 'post_date', 'ID', 'menu_order', 'post_modified', 'post_name', 'post_title' );
+		$show_date   = array( '', 'created', 'modified' );
+
+		$instance['sort_column'] = in_array( $new_instance['sort_column'], $sort_column ) ? $new_instance['sort_column'] : 'post_title';
+		$instance['sort_order']  = in_array( $new_instance['sort_order'],  $sort_order  ) ? $new_instance['sort_order']  : 'ASC';
+		$instance['show_date']   = in_array( $new_instance['show_date'],   $show_date   ) ? $new_instance['show_date']   : '';
+
+		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
+		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
+
+		/* Integers. */
+		$instance['number']   = intval( $new_instance['number']   );
+		$instance['depth']    = absint( $new_instance['depth']    );
+		$instance['child_of'] = absint( $new_instance['child_of'] );
+		$instance['offset']   = absint( $new_instance['offset']   );
+
+		/* Only allow integers and commas. */
 		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include']      );
 		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude']      );
 		$instance['exclude_tree'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude_tree'] );
 		$instance['authors']      = preg_replace( '/[^0-9,]/', '', $new_instance['authors']      );
 
-		$instance['post_type']   = $new_instance['post_type'];
-		$instance['sort_column'] = $new_instance['sort_column'];
-		$instance['sort_order']  = $new_instance['sort_order'];
-		$instance['show_date']   = $new_instance['show_date'];
-		$instance['link_before'] = $new_instance['link_before'];
-		$instance['link_after']  = $new_instance['link_after'];
-
+		/* Checkboxes. */
 		$instance['hierarchical'] = isset( $new_instance['hierarchical'] ) ? 1 : 0;
 
+		/* Return sanitized options. */
 		return $instance;
 	}
 
