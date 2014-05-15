@@ -22,7 +22,7 @@
  * @version   0.6.0
  * @since     0.1.0
  * @author    Justin Tadlock <justin@justintadlock.com>
- * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
+ * @copyright Copyright (c) 2008 - 2014, Justin Tadlock
  * @link      http://themehybrid.com/plugins/widgets-reloaded
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
