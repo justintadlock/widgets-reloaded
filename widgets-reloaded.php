@@ -122,15 +122,15 @@ final class Widgets_Reloaded_Plugin {
 	 * @return void
 	 */
 	public function includes() {
-		require_once( $this->directory_path . 'inc/widget-archives.php' );
-		require_once( $this->directory_path . 'inc/widget-authors.php' );
-		require_once( $this->directory_path . 'inc/widget-bookmarks.php' );
-		require_once( $this->directory_path . 'inc/widget-calendar.php' );
+		require_once( $this->directory_path . 'inc/widget-archives.php'   );
+		require_once( $this->directory_path . 'inc/widget-authors.php'    );
+		require_once( $this->directory_path . 'inc/widget-bookmarks.php'  );
+		require_once( $this->directory_path . 'inc/widget-calendar.php'   );
 		require_once( $this->directory_path . 'inc/widget-categories.php' );
-		require_once( $this->directory_path . 'inc/widget-nav-menu.php' );
-		require_once( $this->directory_path . 'inc/widget-pages.php' );
-		require_once( $this->directory_path . 'inc/widget-search.php' );
-		require_once( $this->directory_path . 'inc/widget-tags.php' );
+		require_once( $this->directory_path . 'inc/widget-nav-menu.php'   );
+		require_once( $this->directory_path . 'inc/widget-pages.php'      );
+		require_once( $this->directory_path . 'inc/widget-search.php'     );
+		require_once( $this->directory_path . 'inc/widget-tags.php'       );
 	}
 
 	/**
@@ -155,14 +155,14 @@ final class Widgets_Reloaded_Plugin {
 	public function register_widgets() {
 
 		/* Unregister the default WordPress widgets. */
-		unregister_widget( 'WP_Widget_Archives' );
-		unregister_widget( 'WP_Widget_Calendar' );
+		unregister_widget( 'WP_Widget_Archives'   );
+		unregister_widget( 'WP_Widget_Calendar'   );
 		unregister_widget( 'WP_Widget_Categories' );
-		unregister_widget( 'WP_Widget_Links' );
-		unregister_widget( 'WP_Nav_Menu_Widget' );
-		unregister_widget( 'WP_Widget_Pages' );
-		unregister_widget( 'WP_Widget_Search' );
-		unregister_widget( 'WP_Widget_Tag_Cloud' );
+		unregister_widget( 'WP_Widget_Links'      );
+		unregister_widget( 'WP_Nav_Menu_Widget'   );
+		unregister_widget( 'WP_Widget_Pages'      );
+		unregister_widget( 'WP_Widget_Search'     );
+		unregister_widget( 'WP_Widget_Tag_Cloud'  );
 
 		/* Register the archives widget. */
 		register_widget( 'Hybrid_Widget_Archives' );
@@ -223,5 +223,3 @@ final class Widgets_Reloaded_Plugin {
 }
 
 Widgets_Reloaded_Plugin::get_instance();
-
-?>
