@@ -32,7 +32,9 @@ class Hybrid_Widget_Search extends WP_Widget {
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
-	 * @since 1.2.0
+	 * @since  1.2.0
+	 * @access public
+	 * @return void
 	 */
 	function __construct() {
 
@@ -69,7 +71,11 @@ class Hybrid_Widget_Search extends WP_Widget {
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $sidebar
+	 * @param  array  $instance
+	 * @return void
 	 */
 	function widget( $sidebar, $instance ) {
 
@@ -124,7 +130,11 @@ class Hybrid_Widget_Search extends WP_Widget {
 	/**
 	 * Updates the widget control options for the particular instance of the widget.
 	 *
-	 * @since 0.6.0
+	 * @since  0.6.0
+	 * @access public
+	 * @param  array  $new_instance
+	 * @param  array  $old_instance
+	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
