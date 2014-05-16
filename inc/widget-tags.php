@@ -58,6 +58,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		);
 
 		/* Set up the defaults. */
+		$topic_count_text = _n_noop( '%s topic', '%s topics', 'widgets-reloaded' );
+
 		$this->defaults = array(
 			'title'                      => esc_attr__( 'Tags', 'widgets-reloaded' ),
 			'order'                      => 'ASC',
@@ -78,7 +80,9 @@ class Hybrid_Widget_Tags extends WP_Widget {
 			'pad_counts'                 => false,
 			'search'                     => '',
 			'name__like'                 => '',
-			'topic_count_text_callback'  => 'default_topic_count_text',
+			'single_text'                => $topic_count_text['singular'],
+			'multiple_text'              => $topic_count_text['plural'],
+			'topic_count_text_callback'  => '',
 			'topic_count_scale_callback' => 'default_topic_count_scale',
 		);
 	}
@@ -98,7 +102,7 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$args = wp_parse_args( $instance, $this->defaults );
 
 		/* Make sure empty callbacks aren't passed for custom functions. */
-		$args['topic_count_text_callback']  = !empty( $args['topic_count_text_callback']  ) ? $args['topic_count_text_callback']  : 'default_topic_count_text';
+		$args['topic_count_text_callback']  = !empty( $args['topic_count_text_callback']  ) ? $args['topic_count_text_callback']  : '';
 		$args['topic_count_scale_callback'] = !empty( $args['topic_count_scale_callback'] ) ? $args['topic_count_scale_callback'] : 'default_topic_count_scale';
 
 		/* If the separator is empty, set it to the default new line. */
@@ -151,6 +155,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$instance['separator']  = strip_tags( $new_instance['separator']  );
 		$instance['name__like'] = strip_tags( $new_instance['name__like'] );
 		$instance['search']     = strip_tags( $new_instance['search']     );
+		$instance['single_text']     = strip_tags( $new_instance['single_text']     );
+		$instance['multiple_text']     = strip_tags( $new_instance['multiple_text']     );
 
 		/* Sanitize key. */
 		$instance['taxonomy'] = array_map( 'sanitize_key', $new_instance['taxonomy'] );
@@ -274,6 +280,14 @@ class Hybrid_Widget_Tags extends WP_Widget {
 				<?php } ?>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><code>link</code></label> 
+			<select class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>">
+				<?php foreach ( $link as $option_value => $option_label ) { ?>
+					<option value="<?php echo $option_value; ?>" <?php selected( $instance['link'], $option_value ); ?>><?php echo $option_label; ?></option>
+				<?php } ?>
+			</select>
+		</p>
 		</div>
 
 		<div class="hybrid-widget-controls columns-3">
@@ -318,23 +332,23 @@ class Hybrid_Widget_Tags extends WP_Widget {
 			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'parent' ); ?>" name="<?php echo $this->get_field_name( 'parent' ); ?>" value="<?php echo esc_attr( $instance['parent'] ); ?>" placeholder="0" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><code>link</code></label> 
-			<select class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>">
-				<?php foreach ( $link as $option_value => $option_label ) { ?>
-					<option value="<?php echo $option_value; ?>" <?php selected( $instance['link'], $option_value ); ?>><?php echo $option_label; ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		</div>
-
-		<div class="hybrid-widget-controls columns-3 column-last">
-		<p>
 			<label for="<?php echo $this->get_field_id( 'search' ); ?>"><code>search</code></label>
 			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'search' ); ?>" name="<?php echo $this->get_field_name( 'search' ); ?>" value="<?php echo esc_attr( $instance['search'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'name__like' ); ?>"><code>name__like</code></label>
 			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'name__like' ); ?>" name="<?php echo $this->get_field_name( 'name__like' ); ?>" value="<?php echo esc_attr( $instance['name__like'] ); ?>" />
+		</p>
+		</div>
+
+		<div class="hybrid-widget-controls columns-3 column-last">
+		<p>
+			<label for="<?php echo $this->get_field_id( 'single_text' ); ?>"><code>single_text</code></label>
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'single_text' ); ?>" name="<?php echo $this->get_field_name( 'single_text' ); ?>" value="<?php echo esc_attr( $instance['single_text'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['single_text'] ); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'multiple_text' ); ?>"><code>multiple_text</code></label>
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'multiple_text' ); ?>" name="<?php echo $this->get_field_name( 'multiple_text' ); ?>" value="<?php echo esc_attr( $instance['multiple_text'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['multiple_text'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>"><code>topic_count_text_callback</code></label>
