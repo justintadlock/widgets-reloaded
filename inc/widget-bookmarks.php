@@ -248,7 +248,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		<div class="hybrid-widget-controls columns-3">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title_li' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title_li' ); ?>" name="<?php echo $this->get_field_name( 'title_li' ); ?>" value="<?php echo esc_attr( $instance['title_li'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title_li' ); ?>" name="<?php echo $this->get_field_name( 'title_li' ); ?>" value="<?php echo esc_attr( $instance['title_li'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title_li'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'category_order' ); ?>"><code>category_order</code></label> 
@@ -284,7 +284,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'class' ); ?>"><code>class</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'class' ); ?>" name="<?php echo $this->get_field_name( 'class' ); ?>" value="<?php echo esc_attr( $instance['class'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'class' ); ?>" name="<?php echo $this->get_field_name( 'class' ); ?>" value="<?php echo esc_attr( $instance['class'] ); ?>" placeholder="linkcat" />
 		</p>
 
 		</div>
@@ -293,7 +293,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><code>limit</code></label>
-			<input type="number" class="smallfat code" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" min="-1" size="5" />
+			<input type="number" class="smallfat code" size="5" min="-1" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="-1" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
@@ -337,7 +337,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		<div class="hybrid-widget-controls columns-3 column-last">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'between' ); ?>"><code>between</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'between' ); ?>" name="<?php echo $this->get_field_name( 'between' ); ?>" value="<?php echo esc_attr( $instance['between'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'between' ); ?>" name="<?php echo $this->get_field_name( 'between' ); ?>" value="<?php echo esc_attr( $instance['between'] ); ?>" placeholder="&thinsp;&ndash;&thinsp;" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link_before' ); ?>"><code>link_before</code></label>

@@ -180,8 +180,8 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$instance['exclude'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
 
 		/* Check if function exists. */
-		$instance['topic_count_text_callback']  = function_exists( $new_instance['topic_count_text_callback'] )  ? $new_instance['topic_count_text_callback']  : 'default_topic_count_text';
-		$instance['topic_count_scale_callback'] = function_exists( $new_instance['topic_count_scale_callback'] ) ? $new_instance['topic_count_scale_callback'] : 'default_topic_count_scale';
+		$instance['topic_count_text_callback']  = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['topic_count_text_callback'] )  ? $new_instance['topic_count_text_callback']  : 'default_topic_count_text';
+		$instance['topic_count_scale_callback'] = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['topic_count_scale_callback'] ) ? $new_instance['topic_count_scale_callback'] : 'default_topic_count_scale';
 
 		/* Checkboxes. */
 		$instance['pad_counts'] = isset( $new_instance['pad_counts'] ) ? 1 : 0;
@@ -240,7 +240,7 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		<div class="hybrid-widget-controls columns-3">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><code>taxonomy</code></label> 
@@ -279,23 +279,23 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		<div class="hybrid-widget-controls columns-3">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><code>number</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" />
+			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="25" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'largest' ); ?>"><code>largest</code></label>
-			<input type="number" class="smallfat code" size="5" min="1" id="<?php echo $this->get_field_id( 'largest' ); ?>" name="<?php echo $this->get_field_name( 'largest' ); ?>" value="<?php echo esc_attr( $instance['largest'] ); ?>" />
+			<input type="number" class="smallfat code" size="5" min="1" id="<?php echo $this->get_field_id( 'largest' ); ?>" name="<?php echo $this->get_field_name( 'largest' ); ?>" value="<?php echo esc_attr( $instance['largest'] ); ?>" placeholder="22" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'smallest' ); ?>"><code>smallest</code></label>
-			<input type="number" class="smallfat code" size="5" min="1" id="<?php echo $this->get_field_id( 'smallest' ); ?>" name="<?php echo $this->get_field_name( 'smallest' ); ?>" value="<?php echo esc_attr( $instance['smallest'] ); ?>" />
+			<input type="number" class="smallfat code" size="5" min="1" id="<?php echo $this->get_field_id( 'smallest' ); ?>" name="<?php echo $this->get_field_name( 'smallest' ); ?>" value="<?php echo esc_attr( $instance['smallest'] ); ?>" placeholder="8" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'unit' ); ?>"><code>unit</code></label> 
@@ -307,15 +307,15 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'separator' ); ?>"><code>separator</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'separator' ); ?>" name="<?php echo $this->get_field_name( 'separator' ); ?>" value="<?php echo esc_attr( $instance['separator'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'separator' ); ?>" name="<?php echo $this->get_field_name( 'separator' ); ?>" value="<?php echo esc_attr( $instance['separator'] ); ?>" placeholder="&thinsp;&ndash;&thinsp;" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'child_of' ); ?>"><code>child_of</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'child_of' ); ?>" name="<?php echo $this->get_field_name( 'child_of' ); ?>" value="<?php echo esc_attr( $instance['child_of'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'child_of' ); ?>" name="<?php echo $this->get_field_name( 'child_of' ); ?>" value="<?php echo esc_attr( $instance['child_of'] ); ?>" placeholder="0" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'parent' ); ?>"><code>parent</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'parent' ); ?>" name="<?php echo $this->get_field_name( 'parent' ); ?>" value="<?php echo esc_attr( $instance['parent'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'parent' ); ?>" name="<?php echo $this->get_field_name( 'parent' ); ?>" value="<?php echo esc_attr( $instance['parent'] ); ?>" placeholder="0" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><code>link</code></label> 
@@ -338,11 +338,11 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>"><code>topic_count_text_callback</code></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_text_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_text_callback'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_text_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_text_callback'] ); ?>" placeholder="default_topic_count_text" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'topic_count_scale_callback' ); ?>"><code>topic_count_scale_callback</code></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_scale_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_scale_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_scale_callback'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_scale_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_scale_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_scale_callback'] ); ?>" placeholder="default_topic_count_scale" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'pad_counts' ); ?>">

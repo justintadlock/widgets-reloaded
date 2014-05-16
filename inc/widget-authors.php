@@ -203,7 +203,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		<div class="hybrid-widget-controls columns-2">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
@@ -223,7 +223,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><code>number</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label> 
@@ -235,14 +235,14 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" />
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		</div>
 
 		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" />
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'feed' ); ?>"><code>feed</code></label>
@@ -250,7 +250,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'feed_image' ); ?>"><code>feed_image</code></label>
-			<input type="url" class="widefat code" id="<?php echo $this->get_field_id( 'feed_image' ); ?>" name="<?php echo $this->get_field_name( 'feed_image' ); ?>" value="<?php echo esc_attr( $instance['feed_image'] ); ?>" />
+			<input type="url" class="widefat code" id="<?php echo $this->get_field_id( 'feed_image' ); ?>" name="<?php echo $this->get_field_name( 'feed_image' ); ?>" value="<?php echo esc_attr( $instance['feed_image'] ); ?>" placeholder="<?php echo esc_attr( home_url( 'images/example.png' ) ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'html' ); ?>">

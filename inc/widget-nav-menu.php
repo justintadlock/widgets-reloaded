@@ -145,7 +145,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
 
 		/* Function name. */
-		$instance['fallback_cb'] = function_exists( $new_instance['fallback_cb'] ) ? $new_instance['fallback_cb'] : 'wp_page_menu';
+		$instance['fallback_cb'] = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['fallback_cb'] ) ? $new_instance['fallback_cb'] : 'wp_page_menu';
 
 		/* Return sanitized options. */
 		return $instance;
@@ -171,7 +171,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		<div class="hybrid-widget-controls columns-2">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'menu' ); ?>"><code>menu</code></label> 
@@ -192,26 +192,26 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'container_id' ); ?>"><code>container_id</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'container_id' ); ?>" name="<?php echo $this->get_field_name( 'container_id' ); ?>" value="<?php echo esc_attr( $instance['container_id'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'container_id' ); ?>" name="<?php echo $this->get_field_name( 'container_id' ); ?>" value="<?php echo esc_attr( $instance['container_id'] ); ?>" placeholder="example" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'container_class' ); ?>"><code>container_class</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'container_class' ); ?>" name="<?php echo $this->get_field_name( 'container_class' ); ?>" value="<?php echo esc_attr( $instance['container_class'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'container_class' ); ?>" name="<?php echo $this->get_field_name( 'container_class' ); ?>" value="<?php echo esc_attr( $instance['container_class'] ); ?>" placeholder="example" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'menu_id' ); ?>"><code>menu_id</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'menu_id' ); ?>" name="<?php echo $this->get_field_name( 'menu_id' ); ?>" value="<?php echo esc_attr( $instance['menu_id'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'menu_id' ); ?>" name="<?php echo $this->get_field_name( 'menu_id' ); ?>" value="<?php echo esc_attr( $instance['menu_id'] ); ?>" placeholder="example" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'menu_class' ); ?>"><code>menu_class</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'menu_class' ); ?>" name="<?php echo $this->get_field_name( 'menu_class' ); ?>" value="<?php echo esc_attr( $instance['menu_class'] ); ?>" />
+			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'menu_class' ); ?>" name="<?php echo $this->get_field_name( 'menu_class' ); ?>" value="<?php echo esc_attr( $instance['menu_class'] ); ?>" placeholder="example" />
 		</p>
 		</div>
 
 		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'depth' ); ?>"><code>depth</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" />
+			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" placeholder="0" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'before' ); ?>"><code>before</code></label>
@@ -231,7 +231,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'fallback_cb' ); ?>"><code>fallback_cb</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'fallback_cb' ); ?>" name="<?php echo $this->get_field_name( 'fallback_cb' ); ?>" value="<?php echo esc_attr( $instance['fallback_cb'] ); ?>" />
+			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'fallback_cb' ); ?>" name="<?php echo $this->get_field_name( 'fallback_cb' ); ?>" value="<?php echo esc_attr( $instance['fallback_cb'] ); ?>" placeholder="wp_page_menu" />
 		</p>
 		<?php if ( !empty( $theme_locations ) ) { ?>
 			<p>
