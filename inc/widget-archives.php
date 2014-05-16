@@ -162,7 +162,8 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		$instance['format'] = in_array( $new_instance['format'], $format ) ? $new_instance['format'] : 'html';
 
 		/* Integers. */
-		$instance['limit']  = intval( $new_instance['limit'] );
+		$instance['limit'] = intval( $new_instance['limit'] );
+		$instance['limit'] = 0 === $instance['limit'] ? '' : $instance['limit'];
 
 		/* Text boxes. Make sure user can use 'unfiltered_html'. */
 		$instance['before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['before'] : wp_filter_post_kses( $new_instance['before'] );
