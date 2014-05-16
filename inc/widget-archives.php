@@ -220,7 +220,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><code>limit</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
+			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><code>type</code></label> 
