@@ -115,7 +115,7 @@ if ( class_exists( 'WP_Widget_Tag_Cloud' ) ) {
 			if ( 'flat' == $args['format'] ) {
 				$classes = array( 'term-cloud' );
 
-				foreach ( $args['taxonomy'] as $tax )
+				foreach ( (array)$args['taxonomy'] as $tax )
 					$classes[] = sanitize_html_class( "{$tax}-cloud" );
 
 				$tags = '<p class="' . join( $classes, ' ' ) . '">' . $tags . '</p>';
