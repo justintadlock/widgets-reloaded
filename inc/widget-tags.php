@@ -151,12 +151,12 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 
 		/* Strip tags. */
-		$instance['title']      = strip_tags( $new_instance['title']      );
-		$instance['separator']  = strip_tags( $new_instance['separator']  );
-		$instance['name__like'] = strip_tags( $new_instance['name__like'] );
-		$instance['search']     = strip_tags( $new_instance['search']     );
-		$instance['single_text']     = strip_tags( $new_instance['single_text']     );
-		$instance['multiple_text']     = strip_tags( $new_instance['multiple_text']     );
+		$instance['title']         = strip_tags( $new_instance['title']         );
+		$instance['separator']     = strip_tags( $new_instance['separator']     );
+		$instance['name__like']    = strip_tags( $new_instance['name__like']    );
+		$instance['search']        = strip_tags( $new_instance['search']        );
+		$instance['single_text']   = strip_tags( $new_instance['single_text']   );
+		$instance['multiple_text'] = strip_tags( $new_instance['multiple_text'] );
 
 		/* Sanitize key. */
 		$instance['taxonomy'] = array_map( 'sanitize_key', $new_instance['taxonomy'] );
