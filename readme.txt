@@ -141,6 +141,7 @@ No, absolutely not.  In fact, it's quite impossible for this to happen as a resu
 * Incorporates newer HTML5 form fields in widget options where possible.
 * Added placeholders so that it's easier to understand what each widget option does.
 * Introduced the `single_text` and `multiple_text` options for the Tags widget.
+* Added Finnish, French, Romanian, Spanish, and Swedish translations.
 * Minor bug fixes.
 
 ### Version 0.5.1
