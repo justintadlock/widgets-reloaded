@@ -97,8 +97,6 @@ The following is a list of the widgets and their associated template tag, which 
 
 Yes.  The widgets are coded according to WordPress standards.  The HTML output by them is no different than the HTML output by the default WordPress widgets.  All correctly-coded themes will output the widgets perfectly.
 
-The one exception might be the Search widget.  If it doesn't look right with your theme, select the checkbox to use the theme's `searchform.php`.
-
 ### I am using a Hybrid Core theme. Can I use this plugin?
 
 Yes.  Absolutely.  In fact, I encourage you to use this plugin.  By using the plugin, you can actually get quicker updates and bug fixes.  I can send a plugin update in minutes.  However, it could potentially take days or longer for a theme update.
