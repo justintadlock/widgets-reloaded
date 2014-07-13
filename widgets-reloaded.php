@@ -3,7 +3,7 @@
  * Plugin Name: Widgets Reloaded
  * Plugin URI:  http://themehybrid.com/plugins/widgets-reloaded
  * Description: Replaces many of the default WordPress widgets with versions that allow much more control.  Widgets come with highly-customizable control panels that provide a ton of flexibility.
- * Version:     0.6.0-beta-1
+ * Version:     0.6.0
  * Author:      Justin Tadlock
  * Author URI:  http://justintadlock.com
  * Text Domain: widgets-reloaded
