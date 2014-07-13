@@ -3,9 +3,8 @@
 Contributors: greenshady
 Donate link: http://themehybrid.com/donate
 Tags: sidebar, widget, widgets, archives, author, bookmarks, calendar, categories, links, menu, pages, tags
-Requires at least: 3.6
-Tested up to: 3.7
-Stable tag: 0.5.1
+Requires at least: 3.9
+Stable tag: 0.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,8 +97,6 @@ The following is a list of the widgets and their associated template tag, which 
 
 Yes.  The widgets are coded according to WordPress standards.  The HTML output by them is no different than the HTML output by the default WordPress widgets.  All correctly-coded themes will output the widgets perfectly.
 
-The one exception might be the Search widget.  If it doesn't look right with your theme, select the checkbox to use the theme's `searchform.php`.
-
 ### I am using a Hybrid Core theme. Can I use this plugin?
 
 Yes.  Absolutely.  In fact, I encourage you to use this plugin.  By using the plugin, you can actually get quicker updates and bug fixes.  I can send a plugin update in minutes.  However, it could potentially take days or longer for a theme update.
@@ -111,6 +108,10 @@ One of the major changes to version 0.5.0 of this plugin was to ensure that this
 I have a few ideas, but feel free to share your own.  If there are other widgets you'd like to see in this plugin, let me know.  I probably won't add every widget idea, but I'm more than willing to consider each one carefully.
 
 Also, remember that this plugin is meant to overwrite the default WordPress widgets.  If you'd like to see a new widget that's not in WordPress, it probably won't get added to this plugin.  However, I might be willing to code a new plugin just for that widget.  I love WordPress widgets and am always interested in creating new, fun stuff.
+
+### User "jwhittaker99" says this plugin breaks the Links Manager. Is this true?
+
+No, absolutely not.  In fact, it's quite impossible for this to happen as a result of using this plugin.  Please use this plugin with no fear of losing your links.  You can also leave a good review of the plugin to help offset *jwhittaker99's* [bad review](http://wordpress.org/support/topic/incompatible-with-link-manager) claiming this.
 
 == Screenshots ==
 
@@ -125,6 +126,23 @@ Also, remember that this plugin is meant to overwrite the default WordPress widg
 9. Tags widget
 
 == Changelog ==
+
+### Version 0.6.0 ###
+
+* New `include` and `exclude` arguments for the Authors widget.
+* All widgets now have defaults set. This is so that there are no undefined index notices when calling a widget using `the_widget()` or similar methods.
+* Make sure the Calendar widget has a default title when shown in the customizer.
+* Adds a wrapper `<p>` for the Categories widget when there's no style set.
+* Eliminates all uses of `extract()` in accordance with new WP coding standards.
+* Removed trailing `?>` from all PHP files.
+* Dropped search widget options in favor of playing more nicely with `get_search_form()` and its hooks.
+* Added the `Domain Path` plugin header.
+* Complete overhaul of the sanitizing/validating functionality in the plugin for smarter handling of widget option updates.
+* Incorporates newer HTML5 form fields in widget options where possible.
+* Added placeholders so that it's easier to understand what each widget option does.
+* Introduced the `single_text` and `multiple_text` options for the Tags widget.
+* Added Finnish, French, Romanian, Spanish, and Swedish translations.
+* Minor bug fixes.
 
 ### Version 0.5.1
 

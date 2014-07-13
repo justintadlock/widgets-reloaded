@@ -20,6 +20,23 @@ The plugin overwrites many of the default WordPress widgets.  The following is t
 
 ## Changelog
 
+### Version 0.6.0 ###
+
+* New `include` and `exclude` arguments for the Authors widget.
+* All widgets now have defaults set. This is so that there are no undefined index notices when calling a widget using `the_widget()` or similar methods.
+* Make sure the Calendar widget has a default title when shown in the customizer.
+* Adds a wrapper `<p>` for the Categories widget when there's no style set.
+* Eliminates all uses of `extract()` in accordance with new WP coding standards.
+* Removed trailing `?>` from all PHP files.
+* Dropped search widget options in favor of playing more nicely with `get_search_form()` and its hooks.
+* Added the `Domain Path` plugin header.
+* Complete overhaul of the sanitizing/validating functionality in the plugin for smarter handling of widget option updates.
+* Incorporates newer HTML5 form fields in widget options where possible.
+* Added placeholders so that it's easier to understand what each widget option does.
+* Introduced the `single_text` and `multiple_text` options for the Tags widget.
+* Added Finnish, French, Romanian, Spanish, and Swedish translations.
+* Minor bug fixes.
+
 ### Version 0.5.1
 
 * Added an upgrade notice for users below 0.5.0.
@@ -83,4 +100,4 @@ If you need professional plugin support from me, the plugin author, you can acce
 
 This project is licensed under the [GNU GPL](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html), version 2 or later.
 
-2008&thinsp;&ndash;&thinsp;2013 &copy; [Justin Tadlock](http://justintadlock.com).
+2008&thinsp;&ndash;&thinsp;2014 &copy; [Justin Tadlock](http://justintadlock.com).

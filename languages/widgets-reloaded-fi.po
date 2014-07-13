@@ -1,0 +1,843 @@
+# Translation of Trunk in Finnish
+# This file is distributed under the same license as the Trunk package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets Reloaded in Finnish\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/widgets-reloaded\n"
+"POT-Creation-Date: 2014-07-12 23:22:51+00:00\n"
+"PO-Revision-Date: 2014-07-13 16:21-0600\n"
+"Last-Translator: Sami Keijonen <sami.keijonen@foxnet.fi>\n"
+"Language-Team: Foxnet <sami.keijonen@foxnet.fi>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_n;"
+"_x;_x:1,2c;_n:1,2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Textdomain-Support: yes\n"
+
+#: inc/widget-archives.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"archives."
+msgstr "Vimpain, jolla hallitaan arkistoja."
+
+#: inc/widget-archives.php:55 inc/widget-archives.php:62
+msgid "Archives"
+msgstr "Arkistot"
+
+#: inc/widget-archives.php:105
+msgid "Select Year"
+msgstr "Valitse vuosi"
+
+#: inc/widget-archives.php:108
+msgid "Select Month"
+msgstr "Valitse kuukausi"
+
+#: inc/widget-archives.php:111
+msgid "Select Week"
+msgstr "Valitse viikko"
+
+#: inc/widget-archives.php:114
+msgid "Select Day"
+msgstr "Valitse päivä"
+
+#: inc/widget-archives.php:117
+msgid "Select Post"
+msgstr "Valitse artikkeli"
+
+#: inc/widget-archives.php:194
+msgid "Alphabetical"
+msgstr "Aakkosellinen"
+
+#: inc/widget-archives.php:195
+msgid "Daily"
+msgstr "Päivittäiset"
+
+#: inc/widget-archives.php:196
+msgid "Monthly"
+msgstr "Kuukausittainen"
+
+#: inc/widget-archives.php:197
+msgid "Post By Post"
+msgstr "Artikkeli artikkelilta"
+
+#: inc/widget-archives.php:198
+msgid "Weekly"
+msgstr "Viikottainen"
+
+#: inc/widget-archives.php:199
+msgid "Yearly"
+msgstr "Vuosittainen"
+
+#: inc/widget-archives.php:204 inc/widget-authors.php:181
+#: inc/widget-bookmarks.php:220 inc/widget-categories.php:210
+#: inc/widget-pages.php:185 inc/widget-tags.php:227
+msgid "Ascending"
+msgstr "Nouseva"
+
+#: inc/widget-archives.php:205 inc/widget-authors.php:182
+#: inc/widget-bookmarks.php:221 inc/widget-categories.php:211
+#: inc/widget-pages.php:186 inc/widget-tags.php:228
+msgid "Descending"
+msgstr "Laskeva"
+
+#: inc/widget-archives.php:210
+msgid "Custom"
+msgstr "Kustomoitu"
+
+#: inc/widget-archives.php:211
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/widget-archives.php:212
+msgid "Option"
+msgstr "Valinta"
+
+#: inc/widget-archives.php:218 inc/widget-authors.php:205
+#: inc/widget-bookmarks.php:250 inc/widget-calendar.php:137
+#: inc/widget-categories.php:234 inc/widget-nav-menu.php:173
+#: inc/widget-pages.php:211 inc/widget-search.php:128 inc/widget-tags.php:248
+msgid "Title:"
+msgstr "Otsikko:"
+
+#: inc/widget-archives.php:262 inc/widget-authors.php:261
+msgid "Show post count?"
+msgstr "Näytä artikkeleiden lukumäärä?"
+
+#: inc/widget-authors.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"author lists."
+msgstr "Vimpain, jolla hallitaan käyttäjälistaa."
+
+#: inc/widget-authors.php:55 inc/widget-authors.php:62
+msgid "Authors"
+msgstr "Tekijät"
+
+#: inc/widget-authors.php:186
+msgid "Display Name"
+msgstr "Näytä nimi"
+
+#: inc/widget-authors.php:187
+msgid "Email"
+msgstr "Sähköposti"
+
+#: inc/widget-authors.php:188 inc/widget-bookmarks.php:226
+#: inc/widget-bookmarks.php:232 inc/widget-categories.php:216
+#: inc/widget-pages.php:192
+msgid "ID"
+msgstr "ID"
+
+#: inc/widget-authors.php:189
+msgid "Nice Name"
+msgstr "Kutsumanimi"
+
+#: inc/widget-authors.php:190
+msgid "Post Count"
+msgstr "Artikkeleiden lukumäärä"
+
+#: inc/widget-authors.php:191
+msgid "Registered"
+msgstr "Rekisteröitynyt"
+
+#: inc/widget-authors.php:192 inc/widget-bookmarks.php:244
+msgid "URL"
+msgstr "URL"
+
+#: inc/widget-authors.php:193
+msgid "Login"
+msgstr "Kirjaudu sisään"
+
+#: inc/widget-authors.php:197 inc/widget-categories.php:205
+#: inc/widget-tags.php:223
+msgid "List"
+msgstr "Lista"
+
+#: inc/widget-authors.php:198 inc/widget-categories.php:206
+msgid "None"
+msgstr "Ei yhtään"
+
+#: inc/widget-authors.php:257
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+
+#: inc/widget-authors.php:265
+msgid "Exclude admin?"
+msgstr "Poislukien Pääkäyttäjä?"
+
+#: inc/widget-authors.php:269
+msgid "Show full name?"
+msgstr "Näytä koko nimi?"
+
+#: inc/widget-authors.php:273 inc/widget-categories.php:337
+#: inc/widget-tags.php:367
+msgid "Hide empty?"
+msgstr "Piilota tyhjät?"
+
+#: inc/widget-bookmarks.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"bookmarks (links)."
+msgstr "Vimpain, jolla hallitaan linkkejä."
+
+#: inc/widget-bookmarks.php:55 inc/widget-bookmarks.php:62
+#: inc/widget-bookmarks.php:127
+msgid "Bookmarks"
+msgstr "Linkit"
+
+#: inc/widget-bookmarks.php:225 inc/widget-categories.php:215
+#: inc/widget-tags.php:233
+msgid "Count"
+msgstr "Lukumäärä"
+
+#: inc/widget-bookmarks.php:227 inc/widget-bookmarks.php:235
+#: inc/widget-categories.php:217 inc/widget-tags.php:234
+msgid "Name"
+msgstr "Nimi"
+
+#: inc/widget-bookmarks.php:228 inc/widget-categories.php:218
+#: inc/widget-pages.php:195
+msgid "Slug"
+msgstr "Polkutunnus"
+
+#: inc/widget-bookmarks.php:233
+msgid "Description"
+msgstr "Kuvaus"
+
+#: inc/widget-bookmarks.php:234
+msgid "Length"
+msgstr "Pituus"
+
+#: inc/widget-bookmarks.php:236
+msgid "Notes"
+msgstr "Muistiinpanot"
+
+#: inc/widget-bookmarks.php:237
+msgid "Owner"
+msgstr "Omistaja"
+
+#: inc/widget-bookmarks.php:238 inc/widget-tags.php:229
+msgid "Random"
+msgstr "Satunnainen"
+
+#: inc/widget-bookmarks.php:239
+msgid "Rating"
+msgstr "Arvostelu"
+
+#: inc/widget-bookmarks.php:240
+msgid "Rel"
+msgstr "Rel"
+
+#: inc/widget-bookmarks.php:241 inc/widget-categories.php:226
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/widget-bookmarks.php:242
+msgid "Target"
+msgstr "Kohde"
+
+#: inc/widget-bookmarks.php:243
+msgid "Updated"
+msgstr "Päivitetty"
+
+#: inc/widget-bookmarks.php:352
+msgid "Categorize?"
+msgstr "Kategorisoi?"
+
+#: inc/widget-bookmarks.php:356
+msgid "Show description?"
+msgstr "Näytä kuvaus?"
+
+#: inc/widget-bookmarks.php:360
+msgid "Hide invisible?"
+msgstr "Piilota näkymätön?"
+
+#: inc/widget-bookmarks.php:364
+msgid "Show rating?"
+msgstr "Näytä luokitus?"
+
+#: inc/widget-bookmarks.php:368
+msgid "Show updated?"
+msgstr "Näytä päivitys?"
+
+#: inc/widget-bookmarks.php:372
+msgid "Show images?"
+msgstr "Näytä kuvat?"
+
+#: inc/widget-bookmarks.php:376
+msgid "Show name?"
+msgstr "Näytä nimi?"
+
+#: inc/widget-bookmarks.php:380
+msgid "Show private?"
+msgstr "Näytä yksityiset?"
+
+#: inc/widget-calendar.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"calendar."
+msgstr "Vimpain, jolla hallitaan kalenteria."
+
+#: inc/widget-calendar.php:55 inc/widget-calendar.php:62
+msgid "Calendar"
+msgstr "Kalenteri"
+
+#: inc/widget-calendar.php:142
+msgid "One-letter abbreviation?"
+msgstr "Yksikirjaiminen lyhenne?"
+
+#: inc/widget-categories.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"category links."
+msgstr "Vimpain, jolla hallitaan kategorialinkkejä."
+
+#: inc/widget-categories.php:55 inc/widget-categories.php:62
+msgid "Categories"
+msgstr "Kategoriat"
+
+#: inc/widget-categories.php:219
+msgid "Term Group"
+msgstr "Termien ryhmä"
+
+#: inc/widget-categories.php:224
+msgid "Atom"
+msgstr "Atom"
+
+#: inc/widget-categories.php:225
+msgid "RDF"
+msgstr "RDF"
+
+#: inc/widget-categories.php:227
+msgid "RSS 2.0"
+msgstr "RSS 2.0"
+
+#: inc/widget-categories.php:325 inc/widget-pages.php:310
+msgid "Hierarchical?"
+msgstr "Hierarkinen?"
+
+#: inc/widget-categories.php:329
+msgid "Use description?"
+msgstr "Käytä kuvausta?"
+
+#: inc/widget-categories.php:333
+msgid "Show count?"
+msgstr "Näytä lukumäärä?"
+
+#: inc/widget-nav-menu.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"menus."
+msgstr "Vimpain, jolla hallitaan menuvalikkoja."
+
+#: inc/widget-nav-menu.php:55
+msgid "Navigation Menu"
+msgstr "Navigaatiomenu"
+
+#: inc/widget-nav-menu.php:62
+msgid "Navigation"
+msgstr "Navigaatio"
+
+#: inc/widget-pages.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your page "
+"links."
+msgstr "Vimpain, jolla hallitaan sivujen linkkejä."
+
+#: inc/widget-pages.php:55 inc/widget-pages.php:62
+msgid "Pages"
+msgstr "Sivut"
+
+#: inc/widget-pages.php:190
+msgid "Author"
+msgstr "Tekijä"
+
+#: inc/widget-pages.php:191
+msgid "Date"
+msgstr "Päivä"
+
+#: inc/widget-pages.php:193
+msgid "Menu Order"
+msgstr "Menun järjestys"
+
+#: inc/widget-pages.php:194 inc/widget-pages.php:202
+msgid "Modified"
+msgstr "Muokattu"
+
+#: inc/widget-pages.php:196
+msgid "Title"
+msgstr "Otsikko"
+
+#: inc/widget-pages.php:201
+msgid "Created"
+msgstr "Luotu"
+
+#: inc/widget-search.php:44
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"search form."
+msgstr "Vimpain, jolla hallitaan hakulomaketta."
+
+#: inc/widget-search.php:56 inc/widget-search.php:63
+msgid "Search"
+msgstr "Etsi"
+
+#: inc/widget-tags.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your tags."
+msgstr "Vimpain, jolla hallitaan avainsanoja."
+
+#: inc/widget-tags.php:55 inc/widget-tags.php:64
+msgid "Tags"
+msgstr "Avainsanat"
+
+#: inc/widget-tags.php:61
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/widget-tags.php:217
+msgid "View"
+msgstr "Näkymä"
+
+#: inc/widget-tags.php:218
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: inc/widget-tags.php:222
+msgid "Flat"
+msgstr "Tyhjä"
+
+#: inc/widget-tags.php:363
+msgid "Pad counts?"
+msgstr "Pad lukumäärä?"
+
+#. Plugin Name of the plugin/theme
+msgid "Widgets Reloaded"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://themehybrid.com/plugins/widgets-reloaded"
+msgstr "http://themehybrid.com/plugins/widgets-reloaded"
+
+#. Description of the plugin/theme
+msgid ""
+"Replaces many of the default WordPress widgets with versions that allow much "
+"more control.  Widgets come with highly-customizable control panels that "
+"provide a ton of flexibility."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Justin Tadlock"
+msgstr "Justin Tadlock"
+
+#. Author URI of the plugin/theme
+msgid "http://justintadlock.com"
+msgstr "http://justintadlock.com"
+
+#~ msgid "%s ago"
+#~ msgstr "%s sitten"
+
+#~ msgid "Permalink"
+#~ msgstr "Pikalinkki"
+
+#~ msgid "Posted in %s"
+#~ msgstr "Artikkeli kategoriassa %s"
+
+#~ msgid "Tagged %s"
+#~ msgstr "Avainsanat %s"
+
+#~ msgid "Audio Info"
+#~ msgstr "Audion tiedot"
+
+#~ msgid "Sizes: %s"
+#~ msgstr "Koot: %s"
+
+#~ msgid "Image Info"
+#~ msgstr "Kuvan tiedot"
+
+#~ msgid "Gallery"
+#~ msgstr "Kuvagalleria"
+
+#~ msgid "Video Info"
+#~ msgstr "Videon tiedot"
+
+#~ msgid "Nothing found"
+#~ msgstr "Mitään ei löytynyt"
+
+#~ msgid "Apologies, but no entries were found."
+#~ msgstr "Pahoittelut, mutta yhtään artikkelia ei löytynyt."
+
+#~ msgid "This gallery contains %s item."
+#~ msgid_plural "This gallery contains %s items."
+#~ msgstr[0] "Galleriassa on %s kuva."
+#~ msgstr[1] "Galleriassa on %s kuvaa."
+
+#~ msgid "Copyright &#169; %1$s %2$s. Powered by %3$s and %4$s."
+#~ msgstr "Tekijänoikeus &#169; %1$s %2$s. Voimanlähteenä %3$s ja %4$s."
+
+#~ msgid "1 Column Wide"
+#~ msgstr "Yksi sarake leveä"
+
+#~ msgid "1 Column Narrow"
+#~ msgstr "Yksi sarake kapea"
+
+#~ msgid "2 Columns: Content / Sidebar"
+#~ msgstr "Kaksi saraketta: sisältö / sivupalkki"
+
+#~ msgid "2 Columns: Sidebar / Content"
+#~ msgstr "Kaksi saraketta: sivupalkki / sisältö"
+
+#~ msgid "Primary Color"
+#~ msgstr "Pääväri"
+
+#~ msgid "Horizon"
+#~ msgstr "Horisontti"
+
+#~ msgid "Orange Burn"
+#~ msgstr "Oranssi hehku"
+
+#~ msgid "Blue Planets"
+#~ msgstr "Sinisiä planeettoja"
+
+#~ msgid "Planet Burst"
+#~ msgstr "Planeetta"
+
+#~ msgid "Space Splatters"
+#~ msgstr "Avaruuspölyä"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Primary"
+#~ msgstr "Päävalikko"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Secondary"
+#~ msgstr "Toinen valikko"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Social"
+#~ msgstr "Sosiaalinen media"
+
+#~ msgctxt "sidebar"
+#~ msgid "Primary"
+#~ msgstr "Päävimpain"
+
+#~ msgid ""
+#~ "The main sidebar. It is displayed on either the left or right side of the "
+#~ "page based on the chosen layout."
+#~ msgstr ""
+#~ "Päävimpainalue. Se näkyy sisällön vasemmalla tai oikealla puolella "
+#~ "riippuen valitusta ulkoasusta."
+
+#~ msgctxt "sidebar"
+#~ msgid "Subsidiary"
+#~ msgstr "Alapalkin vimpainalue"
+
+#~ msgid ""
+#~ "A sidebar located in the footer of the site. Optimized for one, two, or "
+#~ "three widgets (and multiples thereof)."
+#~ msgstr ""
+#~ "Sivupalkki sijaitsee alapalkissa. Toimii parhaiten  yhdellä, kahdella tai "
+#~ "kolmella vimpaimella. Tai niiden monikerroilla."
+
+#~ msgid "Template"
+#~ msgstr "Sivupohja"
+
+#~ msgid "%s Theme Settings"
+#~ msgstr "%s Teeman asetukset"
+
+#~ msgid "Theme Settings"
+#~ msgstr "Teeman asetukset"
+
+#~ msgctxt "theme customizer tab"
+#~ msgid "Default"
+#~ msgstr "Oletus"
+
+#~ msgid "%1$s &#215; %2$s"
+#~ msgstr "%1$s &#215; %2$s"
+
+#~ msgid "Dimensions"
+#~ msgstr "Mitat"
+
+#~ msgid "Camera"
+#~ msgstr "Kamera"
+
+#~ msgid "Aperture"
+#~ msgstr "Aukko"
+
+#~ msgid "%s mm"
+#~ msgstr "%s mm"
+
+#~ msgid "Focal Length"
+#~ msgstr "Polttoväli"
+
+#~ msgid "International Organization for Standardization"
+#~ msgstr "Kansainvälinen standardisoimisjärjestö"
+
+#~ msgid "ISO"
+#~ msgstr "ISO"
+
+#~ msgid "%s sec"
+#~ msgstr "%s sek"
+
+#~ msgid "Shutter Speed"
+#~ msgstr "Suljinnopeus"
+
+#~ msgid "Run Time"
+#~ msgstr "Käytön aika"
+
+#~ msgid "Artist"
+#~ msgstr "Artisti"
+
+#~ msgid "Composer"
+#~ msgstr "Säveltäjä"
+
+#~ msgid "Album"
+#~ msgstr "Albumi"
+
+#~ msgid "Track"
+#~ msgstr "Kappale"
+
+#~ msgid "Year"
+#~ msgstr "Vuosi"
+
+#~ msgid "Genre"
+#~ msgstr "Tyylilaji"
+
+#~ msgid "File Name"
+#~ msgstr "Tiedoston nimi"
+
+#~ msgid "File Size"
+#~ msgstr "Tiedoston koko"
+
+#~ msgid "File Type"
+#~ msgstr "Tiedoston tyyppi"
+
+#~ msgid "Mime Type"
+#~ msgstr "Mime-tyyppi"
+
+#~ msgid "Search Label:"
+#~ msgstr "Etsi nimike:"
+
+#~ msgid "Search Text:"
+#~ msgstr "Etsi teksti:"
+
+#~ msgid "Search Submit:"
+#~ msgstr "Etsi lähetä:"
+
+#~ msgid "Use theme's <code>searchform.php</code>?"
+#~ msgstr "Käytä teeman <code>searchform.php</code> tiedostoa?"
+
+#~ msgid "Browse:"
+#~ msgstr "Navigointi: "
+
+#~ msgid "Home"
+#~ msgstr "Etusivu"
+
+#~ msgid "404 Not Found"
+#~ msgstr "404 Sivua ei löytynyt"
+
+#~ msgid "Search results for &#8220;%s&#8221;"
+#~ msgstr "Hakutulokset haulle  &#8220;%s&#8221;"
+
+#~ msgid "Page %s"
+#~ msgstr "Sivu %s"
+
+#~ msgid "Minute %s"
+#~ msgstr "Minuutti %s"
+
+#~ msgid "Week %s"
+#~ msgstr "Viikko %s"
+
+#~ msgctxt "minute and hour archives time format"
+#~ msgid "g:i a"
+#~ msgstr "G:i"
+
+#~ msgctxt "minute archives time format"
+#~ msgid "i"
+#~ msgstr "i"
+
+#~ msgctxt "hour archives time format"
+#~ msgid "g a"
+#~ msgstr "g a"
+
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgctxt "monthly archives date format"
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "j"
+#~ msgstr "j"
+
+#~ msgctxt "weekly archives date format"
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgid "Split"
+#~ msgstr "Jaa"
+
+#~ msgid "Merge"
+#~ msgstr "Yhdistä"
+
+#~ msgid "Featured Header"
+#~ msgstr "Otsake-kuva"
+
+#~ msgid "Stylesheet"
+#~ msgstr "Tyylitiedosto"
+
+#~ msgid "Fonts"
+#~ msgstr "Fontit"
+
+#~ msgctxt "theme layout"
+#~ msgid "Default"
+#~ msgstr "Oletus"
+
+#~ msgid "Layout"
+#~ msgstr "Ulkoasu"
+
+#~ msgid ""
+#~ "Layout is a theme-specific structure for the single view of the post."
+#~ msgstr "Tällä voi vaihtaa yksittäisen sivun tai artikkelin ulkoasua."
+
+#~ msgid "Global Layout"
+#~ msgstr "Globaali ulkoasu"
+
+#~ msgctxt "post time format"
+#~ msgid "l, F j, Y, g:i a"
+#~ msgstr "l j.m.Y, G:i"
+
+#~ msgctxt "comment time format"
+#~ msgid "l, F j, Y, g:i a"
+#~ msgstr "l j.m.Y, G:i"
+
+#~ msgid ""
+#~ "<code>%1$s</code> &mdash; This function has been removed or replaced by "
+#~ "another function."
+#~ msgstr ""
+#~ "<code>%1$s</code> &mdash; Tämä funktio on poistettu tai korvattu toisella "
+#~ "funktiolla."
+
+#~ msgid "%1$s Page %2$s"
+#~ msgstr "%1$s Sivu %2$s"
+
+#~ msgid "Post Thumbnail"
+#~ msgstr "Artikkelin pikkukuva"
+
+#~ msgid "State-of-the-art semantic personal publishing platform"
+#~ msgstr "Henkilökohtainen julkaisujärjestelmä"
+
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgid "%s WordPress Theme"
+#~ msgstr "%s WordPress teema"
+
+#~ msgid "You are browsing the search results for &#8220;%s&#8221;"
+#~ msgstr "Hakutulokset haulle &#8220;%s&#8221;"
+
+#~ msgid "You are browsing the site archives by time."
+#~ msgstr "Sivun arkistot ajan mukaan."
+
+#~ msgid "You are browsing the site archives for %s."
+#~ msgstr "Sivun arkistot %s."
+
+#~ msgid "You are browsing the site archives."
+#~ msgstr "Sivun arkistot."
+
+#~ msgid "Week %1$s of %2$s"
+#~ msgstr "Viikko %1$s / %2$s"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "F j, Y"
+#~ msgstr "j.m.Y"
+
+#~ msgctxt "taxonomy terms separator"
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "(Untitled)"
+#~ msgstr "(Ei otsikkoa)"
+
+#~ msgid "Skip to content"
+#~ msgstr "Siirry sisältöön"
+
+#~ msgid "Comments are closed, but %strackbacks%s and pingbacks are open."
+#~ msgstr ""
+#~ "Kommentointi on suljettu, mutta %spaluuviitteet%s ja päivitysilmoitukset "
+#~ "ovat avoinna."
+
+#~ msgid "Comments are closed."
+#~ msgstr "Kommentointi on suljettu."
+
+#~ msgctxt "comments navigation"
+#~ msgid "&larr; Previous"
+#~ msgstr "&larr; Edellinen"
+
+#~ msgid "Page %1$s of %2$s"
+#~ msgstr "Sivu %1$s / %2$s"
+
+#~ msgctxt "comments navigation"
+#~ msgid "Next &rarr;"
+#~ msgstr "Seuraava &rarr;"
+
+#~ msgid "Previous Post: %link"
+#~ msgstr "Edellinen artikkeli: %link"
+
+#~ msgid "Next Post: %link"
+#~ msgstr "Seuraava artikkeli: %link"
+
+#~ msgctxt "posts navigation"
+#~ msgid "&larr; Previous"
+#~ msgstr "&larr; Edellinen"
+
+#~ msgctxt "posts navigation"
+#~ msgid "Next &rarr;"
+#~ msgstr "Seuraava &rarr;"
+
+#~ msgid "Example Widget"
+#~ msgstr "Esimerkkivimpain"
+
+#~ msgid ""
+#~ "This is an example widget to show how the Primary sidebar looks by "
+#~ "default. You can add custom widgets from the %swidgets screen%s in the "
+#~ "admin."
+#~ msgstr ""
+#~ "Tämä on esimerkkivimpain. Voit lisätä omia vimpaimia kohdasta  %sUlkoasu "
+#~ ">> Vimpaimet%s."
+
+#~ msgid "Stargazer"
+#~ msgstr "Stargazer"
+
+#~ msgid ""
+#~ "Welcome to Stargazer, the most advanced theme ever created for WordPress "
+#~ "without compromising standards. This is the only theme in the world that "
+#~ "you'll find that extends WordPress' built-in theme features so robustly "
+#~ "but naturally. The theme is built on the rock-solid Hybrid Core theme "
+#~ "framework. It's built with search-engine optimization (SEO) in mind by "
+#~ "utilizing the most current HTML5 conventions and <a href=\"http://schema."
+#~ "org\">Schema.org</a> microdata. It also integrates with useful theme add-"
+#~ "on plugins like <a href=\"http://wordpress.org/plugins/custom-background-"
+#~ "extended\">Custom Background Extended</a>, <a href=\"http://wordpress.org/"
+#~ "plugins/custom-header-extended\">Custom Header Extended</a>, <a href="
+#~ "\"http://wordpress.org/plugins/whistles\">Whistles</a>, and more."
+#~ msgstr ""
+#~ "Tervetuloa Stargazer-teemaan, edistyneimpään teemaan mitä WordPress pitää "
+#~ "sisällään, kuitenkaan unohtamatta standardeja. Tämä on ainoa teema "
+#~ "maailmassa, jossa WordPress:in sisäänrakennettuja ominaisuuksia  "
+#~ "laajennetaan voimakkaasti, mutta luonnollisesti. Teema on rakennettu "
+#~ "käyttäen Hybrid Corea. Se on rakennettu hakukoneoptimointi (SEO) mielessä "
+#~ "ja siinä käytetään viimeisintä HTML5 ja <a href=\"http://schema.org"
+#~ "\">Schema.org</a> merkkauskieltä. Teema integroituu mm. seuraavien "
+#~ "lisäosien kanssa moitteettomasti: <a href=\"http://wordpress.org/plugins/"
+#~ "custom-background-extended\">Custom Background Extended</a>, <a href="
+#~ "\"http://wordpress.org/plugins/custom-header-extended\">Custom Header "
+#~ "Extended</a>, <a href=\"http://wordpress.org/plugins/whistles\">Whistles</"
+#~ "a>, ja monia muita."

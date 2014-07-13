@@ -1,0 +1,853 @@
+# Copyright (C) 2013 Justin Tadlock
+# This file is distributed under the GNU General Public License v2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets Reloaded\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/widgets-reloaded\n"
+"POT-Creation-Date: 2014-07-12 23:22:51+00:00\n"
+"PO-Revision-Date: 2014-07-13 16:30-0600\n"
+"Last-Translator: Sami Keijonen <sami.keijonen@foxnet.fi>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: inc/widget-archives.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"archives."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus "
+"archivos."
+
+#: inc/widget-archives.php:55 inc/widget-archives.php:62
+msgid "Archives"
+msgstr "Archivos"
+
+#: inc/widget-archives.php:105
+msgid "Select Year"
+msgstr "Seleccionar año"
+
+#: inc/widget-archives.php:108
+msgid "Select Month"
+msgstr "Seleccionar mes"
+
+#: inc/widget-archives.php:111
+msgid "Select Week"
+msgstr "Seleccionar semana"
+
+#: inc/widget-archives.php:114
+msgid "Select Day"
+msgstr "Seleccionar día"
+
+#: inc/widget-archives.php:117
+msgid "Select Post"
+msgstr "Seleccionar entrada"
+
+#: inc/widget-archives.php:194
+msgid "Alphabetical"
+msgstr "Alfabético"
+
+#: inc/widget-archives.php:195
+msgid "Daily"
+msgstr "Diario"
+
+#: inc/widget-archives.php:196
+msgid "Monthly"
+msgstr "Mensual"
+
+#: inc/widget-archives.php:197
+msgid "Post By Post"
+msgstr "Entrada por entrada"
+
+#: inc/widget-archives.php:198
+msgid "Weekly"
+msgstr "Semanal"
+
+#: inc/widget-archives.php:199
+msgid "Yearly"
+msgstr "Anual"
+
+#: inc/widget-archives.php:204 inc/widget-authors.php:181
+#: inc/widget-bookmarks.php:220 inc/widget-categories.php:210
+#: inc/widget-pages.php:185 inc/widget-tags.php:227
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: inc/widget-archives.php:205 inc/widget-authors.php:182
+#: inc/widget-bookmarks.php:221 inc/widget-categories.php:211
+#: inc/widget-pages.php:186 inc/widget-tags.php:228
+msgid "Descending"
+msgstr "Descendente"
+
+#: inc/widget-archives.php:210
+msgid "Custom"
+msgstr "Personalizado"
+
+#: inc/widget-archives.php:211
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/widget-archives.php:212
+msgid "Option"
+msgstr "Opción"
+
+#: inc/widget-archives.php:218 inc/widget-authors.php:205
+#: inc/widget-bookmarks.php:250 inc/widget-calendar.php:137
+#: inc/widget-categories.php:234 inc/widget-nav-menu.php:173
+#: inc/widget-pages.php:211 inc/widget-search.php:128 inc/widget-tags.php:248
+msgid "Title:"
+msgstr "Título:"
+
+#: inc/widget-archives.php:262 inc/widget-authors.php:261
+msgid "Show post count?"
+msgstr "Mostrar número de entradas"
+
+#: inc/widget-authors.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"author lists."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus listas "
+"de autores."
+
+#: inc/widget-authors.php:55 inc/widget-authors.php:62
+msgid "Authors"
+msgstr "Autores"
+
+#: inc/widget-authors.php:186
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#: inc/widget-authors.php:187
+msgid "Email"
+msgstr "Email"
+
+#: inc/widget-authors.php:188 inc/widget-bookmarks.php:226
+#: inc/widget-bookmarks.php:232 inc/widget-categories.php:216
+#: inc/widget-pages.php:192
+msgid "ID"
+msgstr "ID"
+
+#: inc/widget-authors.php:189
+msgid "Nice Name"
+msgstr "Nombre para URL"
+
+#: inc/widget-authors.php:190
+msgid "Post Count"
+msgstr "Número de entradas"
+
+#: inc/widget-authors.php:191
+msgid "Registered"
+msgstr "Registrado"
+
+#: inc/widget-authors.php:192 inc/widget-bookmarks.php:244
+msgid "URL"
+msgstr "URL"
+
+#: inc/widget-authors.php:193
+msgid "Login"
+msgstr "Ingreso"
+
+#: inc/widget-authors.php:197 inc/widget-categories.php:205
+#: inc/widget-tags.php:223
+msgid "List"
+msgstr "Lista"
+
+#: inc/widget-authors.php:198 inc/widget-categories.php:206
+msgid "None"
+msgstr "Ninguno"
+
+#: inc/widget-authors.php:257
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+
+#: inc/widget-authors.php:265
+msgid "Exclude admin?"
+msgstr "Excluir administradores"
+
+#: inc/widget-authors.php:269
+msgid "Show full name?"
+msgstr "Mostrar nombre completo"
+
+#: inc/widget-authors.php:273 inc/widget-categories.php:337
+#: inc/widget-tags.php:367
+msgid "Hide empty?"
+msgstr "Mostrar vacíos"
+
+#: inc/widget-bookmarks.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"bookmarks (links)."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus "
+"marcadores (enlaces)."
+
+#: inc/widget-bookmarks.php:55 inc/widget-bookmarks.php:62
+#: inc/widget-bookmarks.php:127
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: inc/widget-bookmarks.php:225 inc/widget-categories.php:215
+#: inc/widget-tags.php:233
+msgid "Count"
+msgstr "Número"
+
+#: inc/widget-bookmarks.php:227 inc/widget-bookmarks.php:235
+#: inc/widget-categories.php:217 inc/widget-tags.php:234
+msgid "Name"
+msgstr "Nombre"
+
+#: inc/widget-bookmarks.php:228 inc/widget-categories.php:218
+#: inc/widget-pages.php:195
+msgid "Slug"
+msgstr "Slug"
+
+#: inc/widget-bookmarks.php:233
+msgid "Description"
+msgstr "Descripción"
+
+#: inc/widget-bookmarks.php:234
+msgid "Length"
+msgstr "Longitud"
+
+#: inc/widget-bookmarks.php:236
+msgid "Notes"
+msgstr "Notas"
+
+#: inc/widget-bookmarks.php:237
+msgid "Owner"
+msgstr "Dueño"
+
+#: inc/widget-bookmarks.php:238 inc/widget-tags.php:229
+msgid "Random"
+msgstr "Aleatorio"
+
+#: inc/widget-bookmarks.php:239
+msgid "Rating"
+msgstr "Puntuación"
+
+#: inc/widget-bookmarks.php:240
+msgid "Rel"
+msgstr "Rel"
+
+#: inc/widget-bookmarks.php:241 inc/widget-categories.php:226
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/widget-bookmarks.php:242
+msgid "Target"
+msgstr "Objetivo"
+
+#: inc/widget-bookmarks.php:243
+msgid "Updated"
+msgstr "Actualizado"
+
+#: inc/widget-bookmarks.php:352
+msgid "Categorize?"
+msgstr "Categorizar"
+
+#: inc/widget-bookmarks.php:356
+msgid "Show description?"
+msgstr "Mostrar descripción"
+
+#: inc/widget-bookmarks.php:360
+msgid "Hide invisible?"
+msgstr "Ocultar invisibles"
+
+#: inc/widget-bookmarks.php:364
+msgid "Show rating?"
+msgstr "Mostrar puntuación"
+
+#: inc/widget-bookmarks.php:368
+msgid "Show updated?"
+msgstr "Mostrar fecha de actualización"
+
+#: inc/widget-bookmarks.php:372
+msgid "Show images?"
+msgstr "Mostrar imagenes"
+
+#: inc/widget-bookmarks.php:376
+msgid "Show name?"
+msgstr "Mostrar nombre"
+
+#: inc/widget-bookmarks.php:380
+msgid "Show private?"
+msgstr "Mostrar privados"
+
+#: inc/widget-calendar.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"calendar."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ve tu "
+"calendario."
+
+#: inc/widget-calendar.php:55 inc/widget-calendar.php:62
+msgid "Calendar"
+msgstr "Calendario"
+
+#: inc/widget-calendar.php:142
+msgid "One-letter abbreviation?"
+msgstr "Abreviación de una letra"
+
+#: inc/widget-categories.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"category links."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus enlaces "
+"de categorías."
+
+#: inc/widget-categories.php:55 inc/widget-categories.php:62
+msgid "Categories"
+msgstr "Categorías"
+
+#: inc/widget-categories.php:219
+msgid "Term Group"
+msgstr "Grupo de términos"
+
+#: inc/widget-categories.php:224
+msgid "Atom"
+msgstr "Atom"
+
+#: inc/widget-categories.php:225
+msgid "RDF"
+msgstr "RDF"
+
+#: inc/widget-categories.php:227
+msgid "RSS 2.0"
+msgstr "RSS 2.0"
+
+#: inc/widget-categories.php:325 inc/widget-pages.php:310
+msgid "Hierarchical?"
+msgstr "Jerárquico"
+
+#: inc/widget-categories.php:329
+msgid "Use description?"
+msgstr "Usar descripción"
+
+#: inc/widget-categories.php:333
+msgid "Show count?"
+msgstr "Mostrar número"
+
+#: inc/widget-nav-menu.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"menus."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus menús."
+
+#: inc/widget-nav-menu.php:55
+msgid "Navigation Menu"
+msgstr "Menú de navegación"
+
+#: inc/widget-nav-menu.php:62
+msgid "Navigation"
+msgstr "Navegación"
+
+#: inc/widget-pages.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your page "
+"links."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ven tus enlaces "
+"de página."
+
+#: inc/widget-pages.php:55 inc/widget-pages.php:62
+msgid "Pages"
+msgstr "Páginas"
+
+#: inc/widget-pages.php:190
+msgid "Author"
+msgstr "Autor"
+
+#: inc/widget-pages.php:191
+msgid "Date"
+msgstr "Fecha"
+
+#: inc/widget-pages.php:193
+msgid "Menu Order"
+msgstr "Orden de menú"
+
+#: inc/widget-pages.php:194 inc/widget-pages.php:202
+msgid "Modified"
+msgstr "Modificado"
+
+#: inc/widget-pages.php:196
+msgid "Title"
+msgstr "Título"
+
+#: inc/widget-pages.php:201
+msgid "Created"
+msgstr "Creado"
+
+#: inc/widget-search.php:44
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"search form."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre cómo se ve tu "
+"formulario de búsqueda."
+
+#: inc/widget-search.php:56 inc/widget-search.php:63
+msgid "Search"
+msgstr "Buscar"
+
+#: inc/widget-tags.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your tags."
+msgstr ""
+"Un widget avanzado que te ofrece control total sobre la salida de tus "
+"etiquetas."
+
+#: inc/widget-tags.php:55 inc/widget-tags.php:64
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: inc/widget-tags.php:61
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/widget-tags.php:217
+msgid "View"
+msgstr "Ver"
+
+#: inc/widget-tags.php:218
+msgid "Edit"
+msgstr "Editar"
+
+#: inc/widget-tags.php:222
+msgid "Flat"
+msgstr "Plana"
+
+#: inc/widget-tags.php:363
+msgid "Pad counts?"
+msgstr "Añadir ceros"
+
+#. Plugin Name of the plugin/theme
+msgid "Widgets Reloaded"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://themehybrid.com/plugins/widgets-reloaded"
+msgstr "http://themehybrid.com/plugins/widgets-reloaded"
+
+#. Description of the plugin/theme
+msgid ""
+"Replaces many of the default WordPress widgets with versions that allow much "
+"more control.  Widgets come with highly-customizable control panels that "
+"provide a ton of flexibility."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Justin Tadlock"
+msgstr "Justin Tadlock"
+
+#. Author URI of the plugin/theme
+msgid "http://justintadlock.com"
+msgstr "http://justintadlock.com"
+
+#~ msgid "%s ago"
+#~ msgstr "hace %s"
+
+#~ msgid "Permalink"
+#~ msgstr "Enlace permanente"
+
+#~ msgid "Posted in %s"
+#~ msgstr "Publicado en %s"
+
+#~ msgid "Tagged %s"
+#~ msgstr "Etiquetado %s"
+
+#~ msgid "Audio Info"
+#~ msgstr "Información del audio"
+
+#~ msgid "Sizes: %s"
+#~ msgstr "Tamaños: %s"
+
+#~ msgid "Image Info"
+#~ msgstr "Imformación de la imagen"
+
+#~ msgid "Gallery"
+#~ msgstr "Galería"
+
+#~ msgid "Video Info"
+#~ msgstr "Información del video"
+
+#~ msgid "Nothing found"
+#~ msgstr "No encontrado"
+
+#~ msgid "Apologies, but no entries were found."
+#~ msgstr "No se encontraron entradas para esta búsqueda."
+
+#~ msgid "This gallery contains %s item."
+#~ msgid_plural "This gallery contains %s items."
+#~ msgstr[0] "Esta galería contiene %s elemento."
+#~ msgstr[1] "Esta galería contiene %s elementos."
+
+#~ msgid "Copyright &#169; %1$s %2$s. Powered by %3$s and %4$s."
+#~ msgstr "Copyright &#169; %1$s %2$s. Powered by %3$s and %4$s."
+
+#~ msgid "1 Column Wide"
+#~ msgstr "1 columna ancha"
+
+#~ msgid "1 Column Narrow"
+#~ msgstr "1 columna angosta"
+
+#~ msgid "2 Columns: Content / Sidebar"
+#~ msgstr "2 columnas: Contenido / Barra lateral"
+
+#~ msgid "2 Columns: Sidebar / Content"
+#~ msgstr "2 columnas: Barra lateral / Contenido"
+
+#~ msgid "Primary Color"
+#~ msgstr "Color primario"
+
+#~ msgid "Horizon"
+#~ msgstr "Horizonte"
+
+#~ msgid "Orange Burn"
+#~ msgstr "Orange Burn"
+
+#~ msgid "Blue Planets"
+#~ msgstr "Blue Planet"
+
+#~ msgid "Planet Burst"
+#~ msgstr "Planet Burst"
+
+#~ msgid "Space Splatters"
+#~ msgstr "Space Splatters"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Primary"
+#~ msgstr "Primario"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Secondary"
+#~ msgstr "Secundario"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Social"
+#~ msgstr "Social"
+
+#~ msgctxt "sidebar"
+#~ msgid "Primary"
+#~ msgstr "Primaria"
+
+#~ msgid ""
+#~ "The main sidebar. It is displayed on either the left or right side of the "
+#~ "page based on the chosen layout."
+#~ msgstr ""
+#~ "La barra lateral primaria. Se muestra en el lado derecho o izquierdo de "
+#~ "la página dependiendo de la disposición elegida."
+
+#~ msgctxt "sidebar"
+#~ msgid "Subsidiary"
+#~ msgstr "Subsidiaria"
+
+#~ msgid ""
+#~ "A sidebar located in the footer of the site. Optimized for one, two, or "
+#~ "three widgets (and multiples thereof)."
+#~ msgstr ""
+#~ "Una barra lateral ubicada en el pie del sitio. Optimizada para uno, dos o "
+#~ "tres widgets (y multiplos de estos)."
+
+#~ msgid "Template"
+#~ msgstr "Tema"
+
+#~ msgid "%s Theme Settings"
+#~ msgstr "Opciones del tema %s"
+
+#~ msgid "Theme Settings"
+#~ msgstr "Opciones del tema"
+
+#~ msgctxt "theme customizer tab"
+#~ msgid "Default"
+#~ msgstr "Predeterminada"
+
+#~ msgid "%1$s &#215; %2$s"
+#~ msgstr "%1$s &#215; %2$s"
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensiones"
+
+#~ msgid "Camera"
+#~ msgstr "Cámara"
+
+#~ msgid "Aperture"
+#~ msgstr "Apertura"
+
+#~ msgid "%s mm"
+#~ msgstr "%s mm"
+
+#~ msgid "Focal Length"
+#~ msgstr "Distancia focal"
+
+#~ msgid "International Organization for Standardization"
+#~ msgstr "International Organization for Standardization"
+
+#~ msgid "ISO"
+#~ msgstr "ISO"
+
+#~ msgid "%s sec"
+#~ msgstr "%s sec"
+
+#~ msgid "Shutter Speed"
+#~ msgstr "Velocidad de obturación"
+
+#~ msgid "Run Time"
+#~ msgstr "Tiempo de ejecución"
+
+#~ msgid "Artist"
+#~ msgstr "Artista"
+
+#~ msgid "Composer"
+#~ msgstr "Compositor"
+
+#~ msgid "Album"
+#~ msgstr "Álbum"
+
+#~ msgid "Track"
+#~ msgstr "Pista"
+
+#~ msgid "Year"
+#~ msgstr "Año"
+
+#~ msgid "Genre"
+#~ msgstr "Género"
+
+#~ msgid "File Name"
+#~ msgstr "Nombre de archivo"
+
+#~ msgid "File Size"
+#~ msgstr "Tamaño de archivo"
+
+#~ msgid "File Type"
+#~ msgstr "Tipo de archivo"
+
+#~ msgid "Mime Type"
+#~ msgstr "Tipo MIME"
+
+#~ msgid "Search Label:"
+#~ msgstr "Etiqueta de búsqueda:"
+
+#~ msgid "Search Text:"
+#~ msgstr "Texto de búsqueda:"
+
+#~ msgid "Search Submit:"
+#~ msgstr "Botón de búsqueda:"
+
+#~ msgid "Use theme's <code>searchform.php</code>?"
+#~ msgstr "¿Usar <code>searchform.php</code> del tema?"
+
+#~ msgid "Browse:"
+#~ msgstr "Ver:"
+
+#~ msgid "Home"
+#~ msgstr "Inicio"
+
+#~ msgid "404 Not Found"
+#~ msgstr "404 No encontrado"
+
+#~ msgid "Search results for &#8220;%s&#8221;"
+#~ msgstr "Resultados de búsqueda para &#8220;%s&#8221;"
+
+#~ msgid "Page %s"
+#~ msgstr "Página %s"
+
+#~ msgid "Minute %s"
+#~ msgstr "Minuto %s"
+
+#~ msgid "Week %s"
+#~ msgstr "Semana %s"
+
+#~ msgctxt "minute and hour archives time format"
+#~ msgid "g:i a"
+#~ msgstr "g:i a"
+
+#~ msgctxt "minute archives time format"
+#~ msgid "i"
+#~ msgstr "i"
+
+#~ msgctxt "hour archives time format"
+#~ msgid "g a"
+#~ msgstr "g a"
+
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgctxt "monthly archives date format"
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "j"
+#~ msgstr "j"
+
+#~ msgctxt "weekly archives date format"
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgid "Split"
+#~ msgstr "Separar"
+
+#~ msgid "Merge"
+#~ msgstr "Unir"
+
+#~ msgid "Featured Header"
+#~ msgstr "Cabecera destacada"
+
+#~ msgid "Stylesheet"
+#~ msgstr "Hoja de estilos"
+
+#~ msgid "Fonts"
+#~ msgstr "Fuentes"
+
+#~ msgctxt "theme layout"
+#~ msgid "Default"
+#~ msgstr "Predeterminada"
+
+#~ msgid "Layout"
+#~ msgstr "Disposición"
+
+#~ msgid ""
+#~ "Layout is a theme-specific structure for the single view of the post."
+#~ msgstr ""
+#~ "La disposición es una estructura específica del tema para la vista única "
+#~ "de la entrada."
+
+#~ msgid "Global Layout"
+#~ msgstr "Disposición global"
+
+#~ msgctxt "post time format"
+#~ msgid "l, F j, Y, g:i a"
+#~ msgstr "l, j \\d\\e F \\d\\e\\l Y, g:i a"
+
+#~ msgctxt "comment time format"
+#~ msgid "l, F j, Y, g:i a"
+#~ msgstr "l, j \\d\\e F \\d\\e\\l Y, g:i a"
+
+#~ msgid ""
+#~ "<code>%1$s</code> &mdash; This function has been removed or replaced by "
+#~ "another function."
+#~ msgstr ""
+#~ "<code>%1$s</code> &mdash; Esta función ha sido eliminada o reemplazada "
+#~ "por otra."
+
+#~ msgid "%1$s Page %2$s"
+#~ msgstr "%1$s Página %2$s"
+
+#~ msgid "Post Thumbnail"
+#~ msgstr "Imagen en miniatura de la entrada"
+
+#~ msgid "State-of-the-art semantic personal publishing platform"
+#~ msgstr "Plataforma semántica de publicación personal de vanguardia"
+
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgid "%s WordPress Theme"
+#~ msgstr "%s WordPress Theme"
+
+#~ msgid "You are browsing the search results for &#8220;%s&#8221;"
+#~ msgstr "Estás viendo los resultados de búsqueda para &#8220;%s&#8221;"
+
+#~ msgid "You are browsing the site archives by time."
+#~ msgstr "Estás viendo los archivos del sitio por tiempo."
+
+#~ msgid "You are browsing the site archives for %s."
+#~ msgstr "Estas viendo los archivos del sitio para %s."
+
+#~ msgid "You are browsing the site archives."
+#~ msgstr "Estás viendo los archivos del sitio."
+
+#~ msgid "Week %1$s of %2$s"
+#~ msgstr "Semana %1$s de %2$s"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "F j, Y"
+#~ msgstr "F j, Y"
+
+#~ msgctxt "taxonomy terms separator"
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "(Untitled)"
+#~ msgstr "(Sin título)"
+
+#~ msgid "Skip to content"
+#~ msgstr "Saltar al contenido"
+
+#~ msgid "Comments are closed, but %strackbacks%s and pingbacks are open."
+#~ msgstr ""
+#~ "Los comentarios están cerrados, pero los %strackbacks%s y pingbacks están "
+#~ "abiertos."
+
+#~ msgid "Comments are closed."
+#~ msgstr "Los comentarios están cerrados."
+
+#~ msgctxt "comments navigation"
+#~ msgid "&larr; Previous"
+#~ msgstr "&larr; Anteriores"
+
+#~ msgid "Page %1$s of %2$s"
+#~ msgstr "Página %1$s de %2$s"
+
+#~ msgctxt "comments navigation"
+#~ msgid "Next &rarr;"
+#~ msgstr "Siguiente &rarr;"
+
+#~ msgid "Previous Post: %link"
+#~ msgstr "Entrada anterior: %link"
+
+#~ msgid "Next Post: %link"
+#~ msgstr "Entrada siguiente: %link"
+
+#~ msgctxt "posts navigation"
+#~ msgid "&larr; Previous"
+#~ msgstr "&larr; Anteriores"
+
+#~ msgctxt "posts navigation"
+#~ msgid "Next &rarr;"
+#~ msgstr "Siguientes &rarr;"
+
+#~ msgid "Example Widget"
+#~ msgstr "Widget de ejemplo"
+
+#~ msgid ""
+#~ "This is an example widget to show how the Primary sidebar looks by "
+#~ "default. You can add custom widgets from the %swidgets screen%s in the "
+#~ "admin."
+#~ msgstr ""
+#~ "Este es un ejemplo de widget para mostrar cómo la barra lateral primaria "
+#~ "se muestra por defecto. Puedes añadir widgets personalizados desde la "
+#~ "%pantall de widgets%s en el admin."
+
+#~ msgid "Stargazer"
+#~ msgstr "Stargazer"
+
+#~ msgid ""
+#~ "Welcome to Stargazer, the most advanced theme ever created for WordPress "
+#~ "without compromising standards. This is the only theme in the world that "
+#~ "you'll find that extends WordPress' built-in theme features so robustly "
+#~ "but naturally. The theme is built on the rock-solid Hybrid Core theme "
+#~ "framework. It's built with search-engine optimization (SEO) in mind by "
+#~ "utilizing the most current HTML5 conventions and <a href=\"http://schema."
+#~ "org\">Schema.org</a> microdata. It also integrates with useful theme add-"
+#~ "on plugins like <a href=\"http://wordpress.org/plugins/custom-background-"
+#~ "extended\">Custom Background Extended</a>, <a href=\"http://wordpress.org/"
+#~ "plugins/custom-header-extended\">Custom Header Extended</a>, <a href="
+#~ "\"http://wordpress.org/plugins/whistles\">Whistles</a>, and more."
+#~ msgstr ""
+#~ "Bienvenido a Stargazer, el tema más avanzado de WordPress creado sin "
+#~ "comprometer estándares. Este es el único tema en el mundo que vas a "
+#~ "encontrar que extienda las características incluidas en WordPress de "
+#~ "manera tan robusta y nartural. El tema está armado la sólida base de "
+#~ "Hybrid Core"
