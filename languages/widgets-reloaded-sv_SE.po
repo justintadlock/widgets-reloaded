@@ -1,0 +1,581 @@
+# Copyright (C) 2013 Justin Tadlock
+# This file is distributed under the GNU General Public License v2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets Reloaded\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/widgets-reloaded\n"
+"POT-Creation-Date: 2014-07-12 23:22:51+00:00\n"
+"PO-Revision-Date: 2014-07-13 16:25-0600\n"
+"Last-Translator: Sami Keijonen <sami.keijonen@foxnet.fi>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;_n;_x;esc_html__;"
+"esc_html_e;_x:1,2c;_n:1,2\n"
+"X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\wordpress\\wp-content\\themes"
+"\\stargazer\n"
+
+#: inc/widget-archives.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"archives."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina arkiv visas."
+
+#: inc/widget-archives.php:55 inc/widget-archives.php:62
+msgid "Archives"
+msgstr "Arkiv"
+
+#: inc/widget-archives.php:105
+msgid "Select Year"
+msgstr "Välj År"
+
+#: inc/widget-archives.php:108
+msgid "Select Month"
+msgstr "Välj Månad"
+
+#: inc/widget-archives.php:111
+msgid "Select Week"
+msgstr "Välj vecka"
+
+#: inc/widget-archives.php:114
+msgid "Select Day"
+msgstr "Välj Dag"
+
+#: inc/widget-archives.php:117
+msgid "Select Post"
+msgstr "Välj inlägg"
+
+#: inc/widget-archives.php:194
+msgid "Alphabetical"
+msgstr "Alfabetisk"
+
+#: inc/widget-archives.php:195
+msgid "Daily"
+msgstr "Daglig"
+
+#: inc/widget-archives.php:196
+msgid "Monthly"
+msgstr "Månadsvis"
+
+#: inc/widget-archives.php:197
+msgid "Post By Post"
+msgstr "Inlägg efter inlägg"
+
+#: inc/widget-archives.php:198
+msgid "Weekly"
+msgstr "Veckovis"
+
+#: inc/widget-archives.php:199
+msgid "Yearly"
+msgstr "Årsvis"
+
+#: inc/widget-archives.php:204 inc/widget-authors.php:181
+#: inc/widget-bookmarks.php:220 inc/widget-categories.php:210
+#: inc/widget-pages.php:185 inc/widget-tags.php:227
+msgid "Ascending"
+msgstr "Stigande"
+
+#: inc/widget-archives.php:205 inc/widget-authors.php:182
+#: inc/widget-bookmarks.php:221 inc/widget-categories.php:211
+#: inc/widget-pages.php:186 inc/widget-tags.php:228
+msgid "Descending"
+msgstr "Fallande"
+
+#: inc/widget-archives.php:210
+msgid "Custom"
+msgstr "På rad"
+
+#: inc/widget-archives.php:211
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/widget-archives.php:212
+msgid "Option"
+msgstr "Lista"
+
+#: inc/widget-archives.php:218 inc/widget-authors.php:205
+#: inc/widget-bookmarks.php:250 inc/widget-calendar.php:137
+#: inc/widget-categories.php:234 inc/widget-nav-menu.php:173
+#: inc/widget-pages.php:211 inc/widget-search.php:128 inc/widget-tags.php:248
+msgid "Title:"
+msgstr "Titel:"
+
+#: inc/widget-archives.php:262 inc/widget-authors.php:261
+msgid "Show post count?"
+msgstr "Visa antal inlägg?"
+
+#: inc/widget-authors.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"author lists."
+msgstr ""
+"En avancerad widget som ger dig full kontrol över hur dina författarlistor "
+"visas."
+
+#: inc/widget-authors.php:55 inc/widget-authors.php:62
+msgid "Authors"
+msgstr "Författare"
+
+#: inc/widget-authors.php:186
+msgid "Display Name"
+msgstr "Namn som visas"
+
+#: inc/widget-authors.php:187
+msgid "Email"
+msgstr "E-post"
+
+#: inc/widget-authors.php:188 inc/widget-bookmarks.php:226
+#: inc/widget-bookmarks.php:232 inc/widget-categories.php:216
+#: inc/widget-pages.php:192
+msgid "ID"
+msgstr "ID"
+
+#: inc/widget-authors.php:189
+msgid "Nice Name"
+msgstr "Smeknamn"
+
+#: inc/widget-authors.php:190
+msgid "Post Count"
+msgstr "Antal inlägg"
+
+#: inc/widget-authors.php:191
+msgid "Registered"
+msgstr "Registrerad"
+
+#: inc/widget-authors.php:192 inc/widget-bookmarks.php:244
+msgid "URL"
+msgstr "URL"
+
+#: inc/widget-authors.php:193
+msgid "Login"
+msgstr "Logga in"
+
+#: inc/widget-authors.php:197 inc/widget-categories.php:205
+#: inc/widget-tags.php:223
+msgid "List"
+msgstr "Lista"
+
+#: inc/widget-authors.php:198 inc/widget-categories.php:206
+msgid "None"
+msgstr "Ingen"
+
+#: inc/widget-authors.php:257
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+
+#: inc/widget-authors.php:265
+msgid "Exclude admin?"
+msgstr "Exkludera admin?"
+
+#: inc/widget-authors.php:269
+msgid "Show full name?"
+msgstr "Visa fullständigt namn?"
+
+#: inc/widget-authors.php:273 inc/widget-categories.php:337
+#: inc/widget-tags.php:367
+msgid "Hide empty?"
+msgstr "Göm tomma?"
+
+#: inc/widget-bookmarks.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"bookmarks (links)."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina bokmärken "
+"(länkar) visas."
+
+#: inc/widget-bookmarks.php:55 inc/widget-bookmarks.php:62
+#: inc/widget-bookmarks.php:127
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: inc/widget-bookmarks.php:225 inc/widget-categories.php:215
+#: inc/widget-tags.php:233
+msgid "Count"
+msgstr "Antal"
+
+#: inc/widget-bookmarks.php:227 inc/widget-bookmarks.php:235
+#: inc/widget-categories.php:217 inc/widget-tags.php:234
+msgid "Name"
+msgstr "Namn"
+
+#: inc/widget-bookmarks.php:228 inc/widget-categories.php:218
+#: inc/widget-pages.php:195
+msgid "Slug"
+msgstr "Bas för länkstruktur"
+
+#: inc/widget-bookmarks.php:233
+msgid "Description"
+msgstr "Beskrivning"
+
+#: inc/widget-bookmarks.php:234
+msgid "Length"
+msgstr "Längd"
+
+#: inc/widget-bookmarks.php:236
+msgid "Notes"
+msgstr "Noteringar"
+
+#: inc/widget-bookmarks.php:237
+msgid "Owner"
+msgstr "Ägare"
+
+#: inc/widget-bookmarks.php:238 inc/widget-tags.php:229
+msgid "Random"
+msgstr "Slumpmässigt"
+
+#: inc/widget-bookmarks.php:239
+msgid "Rating"
+msgstr "Betyg"
+
+#: inc/widget-bookmarks.php:240
+msgid "Rel"
+msgstr "Rel"
+
+#: inc/widget-bookmarks.php:241 inc/widget-categories.php:226
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/widget-bookmarks.php:242
+msgid "Target"
+msgstr "Mål"
+
+#: inc/widget-bookmarks.php:243
+msgid "Updated"
+msgstr "Uppdaterad"
+
+#: inc/widget-bookmarks.php:352
+msgid "Categorize?"
+msgstr "Kategorisera?"
+
+#: inc/widget-bookmarks.php:356
+msgid "Show description?"
+msgstr "Visa beskrivning?"
+
+#: inc/widget-bookmarks.php:360
+msgid "Hide invisible?"
+msgstr "Göm osynliga?"
+
+#: inc/widget-bookmarks.php:364
+msgid "Show rating?"
+msgstr "Visa betyg?"
+
+#: inc/widget-bookmarks.php:368
+msgid "Show updated?"
+msgstr "Visa uppdaterad?"
+
+#: inc/widget-bookmarks.php:372
+msgid "Show images?"
+msgstr "Visa bilder?"
+
+#: inc/widget-bookmarks.php:376
+msgid "Show name?"
+msgstr "Visa namn?"
+
+#: inc/widget-bookmarks.php:380
+msgid "Show private?"
+msgstr "Visa privata?"
+
+#: inc/widget-calendar.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"calendar."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur din kalender visas."
+
+#: inc/widget-calendar.php:55 inc/widget-calendar.php:62
+msgid "Calendar"
+msgstr "Kalender"
+
+#: inc/widget-calendar.php:142
+msgid "One-letter abbreviation?"
+msgstr "Förkortning?"
+
+#: inc/widget-categories.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"category links."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina kategorier visas."
+
+#: inc/widget-categories.php:55 inc/widget-categories.php:62
+msgid "Categories"
+msgstr "Kategorier"
+
+#: inc/widget-categories.php:219
+msgid "Term Group"
+msgstr "Grupp"
+
+#: inc/widget-categories.php:224
+msgid "Atom"
+msgstr "Atom"
+
+#: inc/widget-categories.php:225
+msgid "RDF"
+msgstr "RDF"
+
+#: inc/widget-categories.php:227
+msgid "RSS 2.0"
+msgstr "RSS 2.0"
+
+#: inc/widget-categories.php:325 inc/widget-pages.php:310
+msgid "Hierarchical?"
+msgstr "Hierarkiskt?"
+
+#: inc/widget-categories.php:329
+msgid "Use description?"
+msgstr "Använd beskrivning?"
+
+#: inc/widget-categories.php:333
+msgid "Show count?"
+msgstr "Visa räknare?"
+
+#: inc/widget-nav-menu.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"menus."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina menyer visas."
+
+#: inc/widget-nav-menu.php:55
+msgid "Navigation Menu"
+msgstr "Navigationsmeny"
+
+#: inc/widget-nav-menu.php:62
+msgid "Navigation"
+msgstr "Navigation"
+
+#: inc/widget-pages.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your page "
+"links."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina sidor visas."
+
+#: inc/widget-pages.php:55 inc/widget-pages.php:62
+msgid "Pages"
+msgstr "Sidor"
+
+#: inc/widget-pages.php:190
+msgid "Author"
+msgstr "Författare"
+
+#: inc/widget-pages.php:191
+msgid "Date"
+msgstr "Datum"
+
+#: inc/widget-pages.php:193
+msgid "Menu Order"
+msgstr "Menyordning"
+
+#: inc/widget-pages.php:194 inc/widget-pages.php:202
+msgid "Modified"
+msgstr "Modifierad"
+
+#: inc/widget-pages.php:196
+msgid "Title"
+msgstr "Titel"
+
+#: inc/widget-pages.php:201
+msgid "Created"
+msgstr "Skapad"
+
+#: inc/widget-search.php:44
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"search form."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur ditt sökformulär "
+"visas."
+
+#: inc/widget-search.php:56 inc/widget-search.php:63
+msgid "Search"
+msgstr "Sök"
+
+#: inc/widget-tags.php:43
+msgid ""
+"An advanced widget that gives you total control over the output of your tags."
+msgstr ""
+"En avancerad widget som ger dig full kontroll över hur dina etiketter visas."
+
+#: inc/widget-tags.php:55 inc/widget-tags.php:64
+msgid "Tags"
+msgstr "Etiketter"
+
+#: inc/widget-tags.php:61
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/widget-tags.php:217
+msgid "View"
+msgstr "Visa"
+
+#: inc/widget-tags.php:218
+msgid "Edit"
+msgstr "Redigera"
+
+#: inc/widget-tags.php:222
+msgid "Flat"
+msgstr "Platt"
+
+#: inc/widget-tags.php:363
+msgid "Pad counts?"
+msgstr "Inkludera undersidor?"
+
+#. Plugin Name of the plugin/theme
+msgid "Widgets Reloaded"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://themehybrid.com/plugins/widgets-reloaded"
+msgstr "http://themehybrid.com/plugins/widgets-reloaded"
+
+#. Description of the plugin/theme
+msgid ""
+"Replaces many of the default WordPress widgets with versions that allow much "
+"more control.  Widgets come with highly-customizable control panels that "
+"provide a ton of flexibility."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Justin Tadlock"
+msgstr "Justin Tadlock"
+
+#. Author URI of the plugin/theme
+msgid "http://justintadlock.com"
+msgstr "http://justintadlock.com"
+
+#~ msgid "%s ago"
+#~ msgstr "%s sedan"
+
+#~ msgid "Permalink"
+#~ msgstr "Permanent länk"
+
+#~ msgid "Posted in %s"
+#~ msgstr "Upplagd i %s"
+
+#~ msgid "Tagged %s"
+#~ msgstr "Taggad %s"
+
+#~ msgid "Audio Info"
+#~ msgstr "Audioinfo"
+
+#~ msgid "Sizes: %s"
+#~ msgstr "Storlekars: %s"
+
+#~ msgid "Image Info"
+#~ msgstr "Bildinfo"
+
+#~ msgid "Gallery"
+#~ msgstr "Galleri"
+
+#~ msgid "Video Info"
+#~ msgstr "Videoinfo"
+
+#~ msgid "Nothing found"
+#~ msgstr "Ingenting kunde hittas"
+
+#~ msgid "Apologies, but no entries were found."
+#~ msgstr "Tyvärr, inga inlägg kunde hittas."
+
+#~ msgid "This gallery contains %s item."
+#~ msgid_plural "This gallery contains %s items."
+#~ msgstr[0] "Det här galleriet innehåller %s objekt."
+#~ msgstr[1] "Det här galleriet innehåller %s objekt."
+
+#~ msgid "Copyright &#169; %1$s %2$s. Powered by %3$s and %4$s."
+#~ msgstr "Copyright &#169; %1$s %2$s. Drivs av %3$s och %4$s."
+
+#~ msgid "1 Column Wide"
+#~ msgstr "1 Kolumn bred"
+
+#~ msgid "1 Column Narrow"
+#~ msgstr "1 Kolumn smal"
+
+#~ msgid "2 Columns: Content / Sidebar"
+#~ msgstr "2 Kolumner: Innehåll / Sidebar"
+
+#~ msgid "2 Columns: Sidebar / Content"
+#~ msgstr "2 Kolumner: Sidebar / Innehåll"
+
+#~ msgid "Primary Color"
+#~ msgstr "Utvald färg"
+
+#~ msgid "Horizon"
+#~ msgstr "Horizon"
+
+#~ msgid "Orange Burn"
+#~ msgstr "Orange Burn"
+
+#~ msgid "Blue Planets"
+#~ msgstr "Blue Planets"
+
+#~ msgid "Planet Burst"
+#~ msgstr "Planet Burst"
+
+#~ msgid "Space Splatters"
+#~ msgstr "Space Splatters"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Primary"
+#~ msgstr "Huvudmeny"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Secondary"
+#~ msgstr "Sekundär meny"
+
+#~ msgctxt "nav menu location"
+#~ msgid "Social"
+#~ msgstr "Social meny"
+
+#~ msgctxt "sidebar"
+#~ msgid "Primary"
+#~ msgstr "Primär"
+
+#~ msgid ""
+#~ "The main sidebar. It is displayed on either the left or right side of the "
+#~ "page based on the chosen layout."
+#~ msgstr ""
+#~ "Sidopanel som visas antingen till vänster eller höger om sidan borende på "
+#~ "vald layout. "
+
+#~ msgctxt "sidebar"
+#~ msgid "Subsidiary"
+#~ msgstr "Sidfot"
+
+#~ msgid ""
+#~ "A sidebar located in the footer of the site. Optimized for one, two, or "
+#~ "three widgets (and multiples thereof)."
+#~ msgstr ""
+#~ "Sidfotspanel optimerad för en, två, eller tre widgets (kan fördelas på "
+#~ "flera rader)."
+
+#~ msgid "Template"
+#~ msgstr "Sidmall (Template)"
+
+#~ msgid "%s Theme Settings"
+#~ msgstr "%s Temainställningar"
+
+#~ msgid "Theme Settings"
+#~ msgstr "Temainställningar"
+
+#~ msgctxt "theme customizer tab"
+#~ msgid "Default"
+#~ msgstr "Förvalt"
+
+#~ msgid "%1$s &#215; %2$s"
+#~ msgstr "%1$s &#215; %2$s"
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensioner"
+
+#~ msgid "Camera"
+#~ msgstr "Kamera"
