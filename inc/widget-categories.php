@@ -50,12 +50,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-categories',
-			__( 'Categories', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-categories', __( 'Categories', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up the defaults. */
 		$this->defaults = array(
@@ -201,30 +196,30 @@ class Hybrid_Widget_Categories extends WP_Widget {
 		$taxonomies = get_taxonomies( array( 'show_tagcloud' => true ), 'objects' );
 		$terms      = get_terms( $instance['taxonomy'] );
 
-		$style = array( 
-			'list' => esc_attr__( 'List', 'widgets-reloaded' ), 
-			'none' => esc_attr__( 'None', 'widgets-reloaded' ) 
+		$style = array(
+			'list' => esc_attr__( 'List', 'widgets-reloaded' ),
+			'none' => esc_attr__( 'None', 'widgets-reloaded' )
 		);
 
-		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
-			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
+		$order = array(
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ),
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
-		$orderby = array( 
-			'count'      => esc_attr__( 'Count',      'widgets-reloaded' ), 
-			'ID'         => esc_attr__( 'ID',         'widgets-reloaded' ), 
-			'name'       => esc_attr__( 'Name',       'widgets-reloaded' ), 
-			'slug'       => esc_attr__( 'Slug',       'widgets-reloaded' ), 
-			'term_group' => esc_attr__( 'Term Group', 'widgets-reloaded' ) 
+		$orderby = array(
+			'count'      => esc_attr__( 'Count',      'widgets-reloaded' ),
+			'ID'         => esc_attr__( 'ID',         'widgets-reloaded' ),
+			'name'       => esc_attr__( 'Name',       'widgets-reloaded' ),
+			'slug'       => esc_attr__( 'Slug',       'widgets-reloaded' ),
+			'term_group' => esc_attr__( 'Term Group', 'widgets-reloaded' )
 		);
 
-		$feed_type = array( 
-			''     => '', 
-			'atom' => esc_attr__( 'Atom',    'widgets-reloaded' ), 
-			'rdf'  => esc_attr__( 'RDF',     'widgets-reloaded' ), 
-			'rss'  => esc_attr__( 'RSS',     'widgets-reloaded' ), 
-			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' ) 
+		$feed_type = array(
+			''     => '',
+			'atom' => esc_attr__( 'Atom',    'widgets-reloaded' ),
+			'rdf'  => esc_attr__( 'RDF',     'widgets-reloaded' ),
+			'rss'  => esc_attr__( 'RSS',     'widgets-reloaded' ),
+			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' )
 		);
 
 		?>
@@ -235,7 +230,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><code>taxonomy</code></label> 
+			<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><code>taxonomy</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>">
 				<?php foreach ( $taxonomies as $taxonomy ) { ?>
 					<option value="<?php echo esc_attr( $taxonomy->name ); ?>" <?php selected( $instance['taxonomy'], $taxonomy->name ); ?>><?php echo esc_html( $taxonomy->labels->singular_name ); ?></option>
@@ -243,7 +238,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label> 
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
 				<?php foreach ( $style as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['style'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -251,7 +246,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -259,7 +254,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label> 
+			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 				<?php foreach ( $orderby as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -309,7 +304,7 @@ class Hybrid_Widget_Categories extends WP_Widget {
 			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'feed' ); ?>" name="<?php echo $this->get_field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'feed_type' ); ?>"><code>feed_type</code></label> 
+			<label for="<?php echo $this->get_field_id( 'feed_type' ); ?>"><code>feed_type</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'feed_type' ); ?>" name="<?php echo $this->get_field_name( 'feed_type' ); ?>">
 				<?php foreach ( $feed_type as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['feed_type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>

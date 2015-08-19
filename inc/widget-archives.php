@@ -50,12 +50,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-archives',
-			__( 'Archives', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-archives', __( 'Archives', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up defaults. */
 		$this->defaults = array(
@@ -190,13 +185,13 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		/* Create an array of archive types. */
-		$type = array( 
-			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ), 
-			'daily'      => esc_attr__( 'Daily',        'widgets-reloaded' ), 
+		$type = array(
+			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ),
+			'daily'      => esc_attr__( 'Daily',        'widgets-reloaded' ),
 			'monthly'    => esc_attr__( 'Monthly',      'widgets-reloaded' ),
-			'postbypost' => esc_attr__( 'Post By Post', 'widgets-reloaded' ), 
-			'weekly'     => esc_attr__( 'Weekly',       'widgets-reloaded' ), 
-			'yearly'     => esc_attr__( 'Yearly',       'widgets-reloaded' ) 
+			'postbypost' => esc_attr__( 'Post By Post', 'widgets-reloaded' ),
+			'weekly'     => esc_attr__( 'Weekly',       'widgets-reloaded' ),
+			'yearly'     => esc_attr__( 'Yearly',       'widgets-reloaded' )
 		);
 
 		/* Create an array of order options. */
@@ -206,10 +201,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		);
 
 		/* Create an array of archive formats. */
-		$format = array( 
-			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ), 
-			'html'   => esc_attr__( 'HTML',   'widgets-reloaded' ), 
-			'option' => esc_attr__( 'Option', 'widgets-reloaded' ) 
+		$format = array(
+			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ),
+			'html'   => esc_attr__( 'HTML',   'widgets-reloaded' ),
+			'option' => esc_attr__( 'Option', 'widgets-reloaded' )
 		);
 		?>
 
@@ -223,7 +218,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><code>type</code></label> 
+			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><code>type</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>">
 				<?php foreach ( $type as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -231,7 +226,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -242,7 +237,7 @@ class Hybrid_Widget_Archives extends WP_Widget {
 
 		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><code>format</code></label> 
+			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><code>format</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'format' ); ?>" name="<?php echo $this->get_field_name( 'format' ); ?>">
 				<?php foreach ( $format as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>

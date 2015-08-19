@@ -50,12 +50,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-authors',
-			__( 'Authors', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-authors', __( 'Authors', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up defaults. */
 		$this->defaults = array(
@@ -177,25 +172,25 @@ class Hybrid_Widget_Authors extends WP_Widget {
 		/* Merge the user-selected arguments with the defaults. */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		$order = array( 
-			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
-			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
+		$order = array(
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ),
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
-		$orderby = array( 
-			'display_name' => esc_attr__( 'Display Name', 'widgets-reloaded' ), 
-			'email'        => esc_attr__( 'Email',        'widgets-reloaded' ), 
-			'ID'           => esc_attr__( 'ID',           'widgets-reloaded' ), 
-			'nicename'     => esc_attr__( 'Nice Name',    'widgets-reloaded' ), 
-			'post_count'   => esc_attr__( 'Post Count',   'widgets-reloaded' ), 
-			'registered'   => esc_attr__( 'Registered',   'widgets-reloaded' ), 
-			'url'          => esc_attr__( 'URL',          'widgets-reloaded' ), 
-			'user_login'   => esc_attr__( 'Login',        'widgets-reloaded' ) 
+		$orderby = array(
+			'display_name' => esc_attr__( 'Display Name', 'widgets-reloaded' ),
+			'email'        => esc_attr__( 'Email',        'widgets-reloaded' ),
+			'ID'           => esc_attr__( 'ID',           'widgets-reloaded' ),
+			'nicename'     => esc_attr__( 'Nice Name',    'widgets-reloaded' ),
+			'post_count'   => esc_attr__( 'Post Count',   'widgets-reloaded' ),
+			'registered'   => esc_attr__( 'Registered',   'widgets-reloaded' ),
+			'url'          => esc_attr__( 'URL',          'widgets-reloaded' ),
+			'user_login'   => esc_attr__( 'Login',        'widgets-reloaded' )
 		);
 
-		$style = array( 
-			'list' => esc_attr__( 'List', 'widgets-reloaded'), 
-			'none' => esc_attr__( 'None', 'widgets-reloaded' ) 
+		$style = array(
+			'list' => esc_attr__( 'List', 'widgets-reloaded'),
+			'none' => esc_attr__( 'None', 'widgets-reloaded' )
 		);
 
 		?>
@@ -206,7 +201,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -214,7 +209,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label> 
+			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 				<?php foreach ( $orderby as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -226,7 +221,7 @@ class Hybrid_Widget_Authors extends WP_Widget {
 			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label> 
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
 				<?php foreach ( $style as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['style'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>

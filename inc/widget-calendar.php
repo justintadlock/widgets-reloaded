@@ -1,6 +1,6 @@
 <?php
 /**
- * The calendar widget was created to give users the ability to show a post calendar for their blog 
+ * The calendar widget was created to give users the ability to show a post calendar for their blog
  * using all the available options given in the get_calendar() function. It replaces the default WordPress
  * calendar widget.
  *
@@ -50,12 +50,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-calendar',
-			__( 'Calendar', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-calendar', __( 'Calendar', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up the defaults. */
 		$this->defaults = array(
@@ -138,7 +133,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" /> 
+			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?> <code>initial</code></label>
 		</p>
 		</div>

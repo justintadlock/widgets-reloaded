@@ -1,6 +1,6 @@
 <?php
 /**
- * The nav menu widget was created to give users the ability to show nav menus created from the 
+ * The nav menu widget was created to give users the ability to show nav menus created from the
  * Menus screen, by the theme, or by plugins using the wp_nav_menu() function.  It replaces the default
  * WordPress navigation menu class.
  *
@@ -50,12 +50,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-nav-menu',
-			__( 'Navigation Menu', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-nav-menu', __( 'Navigation Menu', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up the defaults. */
 		$this->defaults = array(
@@ -171,7 +166,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'menu' ); ?>"><code>menu</code></label> 
+			<label for="<?php echo $this->get_field_id( 'menu' ); ?>"><code>menu</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'menu' ); ?>" name="<?php echo $this->get_field_name( 'menu' ); ?>">
 				<option value=""></option>
 				<?php foreach ( wp_get_nav_menus() as $menu ) { ?>
@@ -180,7 +175,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'container' ); ?>"><code>container</code></label> 
+			<label for="<?php echo $this->get_field_id( 'container' ); ?>"><code>container</code></label>
 			<select class="smallfat" id="<?php echo $this->get_field_id( 'container' ); ?>" name="<?php echo $this->get_field_name( 'container' ); ?>">
 				<?php foreach ( $container as $option ) { ?>
 					<option value="<?php echo esc_attr( $option ); ?>" <?php selected( $instance['container'], $option ); ?>><?php echo esc_html( $option ); ?></option>

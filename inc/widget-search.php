@@ -51,12 +51,7 @@ class Hybrid_Widget_Search extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-search',
-			__( 'Search', 'widgets-reloaded' ),
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-search', __( 'Search', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up the defaults. */
 		$this->defaults = array(

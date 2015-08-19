@@ -50,12 +50,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
-			'hybrid-bookmarks',
-			__( 'Bookmarks', 'widgets-reloaded' ),	
-			$widget_options,
-			$control_options
-		);
+		parent::__construct( 'hybrid-bookmarks', __( 'Bookmarks', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		/* Set up the defaults. */
 		$this->defaults = array(
@@ -216,32 +211,32 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$terms     = get_terms( 'link_category' );
 		$bookmarks = get_bookmarks( array( 'hide_invisible' => false ) );
 
-		$category_order = $order = array( 
-			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ), 
-			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' ) 
+		$category_order = $order = array(
+			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ),
+			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
-		$category_orderby = array( 
-			'count' => esc_attr__( 'Count', 'widgets-reloaded' ), 
-			'ID'    => esc_attr__( 'ID',    'widgets-reloaded' ), 
-			'name'  => esc_attr__( 'Name',  'widgets-reloaded' ), 
-			'slug'  => esc_attr__( 'Slug',  'widgets-reloaded' ) 
+		$category_orderby = array(
+			'count' => esc_attr__( 'Count', 'widgets-reloaded' ),
+			'ID'    => esc_attr__( 'ID',    'widgets-reloaded' ),
+			'name'  => esc_attr__( 'Name',  'widgets-reloaded' ),
+			'slug'  => esc_attr__( 'Slug',  'widgets-reloaded' )
 		);
 
-		$orderby = array( 
-			'id'          => esc_attr__( 'ID',          'widgets-reloaded' ), 
-			'description' => esc_attr__( 'Description', 'widgets-reloaded' ), 
-			'length'      => esc_attr__( 'Length',      'widgets-reloaded' ), 
-			'name'        => esc_attr__( 'Name',        'widgets-reloaded' ), 
-			'notes'       => esc_attr__( 'Notes',       'widgets-reloaded' ), 
-			'owner'       => esc_attr__( 'Owner',       'widgets-reloaded' ), 
-			'rand'        => esc_attr__( 'Random',      'widgets-reloaded' ), 
-			'rating'      => esc_attr__( 'Rating',      'widgets-reloaded' ), 
-			'rel'         => esc_attr__( 'Rel',         'widgets-reloaded' ), 
-			'rss'         => esc_attr__( 'RSS',         'widgets-reloaded' ), 
-			'target'      => esc_attr__( 'Target',      'widgets-reloaded' ), 
-			'updated'     => esc_attr__( 'Updated',     'widgets-reloaded' ), 
-			'url'         => esc_attr__( 'URL',         'widgets-reloaded' ) 
+		$orderby = array(
+			'id'          => esc_attr__( 'ID',          'widgets-reloaded' ),
+			'description' => esc_attr__( 'Description', 'widgets-reloaded' ),
+			'length'      => esc_attr__( 'Length',      'widgets-reloaded' ),
+			'name'        => esc_attr__( 'Name',        'widgets-reloaded' ),
+			'notes'       => esc_attr__( 'Notes',       'widgets-reloaded' ),
+			'owner'       => esc_attr__( 'Owner',       'widgets-reloaded' ),
+			'rand'        => esc_attr__( 'Random',      'widgets-reloaded' ),
+			'rating'      => esc_attr__( 'Rating',      'widgets-reloaded' ),
+			'rel'         => esc_attr__( 'Rel',         'widgets-reloaded' ),
+			'rss'         => esc_attr__( 'RSS',         'widgets-reloaded' ),
+			'target'      => esc_attr__( 'Target',      'widgets-reloaded' ),
+			'updated'     => esc_attr__( 'Updated',     'widgets-reloaded' ),
+			'url'         => esc_attr__( 'URL',         'widgets-reloaded' )
 		);
 		?>
 
@@ -251,7 +246,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title_li' ); ?>" name="<?php echo $this->get_field_name( 'title_li' ); ?>" value="<?php echo esc_attr( $instance['title_li'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title_li'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category_order' ); ?>"><code>category_order</code></label> 
+			<label for="<?php echo $this->get_field_id( 'category_order' ); ?>"><code>category_order</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'category_order' ); ?>" name="<?php echo $this->get_field_name( 'category_order' ); ?>">
 				<?php foreach ( $category_order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['category_order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -259,7 +254,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category_orderby' ); ?>"><code>category_orderby</code></label> 
+			<label for="<?php echo $this->get_field_id( 'category_orderby' ); ?>"><code>category_orderby</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'category_orderby' ); ?>" name="<?php echo $this->get_field_name( 'category_orderby' ); ?>">
 				<?php foreach ( $category_orderby as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['category_orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -267,7 +262,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><code>category</code></label> 
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><code>category</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'category' ); ?>" name="<?php echo $this->get_field_name( 'category' ); ?>[]" size="4" multiple="multiple">
 				<?php foreach ( $terms as $term ) { ?>
 					<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php echo ( in_array( $term->term_id, (array) $instance['category'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $term->name ); ?></option>
@@ -275,7 +270,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude_category' ); ?>"><code>exclude_category</code></label> 
+			<label for="<?php echo $this->get_field_id( 'exclude_category' ); ?>"><code>exclude_category</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'exclude_category' ); ?>" name="<?php echo $this->get_field_name( 'exclude_category' ); ?>[]" size="4" multiple="multiple">
 				<?php foreach ( $terms as $term ) { ?>
 					<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php echo ( in_array( $term->term_id, (array) $instance['exclude_category'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $term->name ); ?></option>
@@ -296,7 +291,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			<input type="number" class="smallfat code" size="5" min="-1" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="-1" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label> 
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -304,7 +299,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label> 
+			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 				<?php foreach ( $orderby as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
@@ -312,7 +307,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label> 
+			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>[]" size="4" multiple="multiple">
 				<?php foreach ( $bookmarks as $bookmark ) { ?>
 					<option value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php echo ( in_array( $bookmark->link_id, (array) $instance['include'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $bookmark->link_name ); ?></option>
@@ -320,7 +315,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label> 
+			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>[]" size="4" multiple="multiple">
 				<?php foreach ( $bookmarks as $bookmark ) { ?>
 					<option value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php echo ( in_array( $bookmark->link_id, (array) $instance['exclude'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $bookmark->link_name ); ?></option>
