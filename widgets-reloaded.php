@@ -3,27 +3,26 @@
  * Plugin Name: Widgets Reloaded
  * Plugin URI:  http://themehybrid.com/plugins/widgets-reloaded
  * Description: Replaces many of the default WordPress widgets with versions that allow much more control.  Widgets come with highly-customizable control panels that provide a ton of flexibility.
- * Version:     0.6.0
+ * Version:     1.0.0-dev
  * Author:      Justin Tadlock
  * Author URI:  http://justintadlock.com
  * Text Domain: widgets-reloaded
  * Domain Path: /languages
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License as published by the Free Software Foundation; either version 2 of the License, 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation; either version 2 of the License,
  * or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * You should have received a copy of the GNU General Public License along with this program; if not, write 
+ * You should have received a copy of the GNU General Public License along with this program; if not, write
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   WidgetsReloaded
  * @version   0.6.0
- * @since     0.1.0
  * @author    Justin Tadlock <justin@justintadlock.com>
- * @copyright Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright Copyright (c) 2008 - 2015, Justin Tadlock
  * @link      http://themehybrid.com/plugins/widgets-reloaded
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -31,7 +30,8 @@
 /**
  * Sets up the plugin
  *
- * @since 0.5.0
+ * @since  0.5.0
+ * @access public
  */
 final class Widgets_Reloaded_Plugin {
 
@@ -71,22 +71,22 @@ final class Widgets_Reloaded_Plugin {
 	 */
 	public function __construct() {
 
-		/* Set the properties needed by the plugin. */
+		// Set the properties needed by the plugin.
 		add_action( 'plugins_loaded', array( $this, 'setup' ), 1 );
 
-		/* Load translation files. */
+		// Load translation files.
 		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 
-		/* Set up theme support. */
+		// Set up theme support.
 		add_action( 'after_setup_theme', array( $this, 'theme_support' ), 12 );
 
-		/* Load the plugin includes. */
+		// Load the plugin includes.
 		add_action( 'after_setup_theme', array( $this, 'includes' ), 95 );
 
-		/* Register widgets. */
+		// Register widgets.
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
-		/* Load admin scripts and styles. */
+		// Load admin scripts and styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
@@ -103,8 +103,8 @@ final class Widgets_Reloaded_Plugin {
 	}
 
 	/**
-	 * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the 
-	 * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users, 
+	 * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the
+	 * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users,
 	 * so the plugin should have priority.
 	 *
 	 * @since  0.5.0
@@ -135,7 +135,7 @@ final class Widgets_Reloaded_Plugin {
 	}
 
 	/**
-	 * Note that we're using the 'widgets-reloaded' textdomain here.  This is because the widgets 
+	 * Note that we're using the 'widgets-reloaded' textdomain here.  This is because the widgets
 	 * are ported from the Hybrid Core framework.
 	 *
 	 * @since  0.5.0
@@ -155,7 +155,7 @@ final class Widgets_Reloaded_Plugin {
 	 */
 	public function register_widgets() {
 
-		/* Unregister the default WordPress widgets. */
+		// Unregister the default WordPress widgets.
 		unregister_widget( 'WP_Widget_Archives'   );
 		unregister_widget( 'WP_Widget_Calendar'   );
 		unregister_widget( 'WP_Widget_Categories' );
@@ -165,33 +165,19 @@ final class Widgets_Reloaded_Plugin {
 		unregister_widget( 'WP_Widget_Search'     );
 		unregister_widget( 'WP_Widget_Tag_Cloud'  );
 
-		/* Register the archives widget. */
-		register_widget( 'Hybrid_Widget_Archives' );
+		// Register custom widgets.
+		register_widget( 'Hybrid_Widget_Archives'   );
+		register_widget( 'Hybrid_Widget_Authors'    );
+		register_widget( 'Hybrid_Widget_Calendar'   );
+		register_widget( 'Hybrid_Widget_Categories' );
+		register_widget( 'Hybrid_Widget_Nav_Menu'   );
+		register_widget( 'Hybrid_Widget_Pages'      );
+		register_widget( 'Hybrid_Widget_Search'     );
+		register_widget( 'Hybrid_Widget_Tags'       );
 
-		/* Register the authors widget. */
-		register_widget( 'Hybrid_Widget_Authors' );
-
-		/* Register the bookmarks widget. */
 		if ( get_option( 'link_manager_enabled' ) )
 			register_widget( 'Hybrid_Widget_Bookmarks' );
 
-		/* Register the calendar widget. */
-		register_widget( 'Hybrid_Widget_Calendar' );
-
-		/* Register the categories widget. */
-		register_widget( 'Hybrid_Widget_Categories' );
-
-		/* Register the nav menu widget. */
-		register_widget( 'Hybrid_Widget_Nav_Menu' );
-
-		/* Register the pages widget. */
-		register_widget( 'Hybrid_Widget_Pages' );
-
-		/* Register the search widget. */
-		register_widget( 'Hybrid_Widget_Search' );
-
-		/* Register the tags widget. */
-		register_widget( 'Hybrid_Widget_Tags' );
 	}
 
 	/**

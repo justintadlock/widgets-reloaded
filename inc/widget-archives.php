@@ -5,9 +5,9 @@
  * in the wp_get_archives() function.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Includes
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -37,22 +37,22 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-archives widget_archive',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your archives.', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 525,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-archives', __( 'Archives', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up defaults. */
+		// Set up defaults.
 		$this->defaults = array(
 			'title'           => esc_attr__( 'Archives', 'widgets-reloaded' ),
 			'limit'           => 10,
@@ -76,26 +76,26 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set the $args for wp_get_archives() to the $instance array. */
+		// Set the $args for wp_get_archives() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* Overwrite the $echo argument and set it to false. */
+		// Overwrite the $echo argument and set it to false.
 		$args['echo'] = false;
 
-		/* Output the sidebar's $before_widget wrapper. */
+		// Output the sidebar's $before_widget wrapper.
 		echo $sidebar['before_widget'];
 
-		/* If a title was input by the user, display it. */
+		// If a title was input by the user, display it.
 		if ( !empty( $args['title'] ) )
 			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
-		/* Get the archives list. */
+		// Get the archives list.
 		$archives = str_replace( array( "\r", "\n", "\t" ), '', wp_get_archives( $args ) );
 
-		/* If the archives should be shown in a <select> drop-down. */
+		// If the archives should be shown in a <select> drop-down.
 		if ( 'option' == $args['format'] ) {
 
-			/* Create a title for the drop-down based on the archive type. */
+			// Create a title for the drop-down based on the archive type.
 			if ( 'yearly' == $args['type'] )
 				$option_title = esc_html__( 'Select Year', 'widgets-reloaded' );
 
@@ -111,24 +111,24 @@ class Hybrid_Widget_Archives extends WP_Widget {
 			elseif ( 'postbypost' == $args['type'] || 'alpha' == $args['type'] )
 				$option_title = esc_html__( 'Select Post', 'widgets-reloaded' );
 
-			/* Output the <select> element and each <option>. */
+			// Output the <select> element and each <option>.
 			echo '<p><select name="archive-dropdown" onchange=\'document.location.href=this.options[this.selectedIndex].value;\'>';
 				echo '<option value="">' . $option_title . '</option>';
 				echo $archives;
 			echo '</select></p>';
 		}
 
-		/* If the format should be an unordered list. */
+		// If the format should be an unordered list.
 		elseif ( 'html' == $args['format'] ) {
 			echo '<ul class="xoxo archives">' . $archives . '</ul><!-- .xoxo .archives -->';
 		}
 
-		/* All other formats. */
+		// All other formats.
 		else {
 			echo $archives;
 		}
 
-		/* Close the sidebar's widget wrapper. */
+		// Close the sidebar's widget wrapper.
 		echo $sidebar['after_widget'];
 	}
 
@@ -144,10 +144,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title']  = strip_tags( $new_instance['title']  );
 
-		/* Whitelist options. */
+		// Whitelist options.
 		$type   = array( 'alpha', 'daily', 'monthly', 'postbypost', 'weekly', 'yearly' );
 		$order  = array( 'ASC', 'DESC' );
 		$format = array( 'custom', 'html', 'option' );
@@ -156,18 +156,18 @@ class Hybrid_Widget_Archives extends WP_Widget {
 		$instance['order']  = in_array( $new_instance['order'], $order )   ? $new_instance['order']  : 'DESC';
 		$instance['format'] = in_array( $new_instance['format'], $format ) ? $new_instance['format'] : 'html';
 
-		/* Integers. */
+		// Integers.
 		$instance['limit'] = intval( $new_instance['limit'] );
 		$instance['limit'] = 0 === $instance['limit'] ? '' : $instance['limit'];
 
-		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		// Text boxes. Make sure user can use 'unfiltered_html'.
 		$instance['before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['before'] : wp_filter_post_kses( $new_instance['before'] );
 		$instance['after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['after']  : wp_filter_post_kses( $new_instance['after']  );
 
-		/* Checkboxes. */
+		// Checkboxes.
 		$instance['show_post_count'] = isset( $new_instance['show_post_count'] ) ? 1 : 0;
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -181,10 +181,10 @@ class Hybrid_Widget_Archives extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		/* Create an array of archive types. */
+		// Create an array of archive types.
 		$type = array(
 			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ),
 			'daily'      => esc_attr__( 'Daily',        'widgets-reloaded' ),
@@ -194,13 +194,13 @@ class Hybrid_Widget_Archives extends WP_Widget {
 			'yearly'     => esc_attr__( 'Yearly',       'widgets-reloaded' )
 		);
 
-		/* Create an array of order options. */
+		// Create an array of order options.
 		$order = array(
 			'ASC'  => esc_attr__( 'Ascending',  'widgets-reloaded' ),
 			'DESC' => esc_attr__( 'Descending', 'widgets-reloaded' )
 		);
 
-		/* Create an array of archive formats. */
+		// Create an array of archive formats.
 		$format = array(
 			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ),
 			'html'   => esc_attr__( 'HTML',   'widgets-reloaded' ),

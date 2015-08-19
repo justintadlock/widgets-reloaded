@@ -5,9 +5,9 @@
  * WordPress navigation menu class.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Includes
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -15,7 +15,8 @@
 /**
  * Nav Menu Widget Class
  *
- * @since 0.8.0
+ * @since  0.8.0
+ * @access public
  */
 class Hybrid_Widget_Nav_Menu extends WP_Widget {
 
@@ -37,22 +38,22 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-nav-menu widget_nav_menu',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your menus.', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 525,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-nav-menu', __( 'Navigation Menu', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up the defaults. */
+		// Set up the defaults.
 		$this->defaults = array(
 			'title'           => esc_attr__( 'Navigation', 'widgets-reloaded' ),
 			'menu'            => '',
@@ -81,23 +82,23 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set the $args for wp_nav_menu() to the $instance array. */
+		// Set the $args for wp_nav_menu() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* Overwrite the $echo argument and set it to false. */
+		// Overwrite the $echo argument and set it to false.
 		$args['echo'] = false;
 
-		/* Output the sidebar's $before_widget wrapper. */
+		// Output the sidebar's $before_widget wrapper.
 		echo $sidebar['before_widget'];
 
-		/* If a title was input by the user, display it. */
+		// If a title was input by the user, display it.
 		if ( !empty( $args['title'] ) )
 			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
-		/* Output the nav menu. */
+		// Output the nav menu.
 		echo str_replace( array( "\r", "\n", "\t" ), '', wp_nav_menu( $args ) );
 
-		/* Close the sidebar's widget wrapper. */
+		// Close the sidebar's widget wrapper.
 		echo $sidebar['after_widget'];
 	}
 
@@ -113,34 +114,34 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['menu']  = strip_tags( $new_instance['menu']  );
 
-		/* Whitelist options. */
+		// Whitelist options.
 		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
 
 		$instance['container'] = in_array( $new_instance['container'], $container ) ? $new_instance['container'] : 'div';
 
-		/* Integers. */
+		// Integers.
 		$instance['depth'] = absint( $new_instance['depth'] );
 
-		/* HTML class. */
+		// HTML class.
 		$instance['container_id']    = sanitize_html_class( $new_instance['container_id']    );
 		$instance['container_class'] = sanitize_html_class( $new_instance['container_class'] );
 		$instance['menu_id']         = sanitize_html_class( $new_instance['menu_id']         );
 		$instance['menu_class']      = sanitize_html_class( $new_instance['menu_class']      );
 
-		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		// Text boxes. Make sure user can use 'unfiltered_html'.
 		$instance['before']      = current_user_can( 'unfiltered_html' ) ? $new_instance['before']      : wp_filter_post_kses( $new_instance['before']      );
 		$instance['after']       = current_user_can( 'unfiltered_html' ) ? $new_instance['after']       : wp_filter_post_kses( $new_instance['after']       );
 		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
 		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
 
-		/* Function name. */
+		// Function name.
 		$instance['fallback_cb'] = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['fallback_cb'] ) ? $new_instance['fallback_cb'] : 'wp_page_menu';
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -154,7 +155,7 @@ class Hybrid_Widget_Nav_Menu extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );

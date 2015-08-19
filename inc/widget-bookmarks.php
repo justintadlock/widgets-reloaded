@@ -5,9 +5,9 @@
  * in the wp_list_bookmarks() function.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Includes
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -15,7 +15,8 @@
 /**
  * Bookmarks Widget Class
  *
- * @since 0.6.0
+ * @since  0.6.0
+ * @access public
  */
 class Hybrid_Widget_Bookmarks extends WP_Widget {
 
@@ -37,22 +38,22 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-bookmarks widget_links',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your bookmarks (links).', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 800,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-bookmarks', __( 'Bookmarks', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up the defaults. */
+		// Set up the defaults.
 		$this->defaults = array(
 			'title_li'         => esc_attr__( 'Bookmarks', 'widgets-reloaded' ),
 			'categorize'       => true,
@@ -91,18 +92,18 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set up the $before_widget ID for multiple widgets created by the bookmarks widget. */
+		// Set up the $before_widget ID for multiple widgets created by the bookmarks widget.
 		if ( !empty( $instance['categorize'] ) )
 			$sidebar['before_widget'] = preg_replace( '/id="[^"]*"/','id="%id"', $sidebar['before_widget'] );
 
-		/* Add a class to $before_widget if one is set. */
+		// Add a class to $before_widget if one is set.
 		if ( !empty( $instance['class'] ) )
 			$sidebar['before_widget'] = str_replace( 'class="', 'class="' . esc_attr( $instance['class'] ) . ' ', $sidebar['before_widget'] );
 
-		/* Set the $args for wp_list_bookmarks() to the $instance array. */
+		// Set the $args for wp_list_bookmarks() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* wp_list_bookmarks() hasn't been updated in WP to use wp_parse_id_list(), so we have to pass strings for includes/excludes. */
+		// wp_list_bookmarks() hasn't been updated in WP to use wp_parse_id_list(), so we have to pass strings for includes/excludes.
 		if ( !empty( $args['category'] ) && is_array( $args['category'] ) )
 			$args['category'] = join( ', ', $args['category'] );
 
@@ -115,10 +116,10 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		if ( !empty( $args['exclude'] ) && is_array( $args['exclude'] ) )
 			$args['exclude'] = join( ',', $args['exclude'] );
 
-		/* If no limit is given, set it to -1. */
+		// If no limit is given, set it to -1.
 		$args['limit'] = empty( $args['limit'] ) ? -1 : $args['limit'];
 
-		/* Some arguments must be set to the sidebar arguments to be output correctly. */
+		// Some arguments must be set to the sidebar arguments to be output correctly.
 		$args['title_li']        = apply_filters( 'widget_title', ( empty( $args['title_li'] ) ? __( 'Bookmarks', 'widgets-reloaded' ) : $args['title_li'] ), $instance, $this->id_base );
 		$args['title_before']    = $sidebar['before_title'];
 		$args['title_after']     = $sidebar['after_title'];
@@ -127,14 +128,14 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$args['category_name']   = '';
 		$args['echo']            = false;
 
-		/* Output the bookmarks widget. */
+		// Output the bookmarks widget.
 		$bookmarks = str_replace( array( "\r", "\n", "\t" ), '', wp_list_bookmarks( $args ) );
 
-		/* If no title is given and the bookmarks aren't categorized, add a wrapper <ul>. */
+		// If no title is given and the bookmarks aren't categorized, add a wrapper <ul>.
 		if ( empty( $args['title_li'] ) && false === $args['categorize'] )
 			$bookmarks = '<ul class="xoxo bookmarks">' . $bookmarks . '</ul>';
 
-		/* Output the bookmarks. */
+		// Output the bookmarks.
 		echo $bookmarks;
 	}
 
@@ -150,23 +151,23 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title_li'] = strip_tags( $new_instance['title_li'] );
 		$instance['search']   = strip_tags( $new_instance['search']   );
 
-		/* Arrays of post IDs (integers). */
+		// Arrays of post IDs (integers).
 		$instance['category']         = array_map( 'absint', $new_instance['category']         );
 		$instance['exclude_category'] = array_map( 'absint', $new_instance['exclude_category'] );
 		$instance['include']          = array_map( 'absint', $new_instance['include']          );
 		$instance['exclude']          = array_map( 'absint', $new_instance['exclude']          );
 
-		/* HTML class. */
+		// HTML class.
 		$instance['class'] = sanitize_html_class( $new_instance['class'] );
 
-		/* Integers. */
+		// Integers.
 		$instance['limit'] = intval( $new_instance['limit'] );
 
-		/* Whitelist options. */
+		// Whitelist options.
 		$category_order = $order = array( 'ASC', 'DESC' );
 		$category_orderby        = array( 'count', 'ID', 'name', 'slug' );
 		$orderby                 = array( 'id', 'description', 'length', 'name', 'notes', 'owner', 'rand', 'rating', 'rel', 'rss', 'target', 'updated', 'url' );
@@ -176,12 +177,12 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$instance['order']            = in_array( $new_instance['order'],            $order )            ? $new_instance['order']            : 'ASC';
 		$instance['orderby']          = in_array( $new_instance['orderby'],          $orderby )          ? $new_instance['orderby']          : 'name';
 
-		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		// Text boxes. Make sure user can use 'unfiltered_html'.
 		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
 		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
 		$instance['between']     = current_user_can( 'unfiltered_html' ) ? $new_instance['between']     : wp_filter_post_kses( $new_instance['between']     );
 
-		/* Checkboxes. */
+		// Checkboxes.
 		$instance['categorize']       = isset( $new_instance['categorize'] )       ? 1 : 0;
 		$instance['hide_invisible']   = isset( $new_instance['hide_invisible'] )   ? 1 : 0;
 		$instance['show_private']     = isset( $new_instance['show_private'] )     ? 1 : 0;
@@ -191,7 +192,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 		$instance['show_name']        = isset( $new_instance['show_name'] )        ? 1 : 0;
 		$instance['show_description'] = isset( $new_instance['show_description'] ) ? 1 : 0;
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -205,7 +206,7 @@ class Hybrid_Widget_Bookmarks extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		$terms     = get_terms( 'link_category' );

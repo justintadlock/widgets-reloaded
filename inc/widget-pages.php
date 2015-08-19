@@ -7,7 +7,7 @@
  * @package    Hybrid
  * @subpackage Widgets
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -15,7 +15,8 @@
 /**
  * Pages Widget Class
  *
- * @since 0.6.0
+ * @since  0.6.0
+ * @access public
  */
 class Hybrid_Widget_Pages extends WP_Widget {
 
@@ -37,22 +38,22 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-pages widget_pages',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your page links.', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 800,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-pages', __( 'Pages', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up the defaults. */
+		// Set up the defaults.
 		$this->defaults = array(
 			'title'        => esc_attr__( 'Pages', 'widgets-reloaded'),
 			'post_type'    => 'page',
@@ -87,24 +88,24 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set the $args for wp_list_pages() to the $instance array. */
+		// Set the $args for wp_list_pages() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* Set the $title_li and $echo to false. */
+		// Set the $title_li and $echo to false.
 		$args['title_li'] = false;
 		$args['echo']     = false;
 
-		/* Output the sidebar's $before_widget wrapper. */
+		// Output the sidebar's $before_widget wrapper.
 		echo $sidebar['before_widget'];
 
-		/* If a title was input by the user, display it. */
+		// If a title was input by the user, display it.
 		if ( !empty( $args['title'] ) )
 			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
-		/* Output the page list. */
+		// Output the page list.
 		echo '<ul class="xoxo pages">' . str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $args ) ) . '</ul>';
 
-		/* Close the sidebar's widget wrapper. */
+		// Close the sidebar's widget wrapper.
 		echo $sidebar['after_widget'];
 	}
 
@@ -120,16 +121,16 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title']       = strip_tags( $new_instance['title']       );
 		$instance['meta_key']    = strip_tags( $new_instance['meta_key']    );
 		$instance['meta_value']  = strip_tags( $new_instance['meta_value']  );
 		$instance['date_format'] = strip_tags( $new_instance['date_format'] );
 
-		/* Sanitize key. */
+		// Sanitize key.
 		$instance['post_type'] = sanitize_key( $new_instance['post_type'] );
 
-		/* Whitelist options. */
+		// Whitelist options.
 		$sort_order  = array( 'ASC', 'DESC' );
 		$sort_column = array( 'post_author', 'post_date', 'ID', 'menu_order', 'post_modified', 'post_name', 'post_title' );
 		$show_date   = array( '', 'created', 'modified' );
@@ -138,26 +139,26 @@ class Hybrid_Widget_Pages extends WP_Widget {
 		$instance['sort_order']  = in_array( $new_instance['sort_order'],  $sort_order  ) ? $new_instance['sort_order']  : 'ASC';
 		$instance['show_date']   = in_array( $new_instance['show_date'],   $show_date   ) ? $new_instance['show_date']   : '';
 
-		/* Text boxes. Make sure user can use 'unfiltered_html'. */
+		// Text boxes. Make sure user can use 'unfiltered_html'.
 		$instance['link_before'] = current_user_can( 'unfiltered_html' ) ? $new_instance['link_before'] : wp_filter_post_kses( $new_instance['link_before'] );
 		$instance['link_after']  = current_user_can( 'unfiltered_html' ) ? $new_instance['link_after']  : wp_filter_post_kses( $new_instance['link_after']  );
 
-		/* Integers. */
+		// Integers.
 		$instance['number']   = intval( $new_instance['number']   );
 		$instance['depth']    = absint( $new_instance['depth']    );
 		$instance['child_of'] = absint( $new_instance['child_of'] );
 		$instance['offset']   = absint( $new_instance['offset']   );
 
-		/* Only allow integers and commas. */
+		// Only allow integers and commas.
 		$instance['include']      = preg_replace( '/[^0-9,]/', '', $new_instance['include']      );
 		$instance['exclude']      = preg_replace( '/[^0-9,]/', '', $new_instance['exclude']      );
 		$instance['exclude_tree'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude_tree'] );
 		$instance['authors']      = preg_replace( '/[^0-9,]/', '', $new_instance['authors']      );
 
-		/* Checkboxes. */
+		// Checkboxes.
 		$instance['hierarchical'] = isset( $new_instance['hierarchical'] ) ? 1 : 0;
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -171,7 +172,7 @@ class Hybrid_Widget_Pages extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		$post_types = get_post_types( array( 'public' => true, 'hierarchical' => true ), 'objects' );

@@ -5,9 +5,9 @@
  * calendar widget.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Includes
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -15,7 +15,8 @@
 /**
  * Calendar Widget Class
  *
- * @since 0.6.0
+ * @since  0.6.0
+ * @access public
  */
 class Hybrid_Widget_Calendar extends WP_Widget {
 
@@ -37,22 +38,22 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-calendar widget_calendar',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your calendar.', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 200,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-calendar', __( 'Calendar', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up the defaults. */
+		// Set up the defaults.
 		$this->defaults = array(
 			'title'   => esc_attr__( 'Calendar', 'widgets-reloaded' ),
 			'initial' => false
@@ -70,25 +71,25 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set the $args. */
+		// Set the $args.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* Get the $initial argument. */
+		// Get the $initial argument.
 		$initial = !empty( $args['initial'] ) ? true : false;
 
-		/* Output the sidebar's $before_widget wrapper. */
+		// Output the sidebar's $before_widget wrapper.
 		echo $sidebar['before_widget'];
 
-		/* If a title was input by the user, display it. */
+		// If a title was input by the user, display it.
 		if ( !empty( $args['title'] ) )
 			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
-		/* Display the calendar. */
+		// Display the calendar.
 		echo '<div class="calendar-wrap">';
 			echo str_replace( array( "\r", "\n", "\t" ), '', get_calendar( $initial, false ) );
 		echo '</div><!-- .calendar-wrap -->';
 
-		/* Close the sidebar's widget wrapper. */
+		// Close the sidebar's widget wrapper.
 		echo $sidebar['after_widget'];
 	}
 
@@ -104,13 +105,13 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title'] = strip_tags( $new_instance['title'] );
 
-		/* Checkboxes. */
+		// Checkboxes.
 		$instance['initial'] = isset( $new_instance['initial'] ) ? 1 : 0;
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -124,7 +125,7 @@ class Hybrid_Widget_Calendar extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults ); ?>
 
 		<div class="hybrid-widget-controls columns-1">

@@ -5,9 +5,9 @@
  * in the wp_tag_cloud() function.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Includes
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -15,7 +15,8 @@
 /**
  * Tags Widget Class
  *
- * @since 0.6.0
+ * @since  0.6.0
+ * @access public
  */
 class Hybrid_Widget_Tags extends WP_Widget {
 
@@ -37,22 +38,22 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 */
 	function __construct() {
 
-		/* Set up the widget options. */
+		// Set up the widget options.
 		$widget_options = array(
 			'classname'   => 'widget-tags widget_tag_cloud',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your tags.', 'widgets-reloaded' )
 		);
 
-		/* Set up the widget control options. */
+		// Set up the widget control options.
 		$control_options = array(
 			'width'  => 800,
 			'height' => 350
 		);
 
-		/* Create the widget. */
+		// Create the widget.
 		parent::__construct( 'hybrid-tags', __( 'Tags', 'widgets-reloaded' ), $widget_options, $control_options );
 
-		/* Set up the defaults. */
+		// Set up the defaults.
 		$topic_count_text = _n_noop( '%s topic', '%s topics', 'widgets-reloaded' );
 
 		$this->defaults = array(
@@ -93,30 +94,30 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 */
 	function widget( $sidebar, $instance ) {
 
-		/* Set the $args for wp_tag_cloud() to the $instance array. */
+		// Set the $args for wp_tag_cloud() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
 
-		/* Make sure empty callbacks aren't passed for custom functions. */
+		// Make sure empty callbacks aren't passed for custom functions.
 		$args['topic_count_text_callback']  = !empty( $args['topic_count_text_callback']  ) ? $args['topic_count_text_callback']  : '';
 		$args['topic_count_scale_callback'] = !empty( $args['topic_count_scale_callback'] ) ? $args['topic_count_scale_callback'] : 'default_topic_count_scale';
 
-		/* If the separator is empty, set it to the default new line. */
+		// If the separator is empty, set it to the default new line.
 		$args['separator'] = !empty( $args['separator'] ) ? $args['separator'] : "\n";
 
-		/* Overwrite the echo argument. */
+		// Overwrite the echo argument.
 		$args['echo'] = false;
 
-		/* Output the sidebar's $before_widget wrapper. */
+		// Output the sidebar's $before_widget wrapper.
 		echo $sidebar['before_widget'];
 
-		/* If a title was input by the user, display it. */
+		// If a title was input by the user, display it.
 		if ( !empty( $args['title'] ) )
 			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
 
-		/* Get the tag cloud. */
+		// Get the tag cloud.
 		$tags = str_replace( array( "\r", "\n", "\t" ), ' ', wp_tag_cloud( $args ) );
 
-		/* If $format should be flat, wrap it in the <p> element. */
+		// If $format should be flat, wrap it in the <p> element.
 		if ( 'flat' == $args['format'] ) {
 			$classes = array( 'term-cloud' );
 
@@ -126,10 +127,10 @@ class Hybrid_Widget_Tags extends WP_Widget {
 			$tags = '<p class="' . join( $classes, ' ' ) . '">' . $tags . '</p>';
 		}
 
-		/* Output the tag cloud. */
+		// Output the tag cloud.
 		echo $tags;
 
-		/* Close the sidebar's widget wrapper. */
+		// Close the sidebar's widget wrapper.
 		echo $sidebar['after_widget'];
 	}
 
@@ -145,7 +146,7 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 
-		/* Strip tags. */
+		// Strip tags.
 		$instance['title']         = strip_tags( $new_instance['title']         );
 		$instance['separator']     = strip_tags( $new_instance['separator']     );
 		$instance['name__like']    = strip_tags( $new_instance['name__like']    );
@@ -153,10 +154,10 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$instance['single_text']   = strip_tags( $new_instance['single_text']   );
 		$instance['multiple_text'] = strip_tags( $new_instance['multiple_text'] );
 
-		/* Sanitize key. */
+		// Sanitize key.
 		$instance['taxonomy'] = array_map( 'sanitize_key', $new_instance['taxonomy'] );
 
-		/* Whitelist options. */
+		// Whitelist options.
 		$order   = array( 'ASC', 'DESC', 'RAND' );
 		$orderby = array( 'count', 'name' );
 		$format  = array( 'flat', 'list' );
@@ -169,26 +170,26 @@ class Hybrid_Widget_Tags extends WP_Widget {
 		$instance['unit']    = in_array( $new_instance['unit'],    $unit )    ? $new_instance['unit']    : 'pt';
 		$instance['link']    = in_array( $new_instance['link'],    $link )    ? $new_instance['link']    : 'view';
 
-		/* Integers. */
+		// Integers.
 		$instance['number']   = intval( $new_instance['number']   );
 		$instance['smallest'] = absint( $new_instance['smallest'] );
 		$instance['largest']  = absint( $new_instance['largest']  );
 		$instance['child_of'] = absint( $new_instance['child_of'] );
 		$instance['parent']   = absint( $new_instance['parent']   );
 
-		/* Only allow integers and commas. */
+		// Only allow integers and commas.
 		$instance['include'] = preg_replace( '/[^0-9,]/', '', $new_instance['include'] );
 		$instance['exclude'] = preg_replace( '/[^0-9,]/', '', $new_instance['exclude'] );
 
-		/* Check if function exists. */
+		// Check if function exists.
 		$instance['topic_count_text_callback']  = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['topic_count_text_callback'] )  ? $new_instance['topic_count_text_callback']  : 'default_topic_count_text';
 		$instance['topic_count_scale_callback'] = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['topic_count_scale_callback'] ) ? $new_instance['topic_count_scale_callback'] : 'default_topic_count_scale';
 
-		/* Checkboxes. */
+		// Checkboxes.
 		$instance['pad_counts'] = isset( $new_instance['pad_counts'] ) ? 1 : 0;
 		$instance['hide_empty'] = isset( $new_instance['hide_empty'] ) ? 1 : 0;
 
-		/* Return sanitized options. */
+		// Return sanitized options.
 		return $instance;
 	}
 
@@ -202,10 +203,10 @@ class Hybrid_Widget_Tags extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		/* Merge the user-selected arguments with the defaults. */
+		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		/* <select> element options. */
+		// <select> element options.
 		$taxonomies = get_taxonomies( array( 'show_tagcloud' => true ), 'objects' );
 
 		$link = array( 
