@@ -27,13 +27,15 @@
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+namespace Widgets_Reloaded;
+
 /**
  * Sets up the plugin
  *
  * @since  0.5.0
  * @access public
  */
-final class Widgets_Reloaded_Plugin {
+final class Plugin {
 
 	/**
 	 * Holds the instance of this class.
@@ -166,17 +168,17 @@ final class Widgets_Reloaded_Plugin {
 		unregister_widget( 'WP_Widget_Tag_Cloud'  );
 
 		// Register custom widgets.
-		register_widget( 'Hybrid_Widget_Archives'   );
-		register_widget( 'Hybrid_Widget_Authors'    );
-		register_widget( 'Hybrid_Widget_Calendar'   );
-		register_widget( 'Hybrid_Widget_Categories' );
-		register_widget( 'Hybrid_Widget_Nav_Menu'   );
-		register_widget( 'Hybrid_Widget_Pages'      );
-		register_widget( 'Hybrid_Widget_Search'     );
-		register_widget( 'Hybrid_Widget_Tags'       );
+		register_widget( 'Widgets_Reloaded\Widget_Archives'   );
+		register_widget( 'Widgets_Reloaded\Widget_Authors'    );
+		register_widget( 'Widgets_Reloaded\Widget_Calendar'   );
+		register_widget( 'Widgets_Reloaded\Widget_Categories' );
+		register_widget( 'Widgets_Reloaded\Widget_Nav_Menu'   );
+		register_widget( 'Widgets_Reloaded\Widget_Pages'      );
+		register_widget( 'Widgets_Reloaded\Widget_Search'     );
+		register_widget( 'Widgets_Reloaded\Widget_Tags'       );
 
 		if ( get_option( 'link_manager_enabled' ) )
-			register_widget( 'Hybrid_Widget_Bookmarks' );
+			register_widget( 'Widgets_Reloaded\Widget_Bookmarks' );
 
 	}
 
@@ -209,4 +211,4 @@ final class Widgets_Reloaded_Plugin {
 	}
 }
 
-Widgets_Reloaded_Plugin::get_instance();
+Plugin::get_instance();

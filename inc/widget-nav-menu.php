@@ -12,13 +12,15 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+namespace Widgets_Reloaded;
+
 /**
  * Nav Menu Widget Class
  *
  * @since  0.8.0
  * @access public
  */
-class Hybrid_Widget_Nav_Menu extends WP_Widget {
+class Widget_Nav_Menu extends \WP_Widget {
 
 	/**
 	 * Default arguments for the widget settings.

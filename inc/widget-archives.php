@@ -12,12 +12,14 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+namespace Widgets_Reloaded;
+
 /**
  * Archives widget class.
  *
  * @since 0.6.0
  */
-class Hybrid_Widget_Archives extends WP_Widget {
+class Widget_Archives extends WP_Widget {
 
 	/**
 	 * Default arguments for the widget settings.

@@ -12,13 +12,15 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+namespace Widgets_Reloaded;
+
 /**
  * Pages Widget Class
  *
  * @since  0.6.0
  * @access public
  */
-class Hybrid_Widget_Pages extends WP_Widget {
+class Widget_Pages extends \WP_Widget {
 
 	/**
 	 * Default arguments for the widget settings.
