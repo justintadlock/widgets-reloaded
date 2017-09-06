@@ -19,7 +19,7 @@ namespace Widgets_Reloaded;
  * @since  1.0.0
  * @access public
  */
-class Widget extends \WP_Widget {
+abstract class Widget extends \WP_Widget {
 
 	/**
 	 * Default arguments for the widget settings.
