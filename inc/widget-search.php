@@ -43,8 +43,9 @@ class Widget_Search extends Widget {
 
 		// Set up the widget options.
 		$widget_options = array(
-			'classname'   => 'widget-search widget_search',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your search form.', 'widgets-reloaded' )
+			'classname'                   => 'widget-search widget_search',
+			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your search form.', 'widgets-reloaded' ),
+			'customize_selective_refresh' => true
 		);
 
 		// Set up the widget control options.

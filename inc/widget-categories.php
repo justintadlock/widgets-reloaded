@@ -42,8 +42,9 @@ class Widget_Categories extends Widget {
 
 		// Set up the widget options.
 		$widget_options = array(
-			'classname'   => 'widget-categories widget_categories',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your category links.', 'widgets-reloaded' )
+			'classname'                   => 'widget-categories widget_categories',
+			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your category links.', 'widgets-reloaded' ),
+			'customize_selective_refresh' => true
 		);
 
 		// Set up the widget control options.

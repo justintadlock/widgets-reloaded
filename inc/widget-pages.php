@@ -42,8 +42,9 @@ class Widget_Pages extends Widget {
 
 		// Set up the widget options.
 		$widget_options = array(
-			'classname'   => 'widget-pages widget_pages',
-			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your page links.', 'widgets-reloaded' )
+			'classname'                   => 'widget-pages widget_pages',
+			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your page links.', 'widgets-reloaded' ),
+			'customize_selective_refresh' => true
 		);
 
 		// Set up the widget control options.
