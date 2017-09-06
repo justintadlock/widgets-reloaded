@@ -20,7 +20,7 @@ namespace Widgets_Reloaded;
  * @since  0.8.0
  * @access public
  */
-class Widget_Nav_Menu extends \WP_Widget {
+class Widget_Nav_Menu extends Widget {
 
 	/**
 	 * Default arguments for the widget settings.

@@ -19,7 +19,7 @@ namespace Widgets_Reloaded;
  *
  * @since 0.6.0
  */
-class Widget_Archives extends \WP_Widget {
+class Widget_Archives extends Widget {
 
 	/**
 	 * Default arguments for the widget settings.

@@ -21,7 +21,7 @@ namespace Widgets_Reloaded;
  * @since  0.6.0
  * @access public
  */
-class Widget_Search extends \WP_Widget {
+class Widget_Search extends Widget {
 
 	/**
 	 * Default arguments for the widget settings.

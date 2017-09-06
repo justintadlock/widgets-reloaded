@@ -125,6 +125,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function includes() {
+		require_once( $this->directory_path . 'inc/class-widget.php'      );
 		require_once( $this->directory_path . 'inc/widget-archives.php'   );
 		require_once( $this->directory_path . 'inc/widget-authors.php'    );
 		require_once( $this->directory_path . 'inc/widget-bookmarks.php'  );
