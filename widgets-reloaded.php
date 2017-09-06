@@ -90,6 +90,9 @@ final class Plugin {
 
 		// Load admin scripts and styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
+		// Make sure widgets are considered wide.
+		add_filter( 'is_wide_widget_in_customizer', array( $this, 'is_wide_widget' ), 10, 2 );
 	}
 
 	/**
@@ -196,6 +199,63 @@ final class Plugin {
 
 		if ( 'widgets.php' == $hook_suffix )
 			wp_enqueue_style( 'widgets-reloaded', "{$this->directory_uri}css/admin.min.css" );
+	}
+
+	/**
+	 * Always makes sure that our widgets are considered wide widgets in the customizer.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  bool    $is_wide
+	 * @param  string  $widget_id
+	 * @return bool
+	 */
+	public function is_wide_widget( $is_wide, $widget_id ) {
+
+		$widgets = array(
+			'hybrid-archives',
+			'hybrid-authors',
+			'hybrid-bookmarks',
+			'hybrid-calendar',
+			'hybrid-categories',
+			'hybrid-nav-menu',
+			'hybrid-pages',
+			'hybrid-search',
+			'hybrid-tags'
+		);
+
+		$parsed = $this->parse_widget_id( $widget_id );
+
+		return in_array( $parsed['id_base'], $widgets ) ? true : $is_wide;
+	}
+
+	/**
+	 * Converts a widget ID into its id_base and number components. Copied from the core
+	 * `WP_Customize_Widgets` class.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  string $widget_id
+	 * @return array
+	 */
+	public function parse_widget_id( $widget_id ) {
+
+		$parsed = array(
+			'number'  => null,
+			'id_base' => null,
+		);
+
+		if ( preg_match( '/^(.+)-(\d+)$/', $widget_id, $matches ) ) {
+
+			$parsed['id_base'] = $matches[1];
+			$parsed['number']  = intval( $matches[2] );
+
+		} else {
+
+			$parsed['id_base'] = $widget_id;
+		}
+
+		return $parsed;
 	}
 
 	/**
