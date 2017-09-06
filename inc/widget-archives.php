@@ -88,8 +88,7 @@ class Widget_Archives extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		if ( !empty( $args['title'] ) )
-			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
+		$this->widget_title( $sidebar, $instance );
 
 		// Get the archives list.
 		$archives = str_replace( array( "\r", "\n", "\t" ), '', wp_get_archives( $args ) );
@@ -212,24 +211,24 @@ class Widget_Archives extends Widget {
 
 		<div class="hybrid-widget-controls columns-2">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
+			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><code>limit</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
+			<label for="<?php $this->field_id( 'limit' ); ?>"><code>limit</code></label>
+			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'limit' ); ?>" name="<?php $this->field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><code>type</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>">
+			<label for="<?php $this->field_id( 'type' ); ?>"><code>type</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'type' ); ?>" name="<?php $this->field_name( 'type' ); ?>">
 				<?php foreach ( $type as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+			<label for="<?php $this->field_id( 'order' ); ?>"><code>order</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'order' ); ?>" name="<?php $this->field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
@@ -239,24 +238,24 @@ class Widget_Archives extends Widget {
 
 		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><code>format</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'format' ); ?>" name="<?php echo $this->get_field_name( 'format' ); ?>">
+			<label for="<?php $this->field_id( 'format' ); ?>"><code>format</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'format' ); ?>" name="<?php $this->field_name( 'format' ); ?>">
 				<?php foreach ( $format as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'before' ); ?>"><code>before</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'before' ); ?>" name="<?php echo $this->get_field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
+			<label for="<?php $this->field_id( 'before' ); ?>"><code>before</code></label>
+			<input type="text" class="widefat code" id="<?php $this->field_id( 'before' ); ?>" name="<?php $this->field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'after' ); ?>"><code>after</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'after' ); ?>" name="<?php echo $this->get_field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
+			<label for="<?php $this->field_id( 'after' ); ?>"><code>after</code></label>
+			<input type="text" class="widefat code" id="<?php $this->field_id( 'after' ); ?>" name="<?php $this->field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> id="<?php echo $this->get_field_id( 'show_post_count' ); ?>" name="<?php echo $this->get_field_name( 'show_post_count' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>show_post_count</code></label>
+			<label for="<?php $this->field_id( 'show_post_count' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> id="<?php $this->field_id( 'show_post_count' ); ?>" name="<?php $this->field_name( 'show_post_count' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>show_post_count</code></label>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>

@@ -79,8 +79,7 @@ class Widget_Search extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		if ( !empty( $args['title'] ) )
-			echo $sidebar['before_title'] . apply_filters( 'widget_title', $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
+		$this->widget_title( $sidebar, $instance );
 
 		// Get the search form.
 		get_search_form();
@@ -123,8 +122,8 @@ class Widget_Search extends Widget {
 
 		<div class="hybrid-widget-controls columns-1">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
+			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		</div>
 	<?php

@@ -83,8 +83,7 @@ class Widget_Calendar extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		if ( !empty( $args['title'] ) )
-			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
+		$this->widget_title( $sidebar, $instance );
 
 		// Display the calendar.
 		echo '<div class="calendar-wrap">';
@@ -132,12 +131,12 @@ class Widget_Calendar extends Widget {
 
 		<div class="hybrid-widget-controls columns-1">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
+			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?> <code>initial</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php $this->field_id( 'initial' ); ?>" name="<?php $this->field_name( 'initial' ); ?>" />
+			<label for="<?php $this->field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?> <code>initial</code></label>
 		</p>
 		</div>
 	<?php

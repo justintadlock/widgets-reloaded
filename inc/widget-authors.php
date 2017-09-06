@@ -95,8 +95,7 @@ class Widget_Authors extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		if ( !empty( $args['title'] ) )
-			echo $sidebar['before_title'] . apply_filters( 'widget_title',  $args['title'], $instance, $this->id_base ) . $sidebar['after_title'];
+		$this->widget_title( $sidebar, $instance );
 
 		// Get the authors list.
 		$authors = str_replace( array( "\r", "\n", "\t" ), '', wp_list_authors( $args ) );
@@ -200,75 +199,75 @@ class Widget_Authors extends Widget {
 
 		<div class="hybrid-widget-controls columns-2">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
+			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><code>order</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+			<label for="<?php $this->field_id( 'order' ); ?>"><code>order</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'order' ); ?>" name="<?php $this->field_name( 'order' ); ?>">
 				<?php foreach ( $order as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><code>orderby</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
+			<label for="<?php $this->field_id( 'orderby' ); ?>"><code>orderby</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'orderby' ); ?>" name="<?php $this->field_name( 'orderby' ); ?>">
 				<?php foreach ( $orderby as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['orderby'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><code>number</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
+			<label for="<?php $this->field_id( 'number' ); ?>"><code>number</code></label>
+			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'number' ); ?>" name="<?php $this->field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><code>style</code></label>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
+			<label for="<?php $this->field_id( 'style' ); ?>"><code>style</code></label>
+			<select class="widefat" id="<?php $this->field_id( 'style' ); ?>" name="<?php $this->field_name( 'style' ); ?>">
 				<?php foreach ( $style as $option_value => $option_label ) { ?>
 					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['style'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'include' ); ?>"><code>include</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'include' ); ?>" name="<?php echo $this->get_field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
+			<label for="<?php $this->field_id( 'include' ); ?>"><code>include</code></label>
+			<input type="text" class="widefat code" id="<?php $this->field_id( 'include' ); ?>" name="<?php $this->field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		</div>
 
 		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><code>exclude</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
+			<label for="<?php $this->field_id( 'exclude' ); ?>"><code>exclude</code></label>
+			<input type="text" class="widefat code" id="<?php $this->field_id( 'exclude' ); ?>" name="<?php $this->field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'feed' ); ?>"><code>feed</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'feed' ); ?>" name="<?php echo $this->get_field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
+			<label for="<?php $this->field_id( 'feed' ); ?>"><code>feed</code></label>
+			<input type="text" class="widefat code" id="<?php $this->field_id( 'feed' ); ?>" name="<?php $this->field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'feed_image' ); ?>"><code>feed_image</code></label>
-			<input type="url" class="widefat code" id="<?php echo $this->get_field_id( 'feed_image' ); ?>" name="<?php echo $this->get_field_name( 'feed_image' ); ?>" value="<?php echo esc_attr( $instance['feed_image'] ); ?>" placeholder="<?php echo esc_attr( home_url( 'images/example.png' ) ); ?>" />
+			<label for="<?php $this->field_id( 'feed_image' ); ?>"><code>feed_image</code></label>
+			<input type="url" class="widefat code" id="<?php $this->field_id( 'feed_image' ); ?>" name="<?php $this->field_name( 'feed_image' ); ?>" value="<?php echo esc_attr( $instance['feed_image'] ); ?>" placeholder="<?php echo esc_attr( home_url( 'images/example.png' ) ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'html' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['html'], true ); ?> id="<?php echo $this->get_field_id( 'html' ); ?>" name="<?php echo $this->get_field_name( 'html' ); ?>" /> <?php _e( '<acronym title="Hypertext Markup Language">HTML</acronym>?', 'widgets-reloaded' ); ?> <code>html</code></label>
+			<label for="<?php $this->field_id( 'html' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['html'], true ); ?> id="<?php $this->field_id( 'html' ); ?>" name="<?php $this->field_name( 'html' ); ?>" /> <?php _e( '<acronym title="Hypertext Markup Language">HTML</acronym>?', 'widgets-reloaded' ); ?> <code>html</code></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'optioncount' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['optioncount'], true ); ?> id="<?php echo $this->get_field_id( 'optioncount' ); ?>" name="<?php echo $this->get_field_name( 'optioncount' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>optioncount</code></label>
+			<label for="<?php $this->field_id( 'optioncount' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['optioncount'], true ); ?> id="<?php $this->field_id( 'optioncount' ); ?>" name="<?php $this->field_name( 'optioncount' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>optioncount</code></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude_admin' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['exclude_admin'], true ); ?> id="<?php echo $this->get_field_id( 'exclude_admin' ); ?>" name="<?php echo $this->get_field_name( 'exclude_admin' ); ?>" /> <?php _e( 'Exclude admin?', 'widgets-reloaded' ); ?> <code>exclude_admin</code></label>
+			<label for="<?php $this->field_id( 'exclude_admin' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['exclude_admin'], true ); ?> id="<?php $this->field_id( 'exclude_admin' ); ?>" name="<?php $this->field_name( 'exclude_admin' ); ?>" /> <?php _e( 'Exclude admin?', 'widgets-reloaded' ); ?> <code>exclude_admin</code></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'show_fullname' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_fullname'], true ); ?> id="<?php echo $this->get_field_id( 'show_fullname' ); ?>" name="<?php echo $this->get_field_name( 'show_fullname' ); ?>" /> <?php _e( 'Show full name?', 'widgets-reloaded' ); ?> <code>show_fullname</code></label>
+			<label for="<?php $this->field_id( 'show_fullname' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['show_fullname'], true ); ?> id="<?php $this->field_id( 'show_fullname' ); ?>" name="<?php $this->field_name( 'show_fullname' ); ?>" /> <?php _e( 'Show full name?', 'widgets-reloaded' ); ?> <code>show_fullname</code></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>" /> <?php _e( 'Hide empty?', 'widgets-reloaded' ); ?> <code>hide_empty</code></label>
+			<label for="<?php $this->field_id( 'hide_empty' ); ?>">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> id="<?php $this->field_id( 'hide_empty' ); ?>" name="<?php $this->field_name( 'hide_empty' ); ?>" /> <?php _e( 'Hide empty?', 'widgets-reloaded' ); ?> <code>hide_empty</code></label>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>
