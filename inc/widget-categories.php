@@ -38,7 +38,7 @@ class Widget_Categories extends Widget {
 	 * @access public
 	 * @return void
 	 */
-	function __construct() {
+	public function __construct() {
 
 		// Set up the widget options.
 		$widget_options = array(
@@ -90,7 +90,7 @@ class Widget_Categories extends Widget {
 	 * @param  array  $instance
 	 * @return void
 	 */
-	function widget( $sidebar, $instance ) {
+	public function widget( $sidebar, $instance ) {
 
 		// Set the $args for wp_list_categories() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -133,7 +133,7 @@ class Widget_Categories extends Widget {
 	 * @param  array  $old_instance
 	 * @return array
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		// If new taxonomy is chosen, reset includes and excludes.
 		if ( $new_instance['taxonomy'] !== $old_instance['taxonomy'] )
@@ -190,7 +190,7 @@ class Widget_Categories extends Widget {
 	 * @param  array  $instance
 	 * @param  void
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

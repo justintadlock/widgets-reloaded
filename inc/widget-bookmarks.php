@@ -38,7 +38,7 @@ class Widget_Bookmarks extends Widget {
 	 * @access public
 	 * @return void
 	 */
-	function __construct() {
+	public function __construct() {
 
 		// Set up the widget options.
 		$widget_options = array(
@@ -93,7 +93,7 @@ class Widget_Bookmarks extends Widget {
 	 * @param  array  $instance
 	 * @return void
 	 */
-	function widget( $sidebar, $instance ) {
+	public function widget( $sidebar, $instance ) {
 
 		// Set up the $before_widget ID for multiple widgets created by the bookmarks widget.
 		if ( !empty( $instance['categorize'] ) )
@@ -152,7 +152,7 @@ class Widget_Bookmarks extends Widget {
 	 * @param  array  $old_instance
 	 * @return array
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		// Strip tags.
 		$instance['title_li'] = strip_tags( $new_instance['title_li'] );
@@ -207,7 +207,7 @@ class Widget_Bookmarks extends Widget {
 	 * @param  array  $instance
 	 * @param  void
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

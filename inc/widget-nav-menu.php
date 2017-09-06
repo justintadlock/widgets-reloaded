@@ -38,7 +38,7 @@ class Widget_Nav_Menu extends Widget {
 	 * @access public
 	 * @return void
 	 */
-	function __construct() {
+	public function __construct() {
 
 		// Set up the widget options.
 		$widget_options = array(
@@ -83,7 +83,7 @@ class Widget_Nav_Menu extends Widget {
 	 * @param  array  $instance
 	 * @return void
 	 */
-	function widget( $sidebar, $instance ) {
+	public function widget( $sidebar, $instance ) {
 
 		// Set the $args for wp_nav_menu() to the $instance array.
 		$args = wp_parse_args( $instance, $this->defaults );
@@ -114,7 +114,7 @@ class Widget_Nav_Menu extends Widget {
 	 * @param  array  $old_instance
 	 * @return array
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		// Strip tags.
 		$instance['title'] = strip_tags( $new_instance['title'] );
@@ -155,7 +155,7 @@ class Widget_Nav_Menu extends Widget {
 	 * @param  array  $instance
 	 * @param  void
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
