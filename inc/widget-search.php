@@ -24,15 +24,6 @@ namespace Widgets_Reloaded;
 class Widget_Search extends Widget {
 
 	/**
-	 * Default arguments for the widget settings.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @var    array
-	 */
-	public $defaults = array();
-
-	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
 	 * @since  1.2.0
