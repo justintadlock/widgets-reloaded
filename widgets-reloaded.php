@@ -169,17 +169,17 @@ final class Plugin {
 		unregister_widget( 'WP_Widget_Tag_Cloud'  );
 
 		// Register custom widgets.
-		register_widget( 'Widgets_Reloaded\Widget_Archives'   );
-		register_widget( 'Widgets_Reloaded\Widget_Authors'    );
-		register_widget( 'Widgets_Reloaded\Widget_Calendar'   );
-		register_widget( 'Widgets_Reloaded\Widget_Categories' );
-		register_widget( 'Widgets_Reloaded\Widget_Nav_Menu'   );
-		register_widget( 'Widgets_Reloaded\Widget_Pages'      );
-		register_widget( 'Widgets_Reloaded\Widget_Search'     );
-		register_widget( 'Widgets_Reloaded\Widget_Tags'       );
+		register_widget( 'Widgets_Reloaded\Widgets\Archives'   );
+		register_widget( 'Widgets_Reloaded\Widgets\Authors'    );
+		register_widget( 'Widgets_Reloaded\Widgets\Calendar'   );
+		register_widget( 'Widgets_Reloaded\Widgets\Categories' );
+		register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
+		register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
+		register_widget( 'Widgets_Reloaded\Widgets\Search'     );
+		register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
 
 		if ( get_option( 'link_manager_enabled' ) )
-			register_widget( 'Widgets_Reloaded\Widget_Bookmarks' );
+			register_widget( 'Widgets_Reloaded\Widgets\Bookmarks' );
 
 	}
 

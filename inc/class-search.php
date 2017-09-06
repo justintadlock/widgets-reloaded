@@ -13,7 +13,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-namespace Widgets_Reloaded;
+namespace Widgets_Reloaded\Widgets;
 
 /**
  * Search Widget Class
@@ -21,7 +21,7 @@ namespace Widgets_Reloaded;
  * @since  0.6.0
  * @access public
  */
-class Widget_Search extends Widget {
+class Search extends Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.

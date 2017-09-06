@@ -11,7 +11,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-namespace Widgets_Reloaded;
+namespace Widgets_Reloaded\Widgets;
 
 /**
  * Archives widget class.

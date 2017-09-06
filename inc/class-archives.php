@@ -12,14 +12,14 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-namespace Widgets_Reloaded;
+namespace Widgets_Reloaded\Widgets;
 
 /**
  * Archives widget class.
  *
  * @since 0.6.0
  */
-class Widget_Archives extends Widget {
+class Archives extends Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.

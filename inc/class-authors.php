@@ -12,7 +12,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-namespace Widgets_Reloaded;
+namespace Widgets_Reloaded\Widgets;
 
 /**
  * Authors Widget Class
@@ -20,7 +20,7 @@ namespace Widgets_Reloaded;
  * @since  0.6.0
  * @access public
  */
-class Widget_Authors extends Widget {
+class Authors extends Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
