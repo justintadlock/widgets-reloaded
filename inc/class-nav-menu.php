@@ -151,76 +151,125 @@ class Nav_Menu extends Widget {
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
-		?>
+		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) ); ?>
 
 		<div class="hybrid-widget-controls columns-2">
+
 		<p>
-			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Title:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Menu:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'menu' ); ?>">
+					<option value=""></option>
+
+					<?php foreach ( wp_get_nav_menus() as $menu ) : ?>
+
+						<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $instance['menu'], $menu->term_id ); ?>><?php echo esc_html( $menu->name ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
 		<p>
-			<label for="<?php $this->field_id( 'menu' ); ?>"><code>menu</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'menu' ); ?>" name="<?php $this->field_name( 'menu' ); ?>">
-				<option value=""></option>
-				<?php foreach ( wp_get_nav_menus() as $menu ) { ?>
-					<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $instance['menu'], $menu->term_id ); ?>><?php echo esc_html( $menu->name ); ?></option>
-				<?php } ?>
-			</select>
+			<label>
+				<?php esc_html_e( 'Container:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'container' ); ?>">
+
+					<?php foreach ( $container as $option ) : ?>
+
+						<option value="<?php echo esc_attr( $option ); ?>" <?php selected( $instance['container'], $option ); ?>><?php echo esc_html( $option ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'container' ); ?>"><code>container</code></label>
-			<select class="smallfat" id="<?php $this->field_id( 'container' ); ?>" name="<?php $this->field_name( 'container' ); ?>">
-				<?php foreach ( $container as $option ) { ?>
-					<option value="<?php echo esc_attr( $option ); ?>" <?php selected( $instance['container'], $option ); ?>><?php echo esc_html( $option ); ?></option>
-				<?php } ?>
-			</select>
+			<label>
+				<?php esc_html_e( 'Container ID:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'container_id' ); ?>" value="<?php echo esc_attr( $instance['container_id'] ); ?>" placeholder="example" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'container_id' ); ?>"><code>container_id</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'container_id' ); ?>" name="<?php $this->field_name( 'container_id' ); ?>" value="<?php echo esc_attr( $instance['container_id'] ); ?>" placeholder="example" />
+			<label>
+				<?php esc_html_e( 'Container Class:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'container_class' ); ?>" value="<?php echo esc_attr( $instance['container_class'] ); ?>" placeholder="example" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'container_class' ); ?>"><code>container_class</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'container_class' ); ?>" name="<?php $this->field_name( 'container_class' ); ?>" value="<?php echo esc_attr( $instance['container_class'] ); ?>" placeholder="example" />
+			<label>
+				<?php esc_html_e( 'Menu ID:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'menu_id' ); ?>" value="<?php echo esc_attr( $instance['menu_id'] ); ?>" placeholder="example" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'menu_id' ); ?>"><code>menu_id</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'menu_id' ); ?>" name="<?php $this->field_name( 'menu_id' ); ?>" value="<?php echo esc_attr( $instance['menu_id'] ); ?>" placeholder="example" />
+			<label>
+				<?php esc_html_e( 'Menu Class:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'menu_class' ); ?>" value="<?php echo esc_attr( $instance['menu_class'] ); ?>" placeholder="example" />
+			</label>
 		</p>
-		</div>
+
+		</div><!-- .hybrid-widget-controls -->
 
 		<div class="hybrid-widget-controls columns-2 column-last">
+
 		<p>
-			<label for="<?php $this->field_id( 'menu_class' ); ?>"><code>menu_class</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'menu_class' ); ?>" name="<?php $this->field_name( 'menu_class' ); ?>" value="<?php echo esc_attr( $instance['menu_class'] ); ?>" placeholder="example" />
+			<label>
+				<?php esc_html_e( 'Depth:', 'widgets-reloaded' ); ?>
+				<input type="number" class="widefat code" size="5" min="0" name="<?php $this->field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" placeholder="0" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'depth' ); ?>"><code>depth</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'depth' ); ?>" name="<?php $this->field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" placeholder="0" />
+			<label>
+				<?php esc_html_e( 'Before:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'before' ); ?>"><code>before</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'before' ); ?>" name="<?php $this->field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'After:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'after' ); ?>"><code>after</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'after' ); ?>" name="<?php $this->field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Link Before:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'link_before' ); ?>" value="<?php echo esc_attr( $instance['link_before'] ); ?>" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'link_before' ); ?>"><code>link_before</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'link_before' ); ?>" name="<?php $this->field_name( 'link_before' ); ?>" value="<?php echo esc_attr( $instance['link_before'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Link After:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'link_after' ); ?>" value="<?php echo esc_attr( $instance['link_after'] ); ?>" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'link_after' ); ?>"><code>link_after</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'link_after' ); ?>" name="<?php $this->field_name( 'link_after' ); ?>" value="<?php echo esc_attr( $instance['link_after'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Fallback Callback Function:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'fallback_cb' ); ?>" value="<?php echo esc_attr( $instance['fallback_cb'] ); ?>" placeholder="wp_page_menu" />
+			</label>
 		</p>
-		<p>
-			<label for="<?php $this->field_id( 'fallback_cb' ); ?>"><code>fallback_cb</code></label>
-			<input type="text" class="widefat code" id="<?php $this->field_id( 'fallback_cb' ); ?>" name="<?php $this->field_name( 'fallback_cb' ); ?>" value="<?php echo esc_attr( $instance['fallback_cb'] ); ?>" placeholder="wp_page_menu" />
-		</p>
-		</div>
+
+		</div><!-- .hybrid-widget-controls -->
+
 		<div style="clear:both;">&nbsp;</div>
-	<?php
-	}
+	<?php }
 }

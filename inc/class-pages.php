@@ -40,7 +40,7 @@ class Pages extends Widget {
 
 		// Set up the widget control options.
 		$control_options = array(
-			'width'  => 800,
+			'width'  => 525,
 			'height' => 350
 		);
 
@@ -191,115 +191,194 @@ class Pages extends Widget {
 			'modified' => esc_attr__( 'Modified', 'widgets-reloaded' )
 		);
 
-		$meta_key = array_merge( array( '' ), (array) get_meta_keys() );
+		$meta_key = array_merge( array( '' ), (array) get_meta_keys() ); ?>
 
-		?>
+		<div class="hybrid-widget-controls columns-2">
 
-		<div class="hybrid-widget-controls columns-3">
 		<p>
-			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>"  placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Title:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>"  placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			</label>
 		</p>
-		<p>
-			<label for="<?php $this->field_id( 'post_type' ); ?>"><code>post_type</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'post_type' ); ?>" name="<?php $this->field_name( 'post_type' ); ?>">
-				<?php foreach ( $post_types as $post_type ) { ?>
-					<option value="<?php echo esc_attr( $post_type->name ); ?>" <?php selected( $instance['post_type'], $post_type->name ); ?>><?php echo esc_html( $post_type->labels->singular_name ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'sort_order' ); ?>"><code>sort_order</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'sort_order' ); ?>" name="<?php $this->field_name( 'sort_order' ); ?>">
-				<?php foreach ( $sort_order as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['sort_order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'sort_column' ); ?>"><code>sort_column</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'sort_column' ); ?>" name="<?php $this->field_name( 'sort_column' ); ?>">
-				<?php foreach ( $sort_column as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['sort_column'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'depth' ); ?>"><code>depth</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'depth' ); ?>" name="<?php $this->field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" placeholder="0" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'number' ); ?>"><code>number</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'number' ); ?>" name="<?php $this->field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
-		</p>
-		</div>
 
-		<div class="hybrid-widget-controls columns-3">
 		<p>
-			<label for="<?php $this->field_id( 'offset' ); ?>"><code>offset</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'offset' ); ?>" name="<?php $this->field_name( 'offset' ); ?>" value="<?php echo esc_attr( $instance['offset'] ); ?>" placeholder="0"  />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'child_of' ); ?>"><code>child_of</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'child_of' ); ?>" name="<?php $this->field_name( 'child_of' ); ?>" value="<?php echo esc_attr( $instance['child_of'] ); ?>" placeholder="0" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'include' ); ?>"><code>include</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'include' ); ?>" name="<?php $this->field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'exclude' ); ?>"><code>exclude</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'exclude' ); ?>" name="<?php $this->field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'exclude_tree' ); ?>"><code>exclude_tree</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'exclude_tree' ); ?>" name="<?php $this->field_name( 'exclude_tree' ); ?>" value="<?php echo esc_attr( $instance['exclude_tree'] ); ?>" placeholder="1,2,3&hellip;" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'meta_key' ); ?>"><code>meta_key</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'meta_key' ); ?>" name="<?php $this->field_name( 'meta_key' ); ?>">
-				<?php foreach ( $meta_key as $meta ) { ?>
-					<option value="<?php echo esc_attr( $meta ); ?>" <?php selected( $instance['meta_key'], $meta ); ?>><?php echo esc_html( $meta ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'meta_value' ); ?>"><code>meta_value</code></label>
-			<input type="text" class="widefat code" id="<?php $this->field_id( 'meta_value' ); ?>" name="<?php $this->field_name( 'meta_value' ); ?>" value="<?php echo esc_attr( $instance['meta_value'] ); ?>" />
-		</p>
-		</div>
+			<label>
+				<?php esc_html_e( 'Post Type:', 'widgets-reloaded' ); ?>
 
-		<div class="hybrid-widget-controls columns-3 column-last">
-		<p>
-			<label for="<?php $this->field_id( 'authors' ); ?>"><code>authors</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'authors' ); ?>" name="<?php $this->field_name( 'authors' ); ?>" value="<?php echo esc_attr( $instance['authors'] ); ?>" placeholder="1,2,3&hellip;" />
+				<select class="widefat" name="<?php $this->field_name( 'post_type' ); ?>">
+
+					<?php foreach ( $post_types as $post_type ) : ?>
+
+						<option value="<?php echo esc_attr( $post_type->name ); ?>" <?php selected( $instance['post_type'], $post_type->name ); ?>><?php echo esc_html( $post_type->labels->singular_name ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'link_before' ); ?>"><code>link_before</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'link_before' ); ?>" name="<?php $this->field_name( 'link_before' ); ?>" value="<?php echo esc_attr( $instance['link_before'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Order:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'sort_order' ); ?>">
+
+					<?php foreach ( $sort_order as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['sort_order'], $option_value ); ?>><?php echo esc_html($option_label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'link_after' ); ?>"><code>link_after</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'link_after' ); ?>" name="<?php $this->field_name( 'link_after' ); ?>" value="<?php echo esc_attr( $instance['link_after'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Order By:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'sort_column' ); ?>">
+
+					<?php foreach ( $sort_column as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['sort_column'], $option_value ); ?>><?php echo esc_html($option_label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'show_date' ); ?>"><code>show_date</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'show_date' ); ?>" name="<?php $this->field_name( 'show_date' ); ?>">
-				<?php foreach ( $show_date as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['show_date'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
+			<label>
+				<?php esc_html_e( 'Depth:', 'widgets-reloaded' ); ?>
+				<input type="number" class="widefat code" size="5" min="0" name="<?php $this->field_name( 'depth' ); ?>" value="<?php echo esc_attr( $instance['depth'] ); ?>" placeholder="0" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'date_format' ); ?>"><code>date_format</code></label>
-			<input type="text" class="smallfat code" id="<?php $this->field_id( 'date_format' ); ?>" name="<?php $this->field_name( 'date_format' ); ?>" value="<?php echo esc_attr( $instance['date_format'] ); ?>" placeholder="<?php echo esc_attr( get_option( 'date_format' ) ); ?>" />
+			<label>
+				<?php esc_html_e( 'Number:', 'widgets-reloaded' ); ?>
+				<input type="number" class="widefat code" size="5" min="0" name="<?php $this->field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>" placeholder="0" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'hierarchical' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> id="<?php $this->field_id( 'hierarchical' ); ?>" name="<?php $this->field_name( 'hierarchical' ); ?>" /> <?php _e( 'Hierarchical?', 'widgets-reloaded'); ?> <code>hierarchical</code></label>
+			<label>
+				<?php esc_html_e( 'Offset:', 'widgets-reloaded' ); ?>
+				<input type="number" class="widefat code" size="5" min="0" name="<?php $this->field_name( 'offset' ); ?>" value="<?php echo esc_attr( $instance['offset'] ); ?>" placeholder="0"  />
+			</label>
 		</p>
-		</div>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Child Of:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'child_of' ); ?>" value="<?php echo esc_attr( $instance['child_of'] ); ?>" placeholder="0" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Include:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'include' ); ?>" value="<?php echo esc_attr( $instance['include'] ); ?>" placeholder="1,2,3&hellip;" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
+			</label>
+		</p>
+
+		</div><!-- .hybrid-widget-controls -->
+
+		<div class="hybrid-widget-controls columns-2 column-last">
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Exclude Tree:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'exclude_tree' ); ?>" value="<?php echo esc_attr( $instance['exclude_tree'] ); ?>" placeholder="1,2,3&hellip;" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Meta Key:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'meta_key' ); ?>">
+
+					<?php foreach ( $meta_key as $meta ) : ?>
+
+						<option value="<?php echo esc_attr( $meta ); ?>" <?php selected( $instance['meta_key'], $meta ); ?>><?php echo esc_html( $meta ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Meta Value:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'meta_value' ); ?>" value="<?php echo esc_attr( $instance['meta_value'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Authors:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'authors' ); ?>" value="<?php echo esc_attr( $instance['authors'] ); ?>" placeholder="1,2,3&hellip;" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Link Before:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'link_before' ); ?>" value="<?php echo esc_attr( $instance['link_before'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Link After:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'link_after' ); ?>" value="<?php echo esc_attr( $instance['link_after'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Show Date:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'show_date' ); ?>">
+
+					<?php foreach ( $show_date as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['show_date'], $option_value ); ?>><?php echo esc_html($option_label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Date Format:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'date_format' ); ?>" value="<?php echo esc_attr( $instance['date_format'] ); ?>" placeholder="<?php echo esc_attr( get_option( 'date_format' ) ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<input type="checkbox" <?php checked( $instance['hierarchical'], true ); ?> name="<?php $this->field_name( 'hierarchical' ); ?>" />
+				<?php esc_html_e( 'Hierarchical?', 'widgets-reloaded'); ?>
+			</label>
+		</p>
+
+		</div><!-- .hybrid-widget-controls -->
+
 		<div style="clear:both;">&nbsp;</div>
-	<?php
-	}
+	<?php }
 }

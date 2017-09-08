@@ -37,14 +37,8 @@ class Archives extends Widget {
 			'customize_selective_refresh' => true
 		);
 
-		// Set up the widget control options.
-		$control_options = array(
-			'width'  => 525,
-			'height' => 350
-		);
-
 		// Create the widget.
-		parent::__construct( 'hybrid-archives', __( 'Archives', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-archives', __( 'Archives', 'widgets-reloaded' ), $widget_options );
 
 		// Set up defaults.
 		$this->defaults = array(
@@ -201,56 +195,87 @@ class Archives extends Widget {
 		);
 		?>
 
-		<div class="hybrid-widget-controls columns-2">
 		<p>
-			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Title:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			</label>
 		</p>
-		<p>
-			<label for="<?php $this->field_id( 'limit' ); ?>"><code>limit</code></label>
-			<input type="number" class="smallfat code" size="5" min="0" id="<?php $this->field_id( 'limit' ); ?>" name="<?php $this->field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'type' ); ?>"><code>type</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'type' ); ?>" name="<?php $this->field_name( 'type' ); ?>">
-				<?php foreach ( $type as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		<p>
-			<label for="<?php $this->field_id( 'order' ); ?>"><code>order</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'order' ); ?>" name="<?php $this->field_name( 'order' ); ?>">
-				<?php foreach ( $order as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
-		</p>
-		</div>
 
-		<div class="hybrid-widget-controls columns-2 column-last">
 		<p>
-			<label for="<?php $this->field_id( 'format' ); ?>"><code>format</code></label>
-			<select class="widefat" id="<?php $this->field_id( 'format' ); ?>" name="<?php $this->field_name( 'format' ); ?>">
-				<?php foreach ( $format as $option_value => $option_label ) { ?>
-					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
-				<?php } ?>
-			</select>
+			<label>
+				<?php esc_html_e( 'Limit:', 'widgets-reloaded' ); ?></label>
+				<input type="number" class="widefat code" size="5" min="0" name="<?php $this->field_name( 'limit' ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" placeholder="10" />
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'before' ); ?>"><code>before</code></label>
-			<input type="text" class="widefat code" id="<?php $this->field_id( 'before' ); ?>" name="<?php $this->field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Type:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'type' ); ?>">
+
+					<?php foreach ( $type as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'after' ); ?>"><code>after</code></label>
-			<input type="text" class="widefat code" id="<?php $this->field_id( 'after' ); ?>" name="<?php $this->field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Order:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'order' ); ?>">
+
+					<?php foreach ( $order as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
+
 		<p>
-			<label for="<?php $this->field_id( 'show_post_count' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> id="<?php $this->field_id( 'show_post_count' ); ?>" name="<?php $this->field_name( 'show_post_count' ); ?>" /> <?php _e( 'Show post count?', 'widgets-reloaded' ); ?> <code>show_post_count</code></label>
+			<label>
+				<?php esc_html_e( 'Format:', 'widgets-reloaded' ); ?></label>
+
+				<select class="widefat" name="<?php $this->field_name( 'format' ); ?>">
+
+					<?php foreach ( $format as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
 		</p>
-		</div>
-		<div style="clear:both;">&nbsp;</div>
-	<?php
-	}
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Before:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'before' ); ?>" value="<?php echo esc_attr( $instance['before'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'After:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'after' ); ?>" value="<?php echo esc_attr( $instance['after'] ); ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<input type="checkbox" <?php checked( $instance['show_post_count'], true ); ?> name="<?php $this->field_name( 'show_post_count' ); ?>" />
+				<?php esc_html_e( 'Show post count?', 'widgets-reloaded' ); ?>
+			</label>
+		</p>
+	<?php }
 }

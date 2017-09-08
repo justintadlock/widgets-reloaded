@@ -38,14 +38,8 @@ class Calendar extends Widget {
 			'customize_selective_refresh' => true
 		);
 
-		// Set up the widget control options.
-		$control_options = array(
-			'width'  => 200,
-			'height' => 350
-		);
-
 		// Create the widget.
-		parent::__construct( 'hybrid-calendar', __( 'Calendar', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-calendar', __( 'Calendar', 'widgets-reloaded' ), $widget_options );
 
 		// Set up the defaults.
 		$this->defaults = array(
@@ -121,16 +115,18 @@ class Calendar extends Widget {
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults ); ?>
 
-		<div class="hybrid-widget-controls columns-1">
 		<p>
-			<label for="<?php $this->field_id( 'title' ); ?>"><?php _e( 'Title:', 'widgets-reloaded' ); ?></label>
-			<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			<label>
+				<?php esc_html_e( 'Title:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat" id="<?php $this->field_id( 'title' ); ?>" name="<?php $this->field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" placeholder="<?php echo esc_attr( $this->defaults['title'] ); ?>" />
+			</label>
 		</p>
+
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php $this->field_id( 'initial' ); ?>" name="<?php $this->field_name( 'initial' ); ?>" />
-			<label for="<?php $this->field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?> <code>initial</code></label>
+			<label>
+				<input type="checkbox" <?php checked( $instance['initial'], true ); ?> name="<?php $this->field_name( 'initial' ); ?>" />
+				<?php esc_html_e( 'One-letter abbreviation?', 'widgets-reloaded' ); ?>
+			</label>
 		</p>
-		</div>
-	<?php
-	}
+	<?php }
 }

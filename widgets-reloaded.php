@@ -198,7 +198,7 @@ final class Plugin {
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 		if ( 'widgets.php' == $hook_suffix )
-			wp_enqueue_style( 'widgets-reloaded', "{$this->directory_uri}css/admin.min.css" );
+			wp_enqueue_style( 'widgets-reloaded', "{$this->directory_uri}css/admin.css" );
 	}
 
 	/**
@@ -216,11 +216,9 @@ final class Plugin {
 			'hybrid-archives',
 			'hybrid-authors',
 			'hybrid-bookmarks',
-			'hybrid-calendar',
 			'hybrid-categories',
 			'hybrid-nav-menu',
 			'hybrid-pages',
-			'hybrid-search',
 			'hybrid-tags'
 		);
 
