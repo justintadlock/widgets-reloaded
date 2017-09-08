@@ -107,9 +107,11 @@ class Nav_Menu extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+
 		// Strip tags.
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['menu']  = strip_tags( $new_instance['menu']  );
+		$instance['menu'] = strip_tags( $new_instance['menu']  );
 
 		// Whitelist options.
 		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );

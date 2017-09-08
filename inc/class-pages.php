@@ -114,8 +114,10 @@ class Pages extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+
 		// Strip tags.
-		$instance['title']       = strip_tags( $new_instance['title']       );
 		$instance['meta_key']    = strip_tags( $new_instance['meta_key']    );
 		$instance['meta_value']  = strip_tags( $new_instance['meta_value']  );
 		$instance['date_format'] = strip_tags( $new_instance['date_format'] );

@@ -139,8 +139,10 @@ class Tags extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+
 		// Strip tags.
-		$instance['title']         = strip_tags( $new_instance['title']         );
 		$instance['separator']     = strip_tags( $new_instance['separator']     );
 		$instance['name__like']    = strip_tags( $new_instance['name__like']    );
 		$instance['search']        = strip_tags( $new_instance['search']        );

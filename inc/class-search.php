@@ -86,8 +86,8 @@ class Search extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		// Strip tags.
-		$instance['title'] = strip_tags( $new_instance['title'] );
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
 		// Return sanitized options.
 		return $instance;

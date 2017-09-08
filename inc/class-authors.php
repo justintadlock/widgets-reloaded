@@ -119,8 +119,10 @@ class Authors extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+
 		// Strip tags.
-		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['feed']  = strip_tags( $new_instance['feed']  );
 
 		// Whitelist options.

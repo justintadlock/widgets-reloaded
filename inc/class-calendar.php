@@ -92,8 +92,8 @@ class Calendar extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		// Strip tags.
-		$instance['title'] = strip_tags( $new_instance['title'] );
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
 		// Checkboxes.
 		$instance['initial'] = isset( $new_instance['initial'] ) ? 1 : 0;

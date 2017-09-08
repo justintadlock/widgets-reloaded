@@ -145,8 +145,10 @@ class Bookmarks extends Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
+		// Sanitize title.
+		$instance['title_li'] = sanitize_text_field( $new_instance['title_li'] );
+
 		// Strip tags.
-		$instance['title_li'] = strip_tags( $new_instance['title_li'] );
 		$instance['search']   = strip_tags( $new_instance['search']   );
 
 		// Arrays of post IDs (integers).

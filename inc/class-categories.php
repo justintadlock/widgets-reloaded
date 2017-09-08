@@ -133,10 +133,12 @@ class Categories extends Widget {
 		// Sanitize key.
 		$instance['taxonomy'] = sanitize_key( $new_instance['taxonomy'] );
 
+		// Sanitize title.
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+
 		// Strip tags.
-		$instance['title']            = strip_tags( $new_instance['title']            );
-		$instance['search']           = strip_tags( $new_instance['search']           );
-		$instance['feed']             = strip_tags( $new_instance['feed']             );
+		$instance['search'] = strip_tags( $new_instance['search']           );
+		$instance['feed']   = strip_tags( $new_instance['feed']             );
 
 		// Whitelist options.
 		$order   = array( 'ASC', 'DESC' );
