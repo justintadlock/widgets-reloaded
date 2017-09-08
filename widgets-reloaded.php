@@ -20,7 +20,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   WidgetsReloaded
- * @version   0.6.0
+ * @version   1.0.0
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2015, Justin Tadlock
  * @link      http://themehybrid.com/plugins/widgets-reloaded
@@ -32,7 +32,7 @@ namespace Widgets_Reloaded;
 /**
  * Sets up the plugin
  *
- * @since  0.5.0
+ * @since  1.0.0
  * @access public
  */
 final class Plugin {
@@ -40,7 +40,7 @@ final class Plugin {
 	/**
 	 * Holds the instance of this class.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access private
 	 * @var    object
 	 */
@@ -49,7 +49,7 @@ final class Plugin {
 	/**
 	 * Stores the directory path for this plugin.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access private
 	 * @var    string
 	 */
@@ -58,7 +58,7 @@ final class Plugin {
 	/**
 	 * Stores the directory URI for this plugin.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access private
 	 * @var    string
 	 */
@@ -67,7 +67,7 @@ final class Plugin {
 	/**
 	 * Plugin setup.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -98,7 +98,7 @@ final class Plugin {
 	/**
 	 * Defines the directory path and URI for the plugin.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -112,7 +112,7 @@ final class Plugin {
 	 * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users,
 	 * so the plugin should have priority.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -123,12 +123,12 @@ final class Plugin {
 	/**
 	 * Loads the initial files needed by the plugin.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function includes() {
-		require_once( $this->directory_path . 'inc/class-widget.php'      );
+		require_once( $this->directory_path . 'inc/class-widget.php'     );
 		require_once( $this->directory_path . 'inc/class-archives.php'   );
 		require_once( $this->directory_path . 'inc/class-authors.php'    );
 		require_once( $this->directory_path . 'inc/class-bookmarks.php'  );
@@ -144,7 +144,7 @@ final class Plugin {
 	 * Note that we're using the 'widgets-reloaded' textdomain here.  This is because the widgets
 	 * are ported from the Hybrid Core framework.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -155,7 +155,7 @@ final class Plugin {
 	/**
 	 * Registers widget files.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -191,7 +191,7 @@ final class Plugin {
 	/**
 	 * Loads admin CSS files.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -259,7 +259,7 @@ final class Plugin {
 	/**
 	 * Returns the instance.
 	 *
-	 * @since  0.5.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return object
 	 */

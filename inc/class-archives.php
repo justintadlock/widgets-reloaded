@@ -17,14 +17,14 @@ namespace Widgets_Reloaded\Widgets;
 /**
  * Archives widget class.
  *
- * @since 0.6.0
+ * @since 1.0.0
  */
 class Archives extends Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
 	 *
-	 * @since  1.2.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -56,7 +56,7 @@ class Archives extends Widget {
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
 	 *
-	 * @since  0.6.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  array  $sidebar
 	 * @param  array  $instance
@@ -123,7 +123,7 @@ class Archives extends Widget {
 	 * The update callback for the widget control options.  This method is used to sanitize and/or
 	 * validate the options before saving them into the database.
 	 *
-	 * @since  0.6.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  array  $new_instance
 	 * @param  array  $old_instance
@@ -161,7 +161,7 @@ class Archives extends Widget {
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
 	 *
-	 * @since  0.6.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  array  $instance
 	 * @param  void
