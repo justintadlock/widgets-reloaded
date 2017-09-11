@@ -38,15 +38,6 @@ namespace Widgets_Reloaded;
 final class Plugin {
 
 	/**
-	 * Holds the instance of this class.
-	 *
-	 * @since  1.0.0
-	 * @access private
-	 * @var    object
-	 */
-	private static $instance;
-
-	/**
 	 * Stores the directory path for this plugin.
 	 *
 	 * @since  1.0.0
@@ -68,56 +59,21 @@ final class Plugin {
 	 * Plugin setup.
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return void
 	 */
-	public function __construct() {
-
-		// Set the properties needed by the plugin.
-		add_action( 'plugins_loaded', array( $this, 'setup' ), 1 );
-
-		// Load translation files.
-		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
-
-		// Set up theme support.
-		add_action( 'after_setup_theme', array( $this, 'theme_support' ), 12 );
-
-		// Load the plugin includes.
-		add_action( 'after_setup_theme', array( $this, 'includes' ), 95 );
-
-		// Register widgets.
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-
-		// Load admin scripts and styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-
-		// Make sure widgets are considered wide.
-		add_filter( 'is_wide_widget_in_customizer', array( $this, 'is_wide_widget' ), 10, 2 );
-	}
+	private function __construct() {}
 
 	/**
 	 * Defines the directory path and URI for the plugin.
 	 *
 	 * @since  1.0.0
-	 * @access public
+	 * @access private
 	 * @return void
 	 */
-	public function setup() {
+	private function setup() {
 		$this->dir = trailingslashit( plugin_dir_path( __FILE__ ) );
 		$this->uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
-	}
-
-	/**
-	 * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the
-	 * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users,
-	 * so the plugin should have priority.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function theme_support() {
-		remove_theme_support( 'hybrid-core-widgets' );
 	}
 
 	/**
@@ -128,6 +84,9 @@ final class Plugin {
 	 * @return void
 	 */
 	public function includes() {
+
+		require_once( $this->dir . 'inc/functions-core.php'   );
+
 		require_once( $this->dir . 'inc/class-widget.php'     );
 		require_once( $this->dir . 'inc/class-archives.php'   );
 		require_once( $this->dir . 'inc/class-authors.php'    );
@@ -138,6 +97,19 @@ final class Plugin {
 		require_once( $this->dir . 'inc/class-pages.php'      );
 		require_once( $this->dir . 'inc/class-search.php'     );
 		require_once( $this->dir . 'inc/class-tags.php'       );
+	}
+
+	/**
+	 * Sets up necessary actions for the plugin.
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function setup_actions() {
+
+		// Load translation files.
+		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 	}
 
 	/**
@@ -153,110 +125,6 @@ final class Plugin {
 	}
 
 	/**
-	 * Registers widget files.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function register_widgets() {
-
-		// Unregister the default WordPress widgets.
-		if ( apply_filters( 'widgets_reloaded_disable_core_widgets', false ) ) {
-
-			unregister_widget( 'WP_Widget_Archives'   );
-			unregister_widget( 'WP_Widget_Calendar'   );
-			unregister_widget( 'WP_Widget_Categories' );
-			unregister_widget( 'WP_Widget_Links'      );
-			unregister_widget( 'WP_Nav_Menu_Widget'   );
-			unregister_widget( 'WP_Widget_Pages'      );
-			unregister_widget( 'WP_Widget_Search'     );
-			unregister_widget( 'WP_Widget_Tag_Cloud'  );
-		}
-
-		// Register custom widgets.
-		register_widget( 'Widgets_Reloaded\Widgets\Archives'   );
-		register_widget( 'Widgets_Reloaded\Widgets\Authors'    );
-		register_widget( 'Widgets_Reloaded\Widgets\Calendar'   );
-		register_widget( 'Widgets_Reloaded\Widgets\Categories' );
-		register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
-		register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
-		register_widget( 'Widgets_Reloaded\Widgets\Search'     );
-		register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
-
-		if ( get_option( 'link_manager_enabled' ) )
-			register_widget( 'Widgets_Reloaded\Widgets\Bookmarks' );
-	}
-
-	/**
-	 * Loads admin CSS files.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function admin_enqueue_scripts( $hook_suffix ) {
-
-		if ( 'widgets.php' == $hook_suffix )
-			wp_enqueue_style( 'widgets-reloaded', "{$this->uri}css/admin.css" );
-	}
-
-	/**
-	 * Always makes sure that our widgets are considered wide widgets in the customizer.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  bool    $is_wide
-	 * @param  string  $widget_id
-	 * @return bool
-	 */
-	public function is_wide_widget( $is_wide, $widget_id ) {
-
-		$widgets = array(
-			'hybrid-archives',
-			'hybrid-authors',
-			'hybrid-bookmarks',
-			'hybrid-categories',
-			'hybrid-nav-menu',
-			'hybrid-pages',
-			'hybrid-tags'
-		);
-
-		$parsed = $this->parse_widget_id( $widget_id );
-
-		return in_array( $parsed['id_base'], $widgets ) ? true : $is_wide;
-	}
-
-	/**
-	 * Converts a widget ID into its id_base and number components. Copied from the core
-	 * `WP_Customize_Widgets` class.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string $widget_id
-	 * @return array
-	 */
-	public function parse_widget_id( $widget_id ) {
-
-		$parsed = array(
-			'number'  => null,
-			'id_base' => null,
-		);
-
-		if ( preg_match( '/^(.+)-(\d+)$/', $widget_id, $matches ) ) {
-
-			$parsed['id_base'] = $matches[1];
-			$parsed['number']  = intval( $matches[2] );
-
-		} else {
-
-			$parsed['id_base'] = $widget_id;
-		}
-
-		return $parsed;
-	}
-
-	/**
 	 * Returns the instance.
 	 *
 	 * @since  1.0.0
@@ -265,11 +133,22 @@ final class Plugin {
 	 */
 	public static function get_instance() {
 
-		if ( ! self::$instance )
-			self::$instance = new self;
+		static $instance = null;
 
-		return self::$instance;
+		if ( is_null( $instance ) ) {
+			$instance = new self;
+			$instance->setup();
+			$instance->includes();
+			$instance->setup_actions();
+		}
+
+		return $instance;
 	}
 }
 
-Plugin::get_instance();
+function plugin() {
+
+	return Plugin::get_instance();
+}
+
+plugin();

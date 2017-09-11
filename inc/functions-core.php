@@ -1,0 +1,142 @@
+<?php
+/**
+ * Core functions for the plugin.
+ *
+ * @package    Hybrid
+ * @subpackage Includes
+ * @author     Justin Tadlock <justin@justintadlock.com>
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
+ * @link       http://themehybrid.com/hybrid-core
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ */
+
+namespace Widgets_Reloaded;
+
+// Removes theme support.
+add_action( 'after_setup_theme', 'Widgets_Reloaded\theme_support', 12 );
+
+// Register widgets.
+add_action( 'widgets_init', 'Widgets_Reloaded\register_widgets' );
+
+// Load admin scripts and styles.
+add_action( 'admin_enqueue_scripts', 'Widgets_Reloaded\admin_enqueue_scripts' );
+
+// Make sure widgets are considered wide.
+add_filter( 'is_wide_widget_in_customizer', 'Widgets_Reloaded\is_wide_widget', 10, 2 );
+
+/**
+ * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the
+ * widgets instead of themes built on Hybrid Core.  Plugin updates can get out quicker to users,
+ * so the plugin should have priority.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function theme_support() {
+	remove_theme_support( 'hybrid-core-widgets' );
+}
+
+/**
+ * Registers widget files.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function register_widgets() {
+
+	// Unregister the default WordPress widgets.
+	if ( apply_filters( 'widgets_reloaded_disable_core_widgets', false ) ) {
+
+		unregister_widget( 'WP_Widget_Archives'   );
+		unregister_widget( 'WP_Widget_Calendar'   );
+		unregister_widget( 'WP_Widget_Categories' );
+		unregister_widget( 'WP_Widget_Links'      );
+		unregister_widget( 'WP_Nav_Menu_Widget'   );
+		unregister_widget( 'WP_Widget_Pages'      );
+		unregister_widget( 'WP_Widget_Search'     );
+		unregister_widget( 'WP_Widget_Tag_Cloud'  );
+	}
+
+	// Register custom widgets.
+	register_widget( 'Widgets_Reloaded\Widgets\Archives'   );
+	register_widget( 'Widgets_Reloaded\Widgets\Authors'    );
+	register_widget( 'Widgets_Reloaded\Widgets\Calendar'   );
+	register_widget( 'Widgets_Reloaded\Widgets\Categories' );
+	register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
+	register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
+	register_widget( 'Widgets_Reloaded\Widgets\Search'     );
+	register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
+
+	if ( get_option( 'link_manager_enabled' ) )
+		register_widget( 'Widgets_Reloaded\Widgets\Bookmarks' );
+}
+
+/**
+ * Loads admin CSS files.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function admin_enqueue_scripts( $hook_suffix ) {
+
+	if ( 'widgets.php' == $hook_suffix )
+		wp_enqueue_style( 'widgets-reloaded', plugin()->uri . "css/admin.css" );
+}
+
+/**
+ * Always makes sure that our widgets are considered wide widgets in the customizer.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  bool    $is_wide
+ * @param  string  $widget_id
+ * @return bool
+ */
+function is_wide_widget( $is_wide, $widget_id ) {
+
+	$widgets = array(
+		'hybrid-archives',
+		'hybrid-authors',
+		'hybrid-bookmarks',
+		'hybrid-categories',
+		'hybrid-nav-menu',
+		'hybrid-pages',
+		'hybrid-tags'
+	);
+
+	$parsed = parse_widget_id( $widget_id );
+
+	return in_array( $parsed['id_base'], $widgets ) ? true : $is_wide;
+}
+
+/**
+ * Converts a widget ID into its id_base and number components. Copied from the core
+ * `WP_Customize_Widgets` class.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string $widget_id
+ * @return array
+ */
+function parse_widget_id( $widget_id ) {
+
+	$parsed = array(
+		'number'  => null,
+		'id_base' => null,
+	);
+
+	if ( preg_match( '/^(.+)-(\d+)$/', $widget_id, $matches ) ) {
+
+		$parsed['id_base'] = $matches[1];
+		$parsed['number']  = intval( $matches[2] );
+
+	} else {
+
+		$parsed['id_base'] = $widget_id;
+	}
+
+	return $parsed;
+}
