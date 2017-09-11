@@ -85,18 +85,18 @@ final class Plugin {
 	 */
 	public function includes() {
 
-		require_once( $this->dir . 'inc/functions-core.php'   );
+		require_once( $this->dir . 'inc/functions-core.php' );
 
-		require_once( $this->dir . 'inc/class-widget.php'     );
-		require_once( $this->dir . 'inc/class-archives.php'   );
-		require_once( $this->dir . 'inc/class-authors.php'    );
-		require_once( $this->dir . 'inc/class-bookmarks.php'  );
-		require_once( $this->dir . 'inc/class-calendar.php'   );
-		require_once( $this->dir . 'inc/class-categories.php' );
-		require_once( $this->dir . 'inc/class-nav-menu.php'   );
-		require_once( $this->dir . 'inc/class-pages.php'      );
-		require_once( $this->dir . 'inc/class-search.php'     );
-		require_once( $this->dir . 'inc/class-tags.php'       );
+		require_once( $this->dir . 'inc/widgets/class-widget.php'     );
+		require_once( $this->dir . 'inc/widgets/class-archives.php'   );
+		require_once( $this->dir . 'inc/widgets/class-authors.php'    );
+		require_once( $this->dir . 'inc/widgets/class-bookmarks.php'  );
+		require_once( $this->dir . 'inc/widgets/class-calendar.php'   );
+		require_once( $this->dir . 'inc/widgets/class-categories.php' );
+		require_once( $this->dir . 'inc/widgets/class-nav-menu.php'   );
+		require_once( $this->dir . 'inc/widgets/class-pages.php'      );
+		require_once( $this->dir . 'inc/widgets/class-search.php'     );
+		require_once( $this->dir . 'inc/widgets/class-tags.php'       );
 	}
 
 	/**
