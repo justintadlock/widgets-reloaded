@@ -50,19 +50,19 @@ final class Plugin {
 	 * Stores the directory path for this plugin.
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access public
 	 * @var    string
 	 */
-	private $directory_path;
+	public $dir;
 
 	/**
 	 * Stores the directory URI for this plugin.
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access public
 	 * @var    string
 	 */
-	private $directory_uri;
+	public $uri;
 
 	/**
 	 * Plugin setup.
@@ -103,8 +103,8 @@ final class Plugin {
 	 * @return void
 	 */
 	public function setup() {
-		$this->directory_path = trailingslashit( plugin_dir_path( __FILE__ ) );
-		$this->directory_uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
+		$this->dir = trailingslashit( plugin_dir_path( __FILE__ ) );
+		$this->uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
 	}
 
 	/**
@@ -128,16 +128,16 @@ final class Plugin {
 	 * @return void
 	 */
 	public function includes() {
-		require_once( $this->directory_path . 'inc/class-widget.php'     );
-		require_once( $this->directory_path . 'inc/class-archives.php'   );
-		require_once( $this->directory_path . 'inc/class-authors.php'    );
-		require_once( $this->directory_path . 'inc/class-bookmarks.php'  );
-		require_once( $this->directory_path . 'inc/class-calendar.php'   );
-		require_once( $this->directory_path . 'inc/class-categories.php' );
-		require_once( $this->directory_path . 'inc/class-nav-menu.php'   );
-		require_once( $this->directory_path . 'inc/class-pages.php'      );
-		require_once( $this->directory_path . 'inc/class-search.php'     );
-		require_once( $this->directory_path . 'inc/class-tags.php'       );
+		require_once( $this->dir . 'inc/class-widget.php'     );
+		require_once( $this->dir . 'inc/class-archives.php'   );
+		require_once( $this->dir . 'inc/class-authors.php'    );
+		require_once( $this->dir . 'inc/class-bookmarks.php'  );
+		require_once( $this->dir . 'inc/class-calendar.php'   );
+		require_once( $this->dir . 'inc/class-categories.php' );
+		require_once( $this->dir . 'inc/class-nav-menu.php'   );
+		require_once( $this->dir . 'inc/class-pages.php'      );
+		require_once( $this->dir . 'inc/class-search.php'     );
+		require_once( $this->dir . 'inc/class-tags.php'       );
 	}
 
 	/**
@@ -198,7 +198,7 @@ final class Plugin {
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 		if ( 'widgets.php' == $hook_suffix )
-			wp_enqueue_style( 'widgets-reloaded', "{$this->directory_uri}css/admin.css" );
+			wp_enqueue_style( 'widgets-reloaded', "{$this->uri}css/admin.css" );
 	}
 
 	/**
@@ -265,7 +265,7 @@ final class Plugin {
 	 */
 	public static function get_instance() {
 
-		if ( !self::$instance )
+		if ( ! self::$instance )
 			self::$instance = new self;
 
 		return self::$instance;
