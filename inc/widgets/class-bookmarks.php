@@ -277,37 +277,50 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		<p>
-			<label>
-				<?php esc_html_e( 'Category:', 'widgets-reloaded' ); ?>
+		<div class="reloaded-widget-control">
 
-				<select class="widefat" name="<?php $this->field_name( 'category' ); ?>[]" size="4" multiple="multiple">
+			<?php esc_html_e( 'Category:', 'widgets-reloaded' ); ?>
 
-					<?php foreach ( $terms as $term ) : ?>
+			<div class="wp-tab-panel">
+				<ul>
 
-						<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php echo ( in_array( $term->term_id, (array) $instance['category'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $term->name ); ?></option>
+				<?php foreach ( $terms as $term ) : ?>
 
-					<?php endforeach; ?>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php $this->field_name( 'category' ); ?>[]" value="<?php echo esc_attr( $term->term_id ); ?>" <?php checked( in_array( $term->term_id, (array)$instance['category'] ) ); ?> />
+							<?php echo esc_html( $term->name ); ?>
+						</label>
+					</li>
 
-				</select>
-			</label>
-		</p>
+				<?php endforeach; ?>
 
-		<p>
-			<label>
-				<?php esc_html_e( 'Exclude Category:', 'widgets-reloaded' ); ?>
+				</ul>
+			</div>
+		</div>
 
-				<select class="widefat" name="<?php $this->field_name( 'exclude_category' ); ?>[]" size="4" multiple="multiple">
+		<div class="reloaded-widget-control">
 
-					<?php foreach ( $terms as $term ) : ?>
+			<?php esc_html_e( 'Exclude Category:', 'widgets-reloaded' ); ?>
 
-						<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php echo ( in_array( $term->term_id, (array) $instance['exclude_category'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $term->name ); ?></option>
+			<div class="wp-tab-panel">
+				<ul>
 
-					<?php endforeach; ?>
+				<?php foreach ( $terms as $term ) : ?>
 
-				</select>
-			</label>
-		</p>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php $this->field_name( 'exclude_category' ); ?>[]" value="<?php echo esc_attr( $term->term_id ); ?>" <?php checked( in_array( $term->term_id, (array)$instance['exclude_category'] ) ); ?> />
+							<?php echo esc_html( $term->name ); ?>
+						</label>
+					</li>
+
+				<?php endforeach; ?>
+
+				</ul>
+			</div>
+		</div>
+
 		<p>
 			<label>
 				<?php esc_html_e( 'Class:', 'widgets-reloaded' ); ?>
@@ -358,38 +371,49 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		<p>
-			<label>
-				<?php esc_html_e( 'Include:', 'widgets-reloaded' ); ?>
+		<div class="reloaded-widget-control">
 
-				<select class="widefat" name="<?php $this->field_name( 'include' ); ?>[]" size="4" multiple="multiple">
+			<?php esc_html_e( 'Include:', 'widgets-reloaded' ); ?>
 
-					<?php foreach ( $bookmarks as $bookmark ) : ?>
+			<div class="wp-tab-panel">
+				<ul>
 
-						<option value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php echo ( in_array( $bookmark->link_id, (array) $instance['include'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $bookmark->link_name ); ?></option>
+				<?php foreach ( $bookmarks as $bookmark ) : ?>
 
-					<?php endforeach; ?>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php $this->field_name( 'include' ); ?>[]" value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php checked( in_array( $bookmark->link_id, (array)$instance['include'] ) ); ?> />
+							<?php echo esc_html( $bookmark->link_name ); ?>
+						</label>
+					</li>
 
-				</select>
+				<?php endforeach; ?>
 
-			</label>
-		</p>
+				</ul>
+			</div>
+		</div>
 
-		<p>
-			<label>
-				<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
+		<div class="reloaded-widget-control">
 
-				<select class="widefat" name="<?php $this->field_name( 'exclude' ); ?>[]" size="4" multiple="multiple">
+			<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
 
-					<?php foreach ( $bookmarks as $bookmark ) : ?>
+			<div class="wp-tab-panel">
+				<ul>
 
-						<option value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php echo ( in_array( $bookmark->link_id, (array) $instance['exclude'] ) ? 'selected="selected"' : '' ); ?>><?php echo esc_html( $bookmark->link_name ); ?></option>
+				<?php foreach ( $bookmarks as $bookmark ) : ?>
 
-					<?php endforeach; ?>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php $this->field_name( 'exclude' ); ?>[]" value="<?php echo esc_attr( $bookmark->link_id ); ?>" <?php checked( in_array( $bookmark->link_id, (array)$instance['exclude'] ) ); ?> />
+							<?php echo esc_html( $bookmark->link_name ); ?>
+						</label>
+					</li>
 
-				</select>
-			</label>
-		</p>
+				<?php endforeach; ?>
+
+				</ul>
+			</div>
+		</div>
 
 		<p>
 			<label>

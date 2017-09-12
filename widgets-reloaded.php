@@ -109,6 +109,9 @@ final class Plugin {
 	 */
 	private function setup_actions() {
 
+		// Uncomment to test for bookmarks widget if link manager is disabled.
+		// add_filter( 'option_link_manager_enabled', '__return_true' );
+
 		// Load translation files.
 		add_action( 'plugins_loaded', array( $this, 'i18n' ), 2 );
 	}

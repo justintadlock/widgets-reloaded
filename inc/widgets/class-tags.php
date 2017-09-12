@@ -241,21 +241,25 @@ class Tags extends Widget {
 			</label>
 		</p>
 
-		<p>
-			<label>
-				<?php esc_html_e( 'Taxonomy:', 'widgets-reloaded' ); ?>
+		<div class="reloaded-widget-control">
+			<?php esc_html_e( 'Taxonomy:', 'widgets-reloaded' ); ?>
 
-				<select class="widefat" name="<?php $this->field_name( 'taxonomy' ); ?>[]" size="4" multiple="multiple">
+			<div class="wp-tab-panel">
+				<ul>
 
-					<?php foreach ( $taxonomies as $taxonomy ) : ?>
+				<?php foreach ( $taxonomies as $taxonomy ) : ?>
 
-						<option value="<?php echo $taxonomy->name; ?>" <?php selected( in_array( $taxonomy->name, (array)$instance['taxonomy'] ) ); ?>><?php echo $taxonomy->labels->singular_name; ?></option>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php $this->field_name( 'taxonomy' ); ?>[]" value="<?php echo esc_attr( $taxonomy->name ); ?>" <?php checked( in_array( $taxonomy->name, (array)$instance['taxonomy'] ) ); ?> />
+							<?php echo esc_html( $taxonomy->labels->singular_name ); ?>
+						</label>
+					</li>
+				<?php endforeach; ?>
 
-					<?php endforeach; ?>
-
-				</select>
-			</label>
-		</p>
+				</ul>
+			</div>
+		</div>
 
 		<p>
 			<label>

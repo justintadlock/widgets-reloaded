@@ -1,3 +1,13 @@
+.reloaded-widget-control {
+	margin: 1em 0;
+}
+
+	/* This is a fix for margins. This is a sub-list in the customizer but
+	   not on the widgets admin screen. This is to make sure the margins
+	   are the same. */
+	.reloaded-widget-control .wp-tab-panel ul {
+		margin: 1em 0;
+	}
 
 .widgets-php .columns-2 {
 	overflow: hidden;
@@ -17,7 +27,7 @@
 	margin-right: 0;
 }
 
-.widgets-php .columns-2 input.widefat, 
+.widgets-php .columns-2 input.widefat,
 .widgets-php .columns-2 select.widefat {
 	width: 99%;
 }
