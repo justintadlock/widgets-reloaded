@@ -72,8 +72,9 @@ final class Plugin {
 	 * @return void
 	 */
 	private function setup() {
+
 		$this->dir = trailingslashit( plugin_dir_path( __FILE__ ) );
-		$this->uri  = trailingslashit( plugin_dir_url(  __FILE__ ) );
+		$this->uri = trailingslashit( plugin_dir_url(  __FILE__ ) );
 	}
 
 	/**
@@ -121,6 +122,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function i18n() {
+
 		load_plugin_textdomain( 'widgets-reloaded', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
@@ -146,9 +148,17 @@ final class Plugin {
 	}
 }
 
+/**
+ * Wrapper function for the main plugin class.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return object
+ */
 function plugin() {
 
 	return Plugin::get_instance();
 }
 
+// Launch the plugin!
 plugin();
