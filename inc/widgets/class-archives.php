@@ -217,7 +217,7 @@ class Archives extends Widget {
 
 					<?php foreach ( $type as $option_value => $option_label ) : ?>
 
-						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 
 					<?php endforeach; ?>
 
@@ -233,7 +233,7 @@ class Archives extends Widget {
 
 					<?php foreach ( $order as $option_value => $option_label ) : ?>
 
-						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['order'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 
 					<?php endforeach; ?>
 
@@ -249,7 +249,7 @@ class Archives extends Widget {
 
 					<?php foreach ( $format as $option_value => $option_label ) : ?>
 
-						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $label ); ?></option>
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['format'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
 
 					<?php endforeach; ?>
 
