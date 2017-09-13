@@ -66,6 +66,7 @@ function register_widgets() {
 	register_widget( 'Widgets_Reloaded\Widgets\Categories' );
 	register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
 	register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
+	register_widget( 'Widgets_Reloaded\Widgets\Posts'      );
 	register_widget( 'Widgets_Reloaded\Widgets\Search'     );
 	register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
 
