@@ -32,7 +32,7 @@ class Posts extends Widget {
 		// Set up the widget options.
 		$widget_options = array(
 			'classname'                   => 'widget-posts widget_recent_entries',
-			'description'                 => esc_html__( "Displays a list of your site's posts.", 'widgets-reloaded' ),
+			'description'                 => esc_html__( 'Displays a list of posts.', 'widgets-reloaded' ),
 			'customize_selective_refresh' => true
 		);
 

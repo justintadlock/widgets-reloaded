@@ -34,7 +34,7 @@ class Bookmarks extends Widget {
 		// Set up the widget options.
 		$widget_options = array(
 			'classname'                   => 'widget-bookmarks widget_links',
-			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your bookmarks (links).', 'widgets-reloaded' ),
+			'description'                 => esc_html__( 'Displays a list of bookmarks (links).', 'widgets-reloaded' ),
 			'customize_selective_refresh' => true
 		);
 

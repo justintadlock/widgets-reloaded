@@ -34,7 +34,7 @@ class Authors extends Widget {
 		// Set up the widget options.
 		$widget_options = array(
 			'classname'                   => 'widget-authors',
-			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your author lists.', 'widgets-reloaded' ),
+			'description'                 => esc_html__( 'Displays a list of post authors.', 'widgets-reloaded' ),
 			'customize_selective_refresh' => true
 		);
 

@@ -34,7 +34,7 @@ class Tags extends Widget {
 		// Set up the widget options.
 		$widget_options = array(
 			'classname'                   => 'widget-tags widget_tag_cloud',
-			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your tags.', 'widgets-reloaded' ),
+			'description'                 => esc_html__( 'Displays a cloud or list of tags.', 'widgets-reloaded' ),
 			'customize_selective_refresh' => true
 		);
 

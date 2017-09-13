@@ -34,7 +34,7 @@ class Nav_Menu extends Widget {
 		// Set up the widget options.
 		$widget_options = array(
 			'classname'                   => 'widget-nav-menu widget_nav_menu',
-			'description'                 => esc_html__( 'An advanced widget that gives you total control over the output of your menus.', 'widgets-reloaded' ),
+			'description'                 => esc_html__( 'Displays a custom menu.', 'widgets-reloaded' ),
 			'customize_selective_refresh' => true
 		);
 
