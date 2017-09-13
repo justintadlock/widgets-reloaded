@@ -45,6 +45,7 @@ class Archives extends Widget {
 			'title'           => esc_attr__( 'Archives', 'widgets-reloaded' ),
 			'limit'           => 10,
 			'type'            => 'monthly',
+			'post_type'       => 'post',
 			'order'           => 'DESC',
 			'format'          => 'html',
 			'before'          => '',
@@ -134,6 +135,9 @@ class Archives extends Widget {
 		// Sanitize title.
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
+		// Sanitize key.
+		$instance['post_type'] = sanitize_key( $new_instance['post_type'] );
+
 		// Whitelist options.
 		$type   = array( 'alpha', 'daily', 'monthly', 'postbypost', 'weekly', 'yearly' );
 		$order  = array( 'ASC', 'DESC' );
@@ -171,6 +175,9 @@ class Archives extends Widget {
 		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
+		// Get post types.
+		$post_types = get_post_types( array( 'public' => true ), 'objects' );
+
 		// Create an array of archive types.
 		$type = array(
 			'alpha'      => esc_attr__( 'Alphabetical', 'widgets-reloaded' ),
@@ -192,8 +199,7 @@ class Archives extends Widget {
 			'custom' => esc_attr__( 'Custom', 'widgets-reloaded' ),
 			'html'   => esc_attr__( 'HTML',   'widgets-reloaded' ),
 			'option' => esc_attr__( 'Option', 'widgets-reloaded' )
-		);
-		?>
+		); ?>
 
 		<p>
 			<label>
@@ -218,6 +224,22 @@ class Archives extends Widget {
 					<?php foreach ( $type as $option_value => $option_label ) : ?>
 
 						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['type'], $option_value ); ?>><?php echo esc_html( $option_label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Post Type:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'post_type' ); ?>">
+
+					<?php foreach ( $post_types as $post_type ) : ?>
+
+						<option value="<?php echo esc_attr( $post_type->name ); ?>" <?php selected( $instance['post_type'], $post_type->name ); ?>><?php echo esc_html( $post_type->labels->singular_name ); ?></option>
 
 					<?php endforeach; ?>
 
