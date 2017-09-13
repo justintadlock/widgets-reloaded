@@ -67,6 +67,7 @@ class Tags extends Widget {
 			'parent'                     => '',
 			'taxonomy'                   => array( 'post_tag' ),
 			'hide_empty'                 => 1,
+			'show_count'                 => false,
 			'pad_counts'                 => false,
 			'search'                     => '',
 			'name__like'                 => '',
@@ -181,6 +182,7 @@ class Tags extends Widget {
 		$instance['topic_count_scale_callback'] = empty( $new_instance['fallback_cb'] ) || function_exists( $new_instance['topic_count_scale_callback'] ) ? $new_instance['topic_count_scale_callback'] : 'default_topic_count_scale';
 
 		// Checkboxes.
+		$instance['show_count'] = isset( $new_instance['show_count'] ) ? 1 : 0;
 		$instance['pad_counts'] = isset( $new_instance['pad_counts'] ) ? 1 : 0;
 		$instance['hide_empty'] = isset( $new_instance['hide_empty'] ) ? 1 : 0;
 
@@ -438,18 +440,28 @@ class Tags extends Widget {
 				<input type="text" class="widefat" name="<?php $this->field_name( 'topic_count_text_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_text_callback'] ); ?>" placeholder="default_topic_count_text" />
 			</label>
 		</p>
+
 		<p>
 			<label>
 				<?php esc_html_e( 'Count Scale Callback:', 'widgets-reloaded' ); ?>
 				<input type="text" class="widefat" name="<?php $this->field_name( 'topic_count_scale_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_scale_callback'] ); ?>" placeholder="default_topic_count_scale" />
 			</label>
 		</p>
+
+		<p>
+			<label>
+				<input type="checkbox" <?php checked( $instance['show_count'], true ); ?> name="<?php $this->field_name( 'show_count' ); ?>" />
+				<?php esc_html_e( 'Show count?', 'widgets-reloaded' ); ?>
+			</label>
+		</p>
+
 		<p>
 			<label>
 				<input type="checkbox" <?php checked( $instance['pad_counts'], true ); ?> name="<?php $this->field_name( 'pad_counts' ); ?>" />
 				<?php esc_html_e( 'Pad counts?', 'widgets-reloaded' ); ?>
 			</label>
 		</p>
+
 		<p>
 			<label>
 				<input type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> name="<?php $this->field_name( 'hide_empty' ); ?>" />
