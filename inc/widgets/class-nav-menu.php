@@ -155,7 +155,7 @@ class Nav_Menu extends Widget {
 
 		$container = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) ); ?>
 
-		<div class="hybrid-widget-controls columns-2">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -224,9 +224,9 @@ class Nav_Menu extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-2 column-last">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -270,7 +270,7 @@ class Nav_Menu extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }

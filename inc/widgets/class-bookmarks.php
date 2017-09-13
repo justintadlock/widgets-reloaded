@@ -237,7 +237,7 @@ class Bookmarks extends Widget {
 		);
 		?>
 
-		<div class="hybrid-widget-controls columns-3">
+		<div class="reloaded-section reloaded-col-3">
 		<p>
 			<label>
 				<?php esc_html_e( 'Title:', 'widgets-reloaded' ); ?>
@@ -277,7 +277,7 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		<div class="reloaded-widget-control">
+		<div class="reloaded-control">
 
 			<?php esc_html_e( 'Category:', 'widgets-reloaded' ); ?>
 
@@ -299,7 +299,7 @@ class Bookmarks extends Widget {
 			</div>
 		</div>
 
-		<div class="reloaded-widget-control">
+		<div class="reloaded-control">
 
 			<?php esc_html_e( 'Exclude Category:', 'widgets-reloaded' ); ?>
 
@@ -330,7 +330,7 @@ class Bookmarks extends Widget {
 
 		</div>
 
-		<div class="hybrid-widget-controls columns-3">
+		<div class="reloaded-section reloaded-col-3">
 
 		<p>
 			<label>
@@ -371,7 +371,7 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		<div class="reloaded-widget-control">
+		<div class="reloaded-control">
 
 			<?php esc_html_e( 'Include:', 'widgets-reloaded' ); ?>
 
@@ -393,7 +393,7 @@ class Bookmarks extends Widget {
 			</div>
 		</div>
 
-		<div class="reloaded-widget-control">
+		<div class="reloaded-control">
 
 			<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
 
@@ -422,9 +422,9 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-3 column-last">
+		<div class="reloaded-section reloaded-col-3">
 
 		<p>
 			<label>
@@ -503,7 +503,7 @@ class Bookmarks extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }

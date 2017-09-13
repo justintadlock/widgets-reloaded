@@ -191,7 +191,7 @@ class Authors extends Widget {
 
 		?>
 
-		<div class="hybrid-widget-controls columns-2">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -262,9 +262,9 @@ class Authors extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-2 column-last">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -322,7 +322,7 @@ class Authors extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }

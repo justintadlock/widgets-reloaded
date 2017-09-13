@@ -232,7 +232,7 @@ class Tags extends Widget {
 			'%'  => '%'
 		); ?>
 
-		<div class="hybrid-widget-controls columns-3">
+		<div class="reloaded-section reloaded-col-3">
 
 		<p>
 			<label>
@@ -241,7 +241,7 @@ class Tags extends Widget {
 			</label>
 		</p>
 
-		<div class="reloaded-widget-control">
+		<div class="reloaded-control">
 			<?php esc_html_e( 'Taxonomy:', 'widgets-reloaded' ); ?>
 
 			<div class="wp-tab-panel">
@@ -332,9 +332,9 @@ class Tags extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-3">
+		<div class="reloaded-section reloaded-col-3">
 
 		<p>
 			<label>
@@ -400,9 +400,9 @@ class Tags extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-3 column-last">
+		<div class="reloaded-section reloaded-col-3">
 
 		<p>
 			<label>
@@ -457,7 +457,7 @@ class Tags extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }

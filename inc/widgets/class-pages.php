@@ -195,7 +195,7 @@ class Pages extends Widget {
 
 		$meta_key = array_merge( array( '' ), (array) get_meta_keys() ); ?>
 
-		<div class="hybrid-widget-controls columns-2">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -294,9 +294,9 @@ class Pages extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-2 column-last">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -379,7 +379,7 @@ class Pages extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }

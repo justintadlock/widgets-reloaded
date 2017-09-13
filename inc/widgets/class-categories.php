@@ -218,7 +218,7 @@ class Categories extends Widget {
 			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' )
 		); ?>
 
-		<div class="hybrid-widget-controls columns-2">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -319,9 +319,9 @@ class Categories extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
-		<div class="hybrid-widget-controls columns-2 column-last">
+		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
@@ -409,7 +409,7 @@ class Categories extends Widget {
 			</label>
 		</p>
 
-		</div><!-- .hybrid-widget-controls -->
+		</div><!-- .reloaded-section -->
 
 		<div style="clear:both;">&nbsp;</div>
 	<?php }
