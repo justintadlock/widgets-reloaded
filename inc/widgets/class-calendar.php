@@ -39,7 +39,7 @@ class Calendar extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-calendar', __( 'Calendar', 'widgets-reloaded' ), $widget_options );
+		parent::__construct( 'hybrid-calendar', __( 'Reloaded - Calendar', 'widgets-reloaded' ), $widget_options );
 
 		// Set up the defaults.
 		$this->defaults = array(

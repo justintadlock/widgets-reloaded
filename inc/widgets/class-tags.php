@@ -45,7 +45,7 @@ class Tags extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-tags', __( 'Tags', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-tags', __( 'Reloaded - Tags', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		// Set up the defaults.
 		$topic_count_text = _n_noop( '%s topic', '%s topics', 'widgets-reloaded' );

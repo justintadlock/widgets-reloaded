@@ -40,7 +40,7 @@ class Search extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-search', __( 'Search', 'widgets-reloaded' ), $widget_options );
+		parent::__construct( 'hybrid-search', __( 'Reloaded - Search', 'widgets-reloaded' ), $widget_options );
 
 		// Set up the defaults.
 		$this->defaults = array(

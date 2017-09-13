@@ -45,7 +45,7 @@ class Authors extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-authors', __( 'Authors', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-authors', __( 'Reloaded - Authors', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		// Set up defaults.
 		$this->defaults = array(

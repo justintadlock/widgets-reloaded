@@ -38,7 +38,7 @@ class Archives extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-archives', __( 'Archives', 'widgets-reloaded' ), $widget_options );
+		parent::__construct( 'hybrid-archives', __( 'Reloaded - Archives', 'widgets-reloaded' ), $widget_options );
 
 		// Set up defaults.
 		$this->defaults = array(

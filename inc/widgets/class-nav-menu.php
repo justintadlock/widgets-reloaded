@@ -45,7 +45,7 @@ class Nav_Menu extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-nav-menu', __( 'Navigation Menu', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-nav-menu', __( 'Reloaded - Menu', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		// Set up the defaults.
 		$this->defaults = array(

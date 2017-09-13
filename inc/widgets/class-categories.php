@@ -45,7 +45,7 @@ class Categories extends Widget {
 		);
 
 		// Create the widget.
-		parent::__construct( 'hybrid-categories', __( 'Categories', 'widgets-reloaded' ), $widget_options, $control_options );
+		parent::__construct( 'hybrid-categories', __( 'Reloaded - Categories', 'widgets-reloaded' ), $widget_options, $control_options );
 
 		// Set up the defaults.
 		$this->defaults = array(
