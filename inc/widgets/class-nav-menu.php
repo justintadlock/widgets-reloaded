@@ -39,10 +39,7 @@ class Nav_Menu extends Widget {
 		);
 
 		// Set up the widget control options.
-		$control_options = array(
-			'width'  => 525,
-			'height' => 350
-		);
+		$control_options = array( 'width' => 525 );
 
 		// Create the widget.
 		parent::__construct( 'hybrid-nav-menu', __( 'Reloaded - Menu', 'widgets-reloaded' ), $widget_options, $control_options );

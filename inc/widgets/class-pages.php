@@ -39,10 +39,7 @@ class Pages extends Widget {
 		);
 
 		// Set up the widget control options.
-		$control_options = array(
-			'width'  => 525,
-			'height' => 350
-		);
+		$control_options = array( 'width' => 525 );
 
 		// Create the widget.
 		parent::__construct( 'hybrid-pages', __( 'Reloaded - Pages', 'widgets-reloaded' ), $widget_options, $control_options );

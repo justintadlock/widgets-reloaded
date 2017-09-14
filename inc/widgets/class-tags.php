@@ -39,10 +39,7 @@ class Tags extends Widget {
 		);
 
 		// Set up the widget control options.
-		$control_options = array(
-			'width'  => 750,
-			'height' => 350
-		);
+		$control_options = array( 'width' => 750 );
 
 		// Create the widget.
 		parent::__construct( 'hybrid-tags', __( 'Reloaded - Tags', 'widgets-reloaded' ), $widget_options, $control_options );
