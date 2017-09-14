@@ -81,8 +81,11 @@ function register_widgets() {
  */
 function admin_enqueue_scripts( $hook_suffix ) {
 
-	if ( 'widgets.php' == $hook_suffix )
-		wp_enqueue_style( 'widgets-reloaded', plugin()->uri . "css/admin.css" );
+	if ( 'widgets.php' == $hook_suffix ) {
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_style( 'widgets-reloaded', plugin()->uri . "css/admin{$min}.css" );
+	}
 }
 
 /**
