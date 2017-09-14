@@ -12,17 +12,17 @@
 
 namespace Widgets_Reloaded;
 
-// Removes theme support.
-add_action( 'after_setup_theme', 'Widgets_Reloaded\theme_support', 12 );
+# Removes theme support.
+add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 12 );
 
-// Register widgets.
-add_action( 'widgets_init', 'Widgets_Reloaded\register_widgets' );
+# Register widgets.
+add_action( 'widgets_init', __NAMESPACE__ . '\register_widgets' );
 
-// Load admin scripts and styles.
-add_action( 'admin_enqueue_scripts', 'Widgets_Reloaded\admin_enqueue_scripts' );
+# Load admin scripts and styles.
+add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_scripts' );
 
-// Make sure widgets are considered wide.
-add_filter( 'is_wide_widget_in_customizer', 'Widgets_Reloaded\is_wide_widget', 10, 2 );
+# Make sure widgets are considered wide.
+add_filter( 'is_wide_widget_in_customizer', __NAMESPACE__ . '\is_wide_widget', 10, 2 );
 
 /**
  * Removes 'hybrid-core-widgets' theme support.  This is so that the plugin will take over the
@@ -59,17 +59,17 @@ function register_widgets() {
 	}
 
 	// Register custom widgets.
-	register_widget( 'Widgets_Reloaded\Widgets\Archives'   );
-	register_widget( 'Widgets_Reloaded\Widgets\Authors'    );
-	register_widget( 'Widgets_Reloaded\Widgets\Calendar'   );
-	register_widget( 'Widgets_Reloaded\Widgets\Categories' );
-	register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
-	register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
-	register_widget( 'Widgets_Reloaded\Widgets\Posts'      );
-	register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
+	register_widget( __NAMESPACE__ . '\Widgets\Archives'   );
+	register_widget( __NAMESPACE__ . '\Widgets\Authors'    );
+	register_widget( __NAMESPACE__ . '\Widgets\Calendar'   );
+	register_widget( __NAMESPACE__ . '\Widgets\Categories' );
+	register_widget( __NAMESPACE__ . '\Widgets\Nav_Menu'   );
+	register_widget( __NAMESPACE__ . '\Widgets\Pages'      );
+	register_widget( __NAMESPACE__ . '\Widgets\Posts'      );
+	register_widget( __NAMESPACE__ . '\Widgets\Tags'       );
 
 	if ( get_option( 'link_manager_enabled' ) )
-		register_widget( 'Widgets_Reloaded\Widgets\Bookmarks' );
+		register_widget( __NAMESPACE__ . '\Widgets\Bookmarks' );
 }
 
 /**
