@@ -97,7 +97,6 @@ final class Plugin {
 		require_once( $this->dir . 'inc/widgets/class-nav-menu.php'   );
 		require_once( $this->dir . 'inc/widgets/class-pages.php'      );
 		require_once( $this->dir . 'inc/widgets/class-posts.php'      );
-		require_once( $this->dir . 'inc/widgets/class-search.php'     );
 		require_once( $this->dir . 'inc/widgets/class-tags.php'       );
 	}
 

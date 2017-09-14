@@ -55,7 +55,6 @@ function register_widgets() {
 		unregister_widget( 'WP_Widget_Links'      );
 		unregister_widget( 'WP_Nav_Menu_Widget'   );
 		unregister_widget( 'WP_Widget_Pages'      );
-		unregister_widget( 'WP_Widget_Search'     );
 		unregister_widget( 'WP_Widget_Tag_Cloud'  );
 	}
 
@@ -67,7 +66,6 @@ function register_widgets() {
 	register_widget( 'Widgets_Reloaded\Widgets\Nav_Menu'   );
 	register_widget( 'Widgets_Reloaded\Widgets\Pages'      );
 	register_widget( 'Widgets_Reloaded\Widgets\Posts'      );
-	register_widget( 'Widgets_Reloaded\Widgets\Search'     );
 	register_widget( 'Widgets_Reloaded\Widgets\Tags'       );
 
 	if ( get_option( 'link_manager_enabled' ) )
