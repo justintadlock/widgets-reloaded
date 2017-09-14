@@ -120,9 +120,9 @@ No, absolutely not.  In fact, it's quite impossible for this to happen as a resu
 3. Bookmarks widget
 4. Calendar widget
 5. Categories widget
-6. Navigation Menu widget
+6. Menu widget
 7. Pages widget
-8. Search widget
+8. Posts widget
 9. Tags widget
 
 == Changelog ==
