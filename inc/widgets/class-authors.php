@@ -59,6 +59,7 @@ class Authors extends Widget {
 			'style'         => 'list',
 			'html'          => true,
 			'feed'          => '',
+			'feed_type'     => '',
 			'feed_image'    => ''
 		);
 	}
@@ -123,13 +124,15 @@ class Authors extends Widget {
 		$instance['feed']  = strip_tags( $new_instance['feed']  );
 
 		// Whitelist options.
-		$order   = array( 'ASC', 'DESC' );
-		$orderby = array( 'display_name', 'email', 'ID', 'nicename', 'post_count', 'registered', 'url', 'user_login' );
-		$style   = array( 'list', 'none' );
+		$order     = array( 'ASC', 'DESC' );
+		$orderby   = array( 'display_name', 'email', 'ID', 'nicename', 'post_count', 'registered', 'url', 'user_login' );
+		$style     = array( 'list', 'none' );
+		$feed_type = array( '', 'atom', 'rdf', 'rss', 'rss2' );
 
-		$instance['order']   = in_array( $new_instance['order'], $order )     ? $new_instance['order']   : 'ASC';
-		$instance['orderby'] = in_array( $new_instance['orderby'], $orderby ) ? $new_instance['orderby'] : 'display_name';
-		$instance['style']   = in_array( $new_instance['style'], $style )     ? $new_instance['style']   : 'list';
+		$instance['order']     = in_array( $new_instance['order'], $order )     ? $new_instance['order']   : 'ASC';
+		$instance['orderby']   = in_array( $new_instance['orderby'], $orderby ) ? $new_instance['orderby'] : 'display_name';
+		$instance['style']     = in_array( $new_instance['style'], $style )     ? $new_instance['style']   : 'list';
+		$instance['feed_type'] = in_array( $new_instance['feed_type'], $feed_type ) ? $new_instance['feed_type'] : '';
 
 		// Integers.
 		$instance['number'] = intval( $new_instance['number'] );
@@ -186,7 +189,13 @@ class Authors extends Widget {
 			'none' => esc_attr__( 'None', 'widgets-reloaded' )
 		);
 
-		?>
+		$feed_type = array(
+			''     => '',
+			'atom' => esc_attr__( 'Atom',    'widgets-reloaded' ),
+			'rdf'  => esc_attr__( 'RDF',     'widgets-reloaded' ),
+			'rss'  => esc_attr__( 'RSS',     'widgets-reloaded' ),
+			'rss2' => esc_attr__( 'RSS 2.0', 'widgets-reloaded' )
+		); ?>
 
 		<div class="reloaded-section reloaded-col-2">
 
@@ -259,14 +268,30 @@ class Authors extends Widget {
 			</label>
 		</p>
 
+		<p>
+			<label>
+				<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
+			</label>
+		</p>
+
 		</div><!-- .reloaded-section -->
 
 		<div class="reloaded-section reloaded-col-2">
 
 		<p>
 			<label>
-				<?php esc_html_e( 'Exclude:', 'widgets-reloaded' ); ?>
-				<input type="text" class="widefat code" name="<?php $this->field_name( 'exclude' ); ?>" value="<?php echo esc_attr( $instance['exclude'] ); ?>" placeholder="1,2,3&hellip;" />
+				<?php esc_html_e( 'Feed Type:', 'widgets-reloaded' ); ?>
+
+				<select class="widefat" name="<?php $this->field_name( 'feed_type' ); ?>">
+
+					<?php foreach ( $feed_type as $option_value => $option_label ) : ?>
+
+						<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $instance['feed_type'], $option_value ); ?>><?php echo esc_html($option_label ); ?></option>
+
+					<?php endforeach; ?>
+
+				</select>
 			</label>
 		</p>
 
