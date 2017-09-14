@@ -350,13 +350,6 @@ class Categories extends Widget {
 
 		<p>
 			<label>
-				<?php esc_html_e( 'Feed:', 'widgets-reloaded' ); ?>
-				<input type="text" class="widefat code" name="<?php $this->field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
-			</label>
-		</p>
-
-		<p>
-			<label>
 				<?php esc_html_e( 'Feed Type:', 'widgets-reloaded' ); ?>
 
 				<select class="widefat" name="<?php $this->field_name( 'feed_type' ); ?>">
@@ -368,6 +361,13 @@ class Categories extends Widget {
 					<?php endforeach; ?>
 
 				</select>
+			</label>
+		</p>
+
+		<p>
+			<label>
+				<?php esc_html_e( 'Feed Text:', 'widgets-reloaded' ); ?>
+				<input type="text" class="widefat code" name="<?php $this->field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
 			</label>
 		</p>
 

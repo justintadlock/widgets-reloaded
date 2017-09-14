@@ -297,7 +297,7 @@ class Authors extends Widget {
 
 		<p>
 			<label>
-				<?php esc_html_e( 'Feed:', 'widgets-reloaded' ); ?>
+				<?php esc_html_e( 'Feed Text:', 'widgets-reloaded' ); ?>
 				<input type="text" class="widefat code" name="<?php $this->field_name( 'feed' ); ?>" value="<?php echo esc_attr( $instance['feed'] ); ?>" />
 			</label>
 		</p>
