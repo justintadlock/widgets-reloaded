@@ -38,6 +38,19 @@ function theme_support() {
 }
 
 /**
+ * Determines whether the core WP widgets should be enabled that this plugin
+ * is replacing.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function core_widgets_enabled() {
+
+	return apply_filters( 'widgets_reloaded_core_widgets_enabled', true );
+}
+
+/**
  * Registers widget files.
  *
  * @since  1.0.0
@@ -47,7 +60,7 @@ function theme_support() {
 function register_widgets() {
 
 	// Unregister the default WordPress widgets.
-	if ( apply_filters( 'widgets_reloaded_disable_core_widgets', false ) ) {
+	if ( ! core_widgets_enabled() ) {
 
 		unregister_widget( 'WP_Widget_Archives'   );
 		unregister_widget( 'WP_Widget_Calendar'   );
