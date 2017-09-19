@@ -19,7 +19,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 12 );
 add_action( 'widgets_init', __NAMESPACE__ . '\register_widgets' );
 
 # Load admin scripts and styles.
-add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue' );
 
 # Make sure widgets are considered wide.
 add_filter( 'is_wide_widget_in_customizer', __NAMESPACE__ . '\is_wide_widget', 10, 2 );
@@ -92,7 +92,7 @@ function register_widgets() {
  * @access public
  * @return void
  */
-function admin_enqueue_scripts( $hook_suffix ) {
+function admin_enqueue( $hook_suffix ) {
 
 	if ( 'widgets.php' == $hook_suffix ) {
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
