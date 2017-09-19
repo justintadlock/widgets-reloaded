@@ -34,6 +34,7 @@ add_filter( 'is_wide_widget_in_customizer', __NAMESPACE__ . '\is_wide_widget', 1
  * @return void
  */
 function theme_support() {
+
 	remove_theme_support( 'hybrid-core-widgets' );
 }
 
@@ -112,6 +113,20 @@ function admin_enqueue( $hook_suffix ) {
  */
 function is_wide_widget( $is_wide, $widget_id ) {
 
+	$parsed = parse_widget_id( $widget_id );
+
+	return in_array( $parsed['id_base'], get_wide_widgets() ) ? true : $is_wide;
+}
+
+/**
+ * Returns an array of wide widgets.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return array
+ */
+function get_wide_widgets() {
+
 	$widgets = array(
 		'hybrid-archives',
 		'hybrid-authors',
@@ -122,9 +137,7 @@ function is_wide_widget( $is_wide, $widget_id ) {
 		'hybrid-tags'
 	);
 
-	$parsed = parse_widget_id( $widget_id );
-
-	return in_array( $parsed['id_base'], $widgets ) ? true : $is_wide;
+	return apply_filters( 'widgets_reloaded_wide_widgets', $widgets );
 }
 
 /**
