@@ -2,9 +2,10 @@
 
 Contributors: greenshady
 Donate link: https://themehybrid.com/donate
-Tags: sidebar, widget, widgets, archives, author, bookmarks, calendar, categories, links, menu, pages, tags
+Tags: sidebar, widget, widgets
 Requires at least: 4.8
 Stable tag: 1.0.0
+Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,21 +15,21 @@ More advanced versions of the default WordPress widgets that come with highly cu
 
 The default WordPress widgets don't offer much control over how they are output on the screen.  Widgets Reloaded seeks to correct this problem.
 
-This plugin replaces many of the default widgets with versions that allow much more control.  Widgets come with highly customizable control panels.  Each widget can also be used any number of times.
+This plugin provides alternatives to many of the default widgets with versions that allow much more control.  Widgets come with numerous options to output widget content just like you want.
 
-### Features
+### Plugin Features
 
-The plugin overwrites many of the default WordPress widgets.  The following is the list of custom widgets the plugin offers.
+The plugin creates the following widgets:
 
-* Archives
-* Authors
-* Bookmarks (Links)
-* Calendar
-* Categories
-* Menu
-* Pages
-* Posts
-* Tags
+* Reloaded - Archives
+* Reloaded - Authors
+* Reloaded - Bookmarks _(if link manager is enabled)_
+* Reloaded - Calendar
+* Reloaded - Categories
+* Reloaded - Menu
+* Reloaded - Pages
+* Reloaded - Posts
+* Reloaded - Tags
 
 ### Professional Support
 
@@ -40,7 +41,9 @@ If you're a theme author, plugin author, or just a code hobbyist, you can follow
 
 ### Donations
 
-Yes, I do accept donations.  If you want to buy me a beer or whatever, you can do so from my [donations page](https://themehybrid.com/donate).  I appreciate all donations, no matter the size.  Further development of this plugin is not contingent on donations, but they are always a nice incentive.
+Yes, I do accept donations.  If you want to donate, you can do so from my [donations page](https://themehybrid.com/donate) or grab me something from my [Amazon Wish List](http://a.co/flUb0ns).
+
+I appreciate all donations, no matter the size.  Further development of this plugin is not contingent on donations, but they are always a nice incentive.
 
 == Installation ==
 
@@ -61,19 +64,19 @@ Therefore, the original widgets for this plugin were created as a part of my the
 
 ### How does this plugin work?
 
-Widgets Reloaded works by giving you more advanced versiosn of the default WordPress widgets and replacing them with customized versions.  Each widget is then given many more options to allow you to customize the output of widgets on your site.  You'll see many more checkboxes, input boxes, select boxes, and other options to choose from.
+Widgets Reloaded works by giving you more advanced versiosn of the default WordPress widgets.  Each widget has many options to allow you to customize the output of widgets on your site.  You'll see many more checkboxes, input boxes, select boxes, and other options to choose from.
 
 ### What custom widgets does the plugin provide?
 
-* Archives
-* Authors
-* Bookmarks (only if you have the link manager enabled)
-* Calendar
-* Categories
-* Menu
-* Pages
-* Posts
-* Tags
+* Reloaded - Archives
+* Reloaded - Authors
+* Reloaded - Bookmarks _(if link manager is enabled)_
+* Reloaded - Calendar
+* Reloaded - Categories
+* Reloaded - Menu
+* Reloaded - Pages
+* Reloaded - Posts
+* Reloaded - Tags
 
 ### What do all the widget options mean?
 
@@ -104,10 +107,6 @@ The widgets are coded according to WordPress standards.  The HTML output by them
 I have a few ideas, but feel free to share your own.  If there are other widgets you'd like to see in this plugin, let me know.  I probably won't add every widget idea, but I'm more than willing to consider each one carefully.
 
 Also, remember that this plugin is meant to overwrite the default WordPress widgets.  If you'd like to see a new widget that's not in WordPress, it probably won't get added to this plugin.  However, I might be willing to code a new plugin just for that widget.  I love WordPress widgets and am always interested in creating new, fun stuff.
-
-### User "jwhittaker99" says this plugin breaks the Links Manager. Is this true?
-
-No, absolutely not.  In fact, it's quite impossible for this to happen as a result of using this plugin.  Please use this plugin with no fear of losing your links.  You can also leave a good review of the plugin to help offset *jwhittaker99's* [bad review](http://wordpress.org/support/topic/incompatible-with-link-manager) claiming this.
 
 == Screenshots ==
 
