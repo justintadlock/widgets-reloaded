@@ -176,7 +176,8 @@ class Archives extends Widget {
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		// Get post types.
-		$post_types = get_post_types( array( 'public' => true ), 'objects' );
+		$post_types = get_post_types( array( 'name' => 'post' ), 'objects' );
+		$post_types = array_merge( $post_types, get_post_types( array( 'publicly_queryable' => true, '_builtin' => false ), 'objects' ) );
 
 		// Create an array of archive types.
 		$type = array(
