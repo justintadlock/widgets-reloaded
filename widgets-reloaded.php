@@ -7,7 +7,7 @@
  * Author:      Justin Tadlock
  * Author URI:  http://justintadlock.com
  * Text Domain: widgets-reloaded
- * Domain Path: /languages
+ * Domain Path: /lang
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License as published by the Free Software Foundation; either version 2 of the License,
@@ -126,7 +126,7 @@ final class Plugin {
 	 */
 	public function i18n() {
 
-		load_plugin_textdomain( 'widgets-reloaded', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'widgets-reloaded', false, basename( dirname( __FILE__ ) ) . '/lang' );
 	}
 
 	/**
