@@ -82,6 +82,8 @@ class Posts extends Widget {
 
 			<?php $this->widget_title( $sidebar, $instance ); ?>
 
+			<ul>
+
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
 				<li>
@@ -93,6 +95,8 @@ class Posts extends Widget {
 				</li>
 
 			<?php endwhile; ?>
+
+			</ul>
 
 			<?php echo $sidebar['after_widget']; ?>
 
