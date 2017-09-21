@@ -1,5 +1,37 @@
 # Change Log
 
+## [1.0.0] - 2017 - 09 - 21
+
+### Added
+
+* New Posts widget. This is an alternative to the core recent posts widget with more options.
+* Post type option to the Archives widget.
+* Show count option for the Tags widget.
+* Feed type option for the Authors widget.
+* Proper human-readable labels for all widget form fields.
+* Base widget class with reusable methods for each of the plugin's widgets.
+* Support for selective refresh in the customizer.
+* `widgets_reloaded_core_widgets_enabled` filter hook for disabling core widgets (only those that the plugin provides an alternative for).
+
+### Changed
+
+* Plugin now only works on PHP 5.3.0+.
+* All code is now namespaced under the `Widgets_Reloaded` namespace or `Widgets_Reloaded\Widgets` sub-namespace.
+* Core widgets are no longer disabled by default.
+* Cleaned up widget form fields. Less code. More readable.
+* All widget names are prefixed with `Reloaded -` to distinguish them from other widgets.
+* Rewrote widget descriptions.
+* Languages folder changed to `/lang`.
+
+### Removed
+
+* Old widget class names. These are no longer available for direct usage via `the_widget()`. You must use the newer class names.
+* Search widget.  It was already the same as the core WP search widget.
+
+### Fixed
+
+* Using `sanitize_text_field()` instead of `strip_tags()` for widget titles. This allows widget title HTML plugins to work.
+
 ## [0.6.0]
 
 * New `include` and `exclude` arguments for the Authors widget.
