@@ -41,7 +41,7 @@ class Posts extends Widget {
 
 		// Set up the defaults.
 		$this->defaults = array(
-			'title'     => esc_attr__( 'Recent Posts', 'widgets-reloaded' ),
+			'title'     => esc_attr__( 'Posts', 'widgets-reloaded' ),
 			'post_type' => array( 'post' ),
 			'order'     => 'DESC',
 			'orderby'   => 'date',

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Widgets Reloaded 1.0.0-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-reloaded\n"
-"POT-Creation-Date: 2017-09-19 19:24:01+00:00\n"
+"POT-Creation-Date: 2017-09-21 18:16:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,14 +70,14 @@ msgstr ""
 
 #: inc/widgets/class-archives.php:194 inc/widgets/class-authors.php:172
 #: inc/widgets/class-bookmarks.php:209 inc/widgets/class-categories.php:198
-#: inc/widgets/class-pages.php:173 inc/widgets/class-posts.php:156
+#: inc/widgets/class-pages.php:173 inc/widgets/class-posts.php:160
 #: inc/widgets/class-tags.php:217
 msgid "Ascending"
 msgstr ""
 
 #: inc/widgets/class-archives.php:195 inc/widgets/class-authors.php:173
 #: inc/widgets/class-bookmarks.php:210 inc/widgets/class-categories.php:199
-#: inc/widgets/class-pages.php:174 inc/widgets/class-posts.php:157
+#: inc/widgets/class-pages.php:174 inc/widgets/class-posts.php:161
 #: inc/widgets/class-tags.php:218
 msgid "Descending"
 msgstr ""
@@ -97,7 +97,7 @@ msgstr ""
 #: inc/widgets/class-archives.php:207 inc/widgets/class-authors.php:204
 #: inc/widgets/class-bookmarks.php:240 inc/widgets/class-calendar.php:120
 #: inc/widgets/class-categories.php:222 inc/widgets/class-nav-menu.php:159
-#: inc/widgets/class-pages.php:199 inc/widgets/class-posts.php:176
+#: inc/widgets/class-pages.php:199 inc/widgets/class-posts.php:180
 #: inc/widgets/class-tags.php:238
 msgid "Title:"
 msgstr ""
@@ -111,13 +111,13 @@ msgid "Type:"
 msgstr ""
 
 #: inc/widgets/class-archives.php:237 inc/widgets/class-pages.php:206
-#: inc/widgets/class-posts.php:182
+#: inc/widgets/class-posts.php:186
 msgid "Post Type:"
 msgstr ""
 
 #: inc/widgets/class-archives.php:253 inc/widgets/class-authors.php:211
 #: inc/widgets/class-bookmarks.php:341 inc/widgets/class-categories.php:261
-#: inc/widgets/class-pages.php:222 inc/widgets/class-posts.php:209
+#: inc/widgets/class-pages.php:222 inc/widgets/class-posts.php:213
 #: inc/widgets/class-tags.php:281
 msgid "Order:"
 msgstr ""
@@ -160,7 +160,7 @@ msgstr ""
 
 #: inc/widgets/class-authors.php:179 inc/widgets/class-bookmarks.php:215
 #: inc/widgets/class-bookmarks.php:221 inc/widgets/class-categories.php:204
-#: inc/widgets/class-pages.php:180 inc/widgets/class-posts.php:166
+#: inc/widgets/class-pages.php:180 inc/widgets/class-posts.php:170
 msgid "ID"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgid "List"
 msgstr ""
 
 #: inc/widgets/class-authors.php:189 inc/widgets/class-categories.php:194
-#: inc/widgets/class-posts.php:163
+#: inc/widgets/class-posts.php:167
 msgid "None"
 msgstr ""
 
@@ -213,12 +213,12 @@ msgstr ""
 
 #: inc/widgets/class-authors.php:227 inc/widgets/class-bookmarks.php:357
 #: inc/widgets/class-categories.php:277 inc/widgets/class-pages.php:238
-#: inc/widgets/class-posts.php:225 inc/widgets/class-tags.php:297
+#: inc/widgets/class-posts.php:229 inc/widgets/class-tags.php:297
 msgid "Order By:"
 msgstr ""
 
 #: inc/widgets/class-authors.php:243 inc/widgets/class-categories.php:300
-#: inc/widgets/class-pages.php:261 inc/widgets/class-posts.php:202
+#: inc/widgets/class-pages.php:261 inc/widgets/class-posts.php:206
 #: inc/widgets/class-tags.php:329
 msgid "Number:"
 msgstr ""
@@ -291,7 +291,7 @@ msgid "Name"
 msgstr ""
 
 #: inc/widgets/class-bookmarks.php:217 inc/widgets/class-categories.php:206
-#: inc/widgets/class-pages.php:183 inc/widgets/class-posts.php:162
+#: inc/widgets/class-pages.php:183 inc/widgets/class-posts.php:166
 msgid "Slug"
 msgstr ""
 
@@ -520,15 +520,15 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: inc/widgets/class-pages.php:178 inc/widgets/class-posts.php:161
+#: inc/widgets/class-pages.php:178 inc/widgets/class-posts.php:165
 msgid "Author"
 msgstr ""
 
-#: inc/widgets/class-pages.php:179 inc/widgets/class-posts.php:165
+#: inc/widgets/class-pages.php:179 inc/widgets/class-posts.php:169
 msgid "Date"
 msgstr ""
 
-#: inc/widgets/class-pages.php:181 inc/widgets/class-posts.php:170
+#: inc/widgets/class-pages.php:181 inc/widgets/class-posts.php:174
 msgid "Menu Order"
 msgstr ""
 
@@ -536,7 +536,7 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: inc/widgets/class-pages.php:184 inc/widgets/class-posts.php:171
+#: inc/widgets/class-pages.php:184 inc/widgets/class-posts.php:175
 msgid "Title"
 msgstr ""
 
@@ -577,26 +577,26 @@ msgid "Reloaded - Posts"
 msgstr ""
 
 #: inc/widgets/class-posts.php:44
-msgid "Recent Posts"
-msgstr ""
-
-#: inc/widgets/class-posts.php:164
-msgid "Type"
-msgstr ""
-
-#: inc/widgets/class-posts.php:167
-msgid "Date (Modified)"
+msgid "Posts"
 msgstr ""
 
 #: inc/widgets/class-posts.php:168
+msgid "Type"
+msgstr ""
+
+#: inc/widgets/class-posts.php:171
+msgid "Date (Modified)"
+msgstr ""
+
+#: inc/widgets/class-posts.php:172
 msgid "Parent"
 msgstr ""
 
-#: inc/widgets/class-posts.php:169
+#: inc/widgets/class-posts.php:173
 msgid "Comment Count"
 msgstr ""
 
-#: inc/widgets/class-posts.php:242
+#: inc/widgets/class-posts.php:246
 msgid "Display post date?"
 msgstr ""
 
@@ -686,7 +686,7 @@ msgid "https://themehybrid.com/plugins/widgets-reloaded"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Adds many advanced widgets to the site and giving users much more flexibility than the core WordPress widgets offer."
+msgid "Adds many advanced widgets to the site and gives users much more flexibility than the core WordPress widgets offer."
 msgstr ""
 
 #. Author of the plugin/theme

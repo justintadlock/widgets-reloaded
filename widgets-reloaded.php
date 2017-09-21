@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Widgets Reloaded
  * Plugin URI:  https://themehybrid.com/plugins/widgets-reloaded
- * Description: Adds many advanced widgets to the site and giving users much more flexibility than the core WordPress widgets offer.
+ * Description: Adds many advanced widgets to the site and gives users much more flexibility than the core WordPress widgets offer.
  * Version:     1.0.0-dev
  * Author:      Justin Tadlock
  * Author URI:  http://justintadlock.com
