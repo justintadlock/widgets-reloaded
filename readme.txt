@@ -4,6 +4,7 @@ Contributors: greenshady
 Donate link: https://themehybrid.com/donate
 Tags: sidebar, widget, widgets
 Requires at least: 4.8
+Tested up to: 4.8.2
 Stable tag: 1.0.0
 Requires PHP: 5.3
 License: GPLv2 or later
