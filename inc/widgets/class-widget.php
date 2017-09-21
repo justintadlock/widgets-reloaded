@@ -41,7 +41,7 @@ abstract class Widget extends \WP_Widget {
 	 */
 	public function widget_title( $args, $instance ) {
 
-		if ( $instance['title'] )
+		if ( ! empty( $instance['title'] ) )
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'];
 	}
 
