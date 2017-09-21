@@ -75,7 +75,7 @@ class Archives extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		$this->widget_title( $sidebar, $instance );
+		$this->widget_title( $sidebar, $args );
 
 		// Get the archives list.
 		$archives = str_replace( array( "\r", "\n", "\t" ), '', wp_get_archives( $args ) );

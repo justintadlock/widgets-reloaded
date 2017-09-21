@@ -90,7 +90,7 @@ class Pages extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		$this->widget_title( $sidebar, $instance );
+		$this->widget_title( $sidebar, $args );
 
 		// Output the page list.
 		echo '<ul class="xoxo pages">' . str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $args ) ) . '</ul>';

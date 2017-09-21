@@ -85,7 +85,7 @@ class Authors extends Widget {
 		echo $sidebar['before_widget'];
 
 		// If a title was input by the user, display it.
-		$this->widget_title( $sidebar, $instance );
+		$this->widget_title( $sidebar, $args );
 
 		// Get the authors list.
 		$authors = str_replace( array( "\r", "\n", "\t" ), '', wp_list_authors( $args ) );
